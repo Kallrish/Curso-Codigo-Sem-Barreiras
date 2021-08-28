@@ -116,7 +116,7 @@ public class md02Exercicio04 {
 
     System.out.printf("O maior número digitado é: %.2f .\n", max);
     System.out.printf("O menor número digitado é: %.2f .\n", min);
-    System.out.printf("A média dos números digitados é %.2f .: \n", med);
+    System.out.printf("A média dos números digitados é %.2f .\n", med);
 
     //Finaliza o recurso do Scanner
     in.close();

@@ -26,11 +26,8 @@ Abaixo deixo a lista com os enunciados de cada exercício para que seja possíve
   - *md01Exercício2* - Escreva um algoritmo para ler um valor (do teclado) e escrever (na tela) o seu antecessor.
   - *md01Exercício3* - Escreva um algoritmo para ler as dimensões de um retângulo (base e altura), calcular e escrever a área do retângulo.
   - *Emd01xercício4* - Escreva um algoritmo para ler o número total de eleitores de um município, o número de votos brancos, nulos e válidos. Calcular e escrever o percentual que cada um representa em relação ao total de eleitores.
-
 - **2 - Package "parte01_md02"** 
-
   - *md02Exercício1* - Escreva um algoritmo que leia um número inteiro e diga se ele é par ou ímpar.
-
   - *md02Exercício2* - Elabore um algoritmo que dada a idade de um nadador classifique-o em uma das seguintes categorias:
 
     * Infantil A = 5 a 7 anos
@@ -38,20 +35,21 @@ Abaixo deixo a lista com os enunciados de cada exercício para que seja possíve
     * Juvenil A = 12 a 13 anos
     * Juvenil B = 14 a 17 anos
     * Adultos = Maiores de 18 anos
-
   - *md02Exercício3* - Escreva um algoritmo em Java que leia dois números inteiros e determine qual é o menor. Escreva um algoritmo que determina o maior também. 
-
   - *md02Exercício4* - Construa um algoritmo que leia 10 valores inteiros e positivos e:
 
     * Encontre o maior valor
     * Encontre o menor valor
     * Calcule a média dos números lidos
-
   - *md02Exercício5* - Escreva um algoritmo em Java que seja capaz de fazer as seguintes operações matemáticas (adição, subtração, multiplicação e divisão). Todas as operações serão entre dois valores. No começo do algoritmo pergunte ao usuário qual operação ele deseja fazer e quais são os valores.
-
   - *md02Exercício6* - Faça a implementação do Jogo Pedra, Papel e Tesoura (Jokempô). O algoritmo deverá perguntar qual é a escolha do jogador 1 (Pedra [pe], Papel [pa], Tesoura [t]) e deverá fazer o mesmo para o jogador 2. No final da execução o algoritmo deverá dizer qual é o jogador vencedor ou se houve empate.
-
-    
+- **Package "parte01_md03"**
+  - *md03Exercício1* - Construa um algoritmo que leia 10 valores inteiros e positivos e:
+    * Encontre o maior valor
+    * Encontre o menor valor
+    * Calcule a média dos números lidos
+      Esse exercício foi dado na aula 3 e agora vamos otimizar ele utilizando o while e for.
+  - *md03Exercício2* - Construa um algoritmo usando uma estrutura de repetição que calcule o fatorial de um número.
 
 Espero que aproveitem! 
 

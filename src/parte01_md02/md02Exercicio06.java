@@ -3,7 +3,7 @@ package parte01_md02;
 //Importa o pacote necessário para receber entrada pelo usuário
 import java.util.Scanner;
 
-/** Classe com a implementação do "exercício04" do material "md02".
+/** Classe com a implementação "parte 01" do "exercício06" do material "md02".
  * Curso Java - Share RH & Alelo"
  *
  * @author Jonatas "Kallrish" Ribeiro

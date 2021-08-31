@@ -1,6 +1,6 @@
 package parte01_md01;
 
-/** Classe com a implementação do "exercício01" do material "md01".
+/** Classe com a implementação "parte 01" do "exercício01" do material "md01".
  * Curso Java - Share RH & Alelo"
  * Para mais detalhes, acesse o "Readme.txt" no GITHUB.
  *

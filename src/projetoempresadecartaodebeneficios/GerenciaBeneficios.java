@@ -108,7 +108,8 @@ public class GerenciaBeneficios {
           //o saldo é insuficiente
           if (gastoAlimentacao > saldoAlimentacao) {
 
-            System.out.println("\n>>>Saldo insuficiente para realizar essa transação!<<<\n");
+            System.out.println("\n>>>Saldo insuficiente para realizar essa transação!<<<");
+            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f.<<<\n", saldoAlimentacao);
 
           } else {
 
@@ -166,9 +167,10 @@ public class GerenciaBeneficios {
 
           //Verifica se o gasto informado é maior que o saldo e informa que
           //o saldo é insuficiente
-          if (gastoRefeicao > saldoAlimentacao) {
+          if (gastoRefeicao > saldoRefeicao) {
 
-            System.out.println("\n>>>Saldo insuficiente para realizar essa transação!<<<\n");
+            System.out.println("\n>>>Saldo insuficiente para realizar essa transação!<<<");
+            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f.<<<\n", saldoRefeicao);
 
           } else {
 
@@ -226,9 +228,10 @@ public class GerenciaBeneficios {
 
           //Verifica se o gasto informado é maior que o saldo e informa que
           //o saldo é insuficiente
-          if (gastoTransporte > saldoAlimentacao) {
+          if (gastoTransporte > saldoTransporte) {
 
-            System.out.println("\n>>>Saldo insuficiente para realizar essa transação!<<<\n");
+            System.out.println("\n>>>Saldo insuficiente para realizar essa transação!<<<");
+            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f.<<<\n", saldoTransporte);
 
           } else {
 

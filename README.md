@@ -71,27 +71,43 @@ Abaixo deixo a lista com os enunciados de cada exercício para que seja possíve
 
   - *md03Exercício01 -* Crie uma classe para representar uma pessoa, com os atributos  de nome, data de nascimento e altura. Crie e também um método para imprimir todos dados de uma pessoa. Crie um método para calcular a idade da pessoa.
   - *md03Exercício02 -* Crie uma classe Agenda que pode armazenar 10 pessoas e que seja capaz de realizar as seguintes operações:
-    * void armazenaPessoa(String nome, int idade, float altura);
-    * void removePessoa(String nome);
-    * int buscaPessoa(String nome); // informa em que posição da agenda está a pessoa
-    * void imprimeAgenda(); // imprime os dados de todas as pessoas da agenda
-    * void imprimePessoa(int index); // imprime os dados da pessoa que está na posição “i” da agenda.
+    - void armazenaPessoa(String nome, int idade, float altura);
+    - void removePessoa(String nome);
+    - int buscaPessoa(String nome); // informa em que posição da agenda está a pessoa
+    - void imprimeAgenda(); // imprime os dados de todas as pessoas da agenda
+    - void imprimePessoa(int index); // imprime os dados da pessoa que está na posição “i” da agenda.
   - *md03Exercício03 -* Crie uma classe denominada Elevador para armazenar as informações de um elevador dentro de um prédio. A classe deve armazenar o andar atual (térreo = 0), total de andares no prédio (desconsiderando o térreo), capacidade do elevador e quantas pessoas estão presentes nele. A classe deve também disponibilizar os seguintes métodos:
-    * Inicializa : que deve receber como parâmetros a capacidade do elevador e o total de andares no prédio (os elevadores sempre começam no térreo e vazio);
-    * Entra : para acrescentar uma pessoa no elevador (só deve acrescentar se ainda houver espaço);
-    * Sai : para remover uma pessoa do elevador (só deve remover se houver alguém dentro dele);
-    * Sobe : para subir um andar (não deve subir se já estiver no último andar);
-    * Desce : para descer um andar (não deve descer se já estiver no térreo);
+    - Inicializa : que deve receber como parâmetros a capacidade do elevador e o total de andares no prédio (os elevadores sempre começam no térreo e vazio);
+    - Entra : para acrescentar uma pessoa no elevador (só deve acrescentar se ainda houver espaço);
+    - Sai : para remover uma pessoa do elevador (só deve remover se houver alguém dentro dele);
+    - Sobe : para subir um andar (não deve subir se já estiver no último andar);
+    - Desce : para descer um andar (não deve descer se já estiver no térreo);
   - *md03Exercício04 -* Crie uma classe Televisão e uma classe ControleRemoto que pode controlar o volume e trocar os canais da televisão. O controle de volume permite:
-    * aumentar ou diminuir a potência do volume de som em uma unidade de cada vez;
-    * aumentar e diminuir o número do canal em uma unidade
-    * trocar para um canal indicado;
-    * consultar o valor do volume de som e o canal selecionado.
-  - 
+    - aumentar ou diminuir a potência do volume de som em uma unidade de cada vez;
+    - aumentar e diminuir o número do canal em uma unidade
+    - trocar para um canal indicado;
+    - consultar o valor do volume de som e o canal selecionado.
   
+- **Package "projetoempresadecartaodebeneficios"**
+
+  - Projeto em grupo
+  - Grupo 03
+    - Jonatas
+    - Ana Paula
+    - Ana Paula Rodrigues
+    - Antônio Carlos
+    - José Erike
+    - Natália
+  - Fazer um programa java para controlar os gastos dos meus cartões de benefícios
+  - Temos 3 categorias de benefícios: Alimentação, refeição e transporte.
+  - Ao iniciar o programa, devemos perguntar qual o valor inicial de cada categoria.
+  - Após informar os valores iniciais, o usuário poderá começar a realizar suas transações.
+  - Cada transação deverá decrementar o valor do saldo de cada categoria.
+  - O usuário poderá fazer várias transações.
+  - Vocês podem ter um controle administrativo para adicionar mais saldo.
+  - Vocês podem ter um perfil administrativo e um perfil usuário.
+
   
-
-
 
 Espero que aproveitem! 
 

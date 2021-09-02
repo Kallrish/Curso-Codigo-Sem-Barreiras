@@ -18,7 +18,6 @@ public class md02Exercicio04 {
     Scanner in = new Scanner(System.in);
 
     //Cria as variáveis necessárias
-
     Integer quantidade, indice;
     Double maior = Double.MIN_VALUE;
 

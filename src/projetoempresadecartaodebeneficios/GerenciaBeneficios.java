@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Para mais detalhes, acesse o "Readme.txt" no GITHUB.
  *
  * @author Jonatas, Ana Paula, Ana Paula Rodrigues, Antônio Carlos, José Erike, Natália
- * @version 1.5
+ * @version 1.6
  */
 public class GerenciaBeneficios {
   /**
@@ -97,9 +97,6 @@ public class GerenciaBeneficios {
 
     } while (saldoTransporte == 0);
 
-
-      saldoTransporte = in.nextDouble();
-
       //Retorna ao usuário mensagem de sucesso na operação
       System.out.println("\n>>>Saldos inseridos com sucesso!<<<\n");
       System.out.println("Seu saldo atual nos benefícios é de:\n");
@@ -160,6 +157,7 @@ public class GerenciaBeneficios {
             double gastoAlimentacao;
 
             //Solicita ao usuário a digitação do gasto e recebe na variável
+            System.out.printf("Seu saldo atual é de %.2f.\n", saldoAlimentacao);
             System.out.println("Insira o valor a ser debitado do seu saldo:");
             System.out.print("Valor R$  ");
             gastoAlimentacao = in.nextDouble();
@@ -234,6 +232,7 @@ public class GerenciaBeneficios {
             double gastoRefeicao;
 
             //Solicita ao usuário a digitação do gasto e recebe na variável
+            System.out.printf("Seu saldo atual é de %.2f.\n", saldoRefeicao);
             System.out.println("Insira o valor a ser debitado do seu saldo:");
             System.out.print("Valor R$ ");
             gastoRefeicao = in.nextDouble();
@@ -308,6 +307,7 @@ public class GerenciaBeneficios {
             double gastoTransporte;
 
             //Solicita ao usuário a digitação do gasto e recebe na variável
+            System.out.printf("Seu saldo atual é de %.2f.\n", saldoTransporte);
             System.out.println("Insira o valor a ser debitado do seu saldo:");
             System.out.print("Valor: R$ ");
             gastoTransporte = in.nextDouble();
@@ -361,7 +361,7 @@ public class GerenciaBeneficios {
           System.out.println("Seu saldo final nos benefícios é de:\n");
           System.out.printf("Vale alimentação: R$ %.2f\n", saldoAlimentacao);
           System.out.printf("Vale refeição: R$ %.2f\n", saldoRefeicao);
-          System.out.printf("Vale transporte: R$ %.2f\n\n", saldoTransporte);
+          System.out.printf("Vale transporte: R$ %.2f", saldoTransporte);
           System.out.println("------------------------------------\n");
           System.out.println("A \"JavAlelo\" agradece a sua preferência!");
           System.out.println("Tenha um ótimo dia!");

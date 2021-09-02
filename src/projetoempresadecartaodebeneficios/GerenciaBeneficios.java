@@ -12,14 +12,12 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class GerenciaBeneficios {
-  /**
-   * Roda o programa principal.
-   */
+  /** Roda o programa principal. */
   public static void main(String[] args) {
 
     //Inicio do programa com retorno ao usuário
     System.out.println("\n---------------------------------------------------------------");
-    System.out.println("Olá! Bem-vindo ao gerenciado de benefícios da \"Todos Por Um\"!");
+    System.out.println("Olá! Bem-vindo(a) ao gerenciador de benefícios da \"JavAlelo\"!");
     System.out.println("---------------------------------------------------------------\n");
     System.out.println("Para começar, você precisa informar o saldo de cada benefício.");
 
@@ -28,27 +26,31 @@ public class GerenciaBeneficios {
 
     //Solicita o saldo do cartão alimentação, declara variável e recebe nela o valor digitado
     //pelo usuário
-    System.out.println("\nInforme o saldo do Cartão Alimentação:");
+    System.out.println("\nInforme o saldo do seu Vale Alimentação:");
     System.out.print("R$ ");
     double saldoAlimentacao;
     saldoAlimentacao = in.nextDouble();
 
     //Solicita o saldo do cartão refeição, declara variável e recebe nela o valor digitado
     //pelo usuário
-    System.out.println("\nInforme o saldo do Cartão Refeição:");
+    System.out.println("\nInforme o saldo do seu Vale Refeição:");
     System.out.print("R$ ");
     double saldoRefeicao;
     saldoRefeicao = in.nextDouble();
 
     //Solicita o saldo do cartão refeição, declara variável e recebe nela o valor digitado
     //pelo usuário
-    System.out.println("\nInforme o saldo do Cartão Transporte:");
+    System.out.println("\nInforme o saldo do seu Vale Transporte:");
     System.out.print("R$ ");
     double saldoTransporte;
     saldoTransporte = in.nextDouble();
 
     //Retorna ao usuário mensagem de sucesso na operação
     System.out.println("\n>>>Saldos inseridos com sucesso!<<<\n");
+    System.out.println("Seu saldo atual nos benefícios é de:\n");
+    System.out.printf("Vale alimentação: R$ %.2f\n", saldoAlimentacao);
+    System.out.printf("Vale refeição: R$ %.2f\n", saldoRefeicao);
+    System.out.printf("Vale transporte: R$ %.2f\n\n", saldoTransporte);
 
     //Cria variável para controlar o laço do menu principal
     int saidaPrincipal = 0;
@@ -62,11 +64,11 @@ public class GerenciaBeneficios {
       //transações, ou dá a opção de sair do programa
       System.out.println("---------------------------------------------------------------");
       System.out.println("Escolha em qual categoria de benefício você deseja\n"
-                       + "cadastrar as suas transações:");
+                       + "utilizar seu saldo:");
       System.out.println("---------------------------------------------------------------\n");
-      System.out.println("1 - Cartão Alimentação");
-      System.out.println("2 - Cartão Refeição");
-      System.out.println("3 - Cartão Transporte");
+      System.out.println("1 - Vale alimentação");
+      System.out.println("2 - Vale refeição");
+      System.out.println("3 - Vale transporte");
       System.out.println("4 - Sair do programa");
       System.out.print("Opção: ");
 
@@ -76,8 +78,8 @@ public class GerenciaBeneficios {
       //Verifica se o benefício é de alimentação e se o saldo está zerado
       //retornando mensagem de erro
       if (opcaoMenuPrincipal == 1 && saldoAlimentacao == 0) {
-        System.out.println("\n>>>Você não tem saldo no cartão alimentação.<<<\n");
-        System.out.println("Selecione outro benefício para registrar transações!\n");
+        System.out.println("\n>>>Você tem R$0,00 no seu vale alimentação.<<<\n");
+        System.out.println("Selecione outro benefício para utilizar seu saldo!\n");
 
         //Verifica se o benefício é de alimentação e se o saldo é maior
         //que zero e manda o usuário para o menu de gastos de alimentação
@@ -91,16 +93,19 @@ public class GerenciaBeneficios {
         //menu anterior
         //Uso do DO-WHILE necessário para que o menu capte a escolha do usuário
         //e retorne de forma correta
+
+        //Retorna mensagem de boas-vindas a interface
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("Bem-vindo(a)! Hora de usar o seu vale alimentação!");
+        System.out.println("-----------------------------------------------------\n");
+
         do {
 
           //Cria variável para receber qual o valor a ser gasto
           double gastoAlimentacao;
 
           //Solicita ao usuário a digitação do gasto e recebe na variável
-          System.out.println("\n---------------------------------------------------");
-          System.out.println("Bem-vindo a interface de gasto do seu vale alimentação!");
-          System.out.println("-----------------------------------------------------\n");
-          System.out.println("Insira o valor a ser gasto:");
+          System.out.println("Insira o valor a ser debitado do seu saldo:");
           System.out.print("Valor R$  ");
           gastoAlimentacao = in.nextDouble();
 
@@ -109,14 +114,15 @@ public class GerenciaBeneficios {
           if (gastoAlimentacao > saldoAlimentacao) {
 
             System.out.println("\n>>>Saldo insuficiente para realizar essa transação!<<<");
-            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f.<<<\n", saldoAlimentacao);
+            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f..<<<\n\n", saldoAlimentacao);
 
           } else {
 
             //Como o saldo é positivo, subtrai o gasto do saldo e retorna
             //mensagem de sucesso na transação
             saldoAlimentacao -= gastoAlimentacao;
-            System.out.println("\n>>>Transação feita com sucesso!<<<\n");
+            System.out.println("\n>>>Transação feita com sucesso!<<<");
+            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f..<<<\n\n", saldoAlimentacao);
 
           }
 
@@ -125,7 +131,7 @@ public class GerenciaBeneficios {
           System.out.println("----------------------------");
           System.out.println("Escolha uma das opções abaixo:");
           System.out.println("----------------------------\n");
-          System.out.println("1 - Digitar outro gasto no cartão alimentação");
+          System.out.println("1 - Informar outro valor a ser debitado do vale alimentação");
           System.out.println("2 - Voltar ao menu principal\n");
           System.out.print("Opção: ");
 
@@ -139,8 +145,8 @@ public class GerenciaBeneficios {
         //Verifica se o benefício é de refeição e se o saldo está zerado
         //retornando mensagem de erro
       } else if (opcaoMenuPrincipal == 2 && saldoRefeicao == 0) {
-        System.out.println("\n>>>Você não tem saldo no cartão refeição.<<<\n");
-        System.out.println("Selecione outro benefício para registrar transações!\n");
+        System.out.println("\n>>>Você tem R$0,00 no seu vale refeição.<<<\n");
+        System.out.println("Selecione outro benefício para utilizar seu saldo!\n");
 
       } else if (opcaoMenuPrincipal == 2 && saldoRefeicao > 0) {
 
@@ -152,16 +158,19 @@ public class GerenciaBeneficios {
         //menu anterior
         //Uso do DO-WHILE necessário para que o menu capte a escolha do usuário
         //e retorne de forma correta
+
+        //Retorna informação de boas-vindas ao usuário
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("Bem-vindo(a)! Hora de usar o seu vale refeição!");
+        System.out.println("-----------------------------------------------------\n");
+
         do {
 
           //Cria variável para receber qual o valor a ser gasto
           double gastoRefeicao;
 
           //Solicita ao usuário a digitação do gasto e recebe na variável
-          System.out.println("\n---------------------------------------------------");
-          System.out.println("Bem-vindo a interface de gasto do seu vale refeição!");
-          System.out.println("-----------------------------------------------------\n");
-          System.out.println("Insira o valor a ser gasto:");
+          System.out.println("Insira o valor a ser debitado do seu saldo:");
           System.out.print("Valor R$ ");
           gastoRefeicao = in.nextDouble();
 
@@ -170,14 +179,15 @@ public class GerenciaBeneficios {
           if (gastoRefeicao > saldoRefeicao) {
 
             System.out.println("\n>>>Saldo insuficiente para realizar essa transação!<<<");
-            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f.<<<\n", saldoRefeicao);
+            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f..<<<\n\n", saldoRefeicao);
 
           } else {
 
             //Como o saldo é positivo, subtrai o gasto do saldo e retorna
             //mensagem de sucesso na transação
             saldoRefeicao -= gastoRefeicao;
-            System.out.println(">>>Transação feita com sucesso!<<<");
+            System.out.println("\n>>>Transação feita com sucesso!<<<");
+            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f..<<<\n\n", saldoRefeicao);
 
           }
 
@@ -200,8 +210,8 @@ public class GerenciaBeneficios {
         //Verifica se o benefício é de transporte e se o saldo está zerado
         //retornando mensagem de erro
       } else if (opcaoMenuPrincipal == 3 && saldoTransporte == 0) {
-        System.out.println("\n>>>Você não tem saldo no cartão transporte.<<<\n");
-        System.out.println("Selecione outro benefício para registrar transações!\n");
+        System.out.println("\n>>>Você tem R$0,00 no seu vale transporte.<<<\n");
+        System.out.println("Selecione outro benefício para utilizar seu saldo!\n");
 
       } else if (opcaoMenuPrincipal == 3 && saldoTransporte > 0) {
 
@@ -213,16 +223,19 @@ public class GerenciaBeneficios {
         //menu anterior
         //Uso do DO-WHILE necessário para que o menu capte a escolha do usuário
         //e retorne de forma correta
+
+        //Retorna informação de boas-vindas a interface
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("Bem-vindo(a)! Hora de usar o seu valetransporte!");
+        System.out.println("-----------------------------------------------------\n");
+
         do {
 
           //Cria variável para receber qual o valor a ser gasto
           double gastoTransporte;
 
           //Solicita ao usuário a digitação do gasto e recebe na variável
-          System.out.println("\n---------------------------------------------------");
-          System.out.println("Bem-vindo a interface de gasto do seu vale transporte!");
-          System.out.println("-----------------------------------------------------\n");
-          System.out.println("Insira o valor a ser gasto:");
+          System.out.println("Insira o valor a ser debitado do seu saldo:");
           System.out.print("Valor: R$ ");
           gastoTransporte = in.nextDouble();
 
@@ -231,15 +244,15 @@ public class GerenciaBeneficios {
           if (gastoTransporte > saldoTransporte) {
 
             System.out.println("\n>>>Saldo insuficiente para realizar essa transação!<<<");
-            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f.<<<\n", saldoTransporte);
+            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f..<<<\n\n", saldoTransporte);
 
           } else {
 
             //Como o saldo é positivo, subtrai o gasto do saldo e retorna
             //mensagem de sucesso na transação
             saldoTransporte -= gastoTransporte;
-            System.out.println(">>>Transação feita com sucesso!<<<\n");
-
+            System.out.println("\n>>>Transação feita com sucesso!<<<");
+            System.out.printf(">>>Seu saldo atual neste benefício é: %.2f..<<<\n\n", saldoTransporte);
           }
 
           //Solicita ao usuário informar se quer continuar informando gastos
@@ -262,7 +275,9 @@ public class GerenciaBeneficios {
         //sair do programa
       } else if (opcaoMenuPrincipal == 4) {
         System.out.println("\nObrigado por usar nossos serviços.");
-        System.out.println("A \"Todos Por Um\" agradece a sua preferência!");
+        System.out.println("A \"JavAlelo\" agradece a sua preferência!");
+        System.out.println("Tenha um ótimo dia!");
+
         saidaPrincipal = 4;
       }
     } while (saidaPrincipal != 4);

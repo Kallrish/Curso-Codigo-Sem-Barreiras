@@ -1,11 +1,12 @@
 package projetoempresadecartaodebeneficios;
 
+//Importa a biblioteca para receber a entrada do usuário
 import java.util.Scanner;
 
 /**
  * Projeto Empresa de Cartão de Benefícios.
- * Trabalho em grupo.
- * Curso Java - Share RH & Alelo"
+ * Trabalho em grupo - Grupo JavAlelo.
+ * Curso Java - Share RH & Alelo".
  * Para mais detalhes, acesse o "Readme.txt" no GITHUB.
  *
  * @author Jonatas, Ana Paula, Ana Paula Rodrigues, Antônio Carlos, José Erike, Natália
@@ -116,7 +117,7 @@ public class GerenciaBeneficios {
       //transações, ou dá a opção de sair do programa
       System.out.println("---------------------------------------------------------------");
       System.out.println("Escolha em qual categoria de benefício você deseja\n"
-              + "utilizar seu saldo:");
+                       + "utilizar seu saldo:");
       System.out.println("---------------------------------------------------------------\n");
       System.out.println("1 - Vale alimentação");
       System.out.println("2 - Vale refeição");
@@ -406,9 +407,10 @@ public class GerenciaBeneficios {
         System.out.println("\nObrigado por usar nossos serviços.\n");
         System.out.println("------------------------------------");
         System.out.println("Seu saldo final nos benefícios é de:\n");
+        System.out.println("------------------------------------");
         System.out.printf("Vale alimentação: R$ %.2f\n", saldoAlimentacao);
         System.out.printf("Vale refeição: R$ %.2f\n", saldoRefeicao);
-        System.out.printf("Vale transporte: R$ %.2f", saldoTransporte);
+        System.out.printf("Vale transporte: R$ %.2f\n", saldoTransporte);
         System.out.println("------------------------------------\n");
         System.out.println("A \"JavAlelo\" agradece a sua preferência!");
         System.out.println("Tenha um ótimo dia!");

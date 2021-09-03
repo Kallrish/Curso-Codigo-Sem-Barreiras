@@ -404,6 +404,9 @@ public class GerenciaBeneficios {
         //Opção para caso o usuário não queira mais digitar gastos e prefira
         //sair do programa
       } else if (opcaoMenuPrincipal == 4) {
+
+        //Fecha o recurso do Scanner, pois não haverá mais entrada do usuário.
+        in.close();
         System.out.println("\nObrigado por usar nossos serviços.\n");
         System.out.println("------------------------------------");
         System.out.println("Seu saldo final nos benefícios é de:\n");

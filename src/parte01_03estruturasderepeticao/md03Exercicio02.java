@@ -1,9 +1,9 @@
-package parte01_md03;
+package parte01_03estruturasderepeticao;
 
 //Importa o pacote necessário para receber entrada pelo usuário
 import java.util.Scanner;
 
-/** Classe com a implementação da "parte 01" do "exercício02" do material "md03".
+/** Classe com a implementação da "parte 01" do "exercício02" do material "03estruturasderepeticao".
  * Curso Java - Share RH & Alelo"
  *
  * @author Jonatas "Kallrish" Ribeiro

@@ -4,7 +4,7 @@ package projetoempresadecartaodebeneficios;
 import java.util.Scanner;
 
 /**
- * Projeto Empresa de Cartão de Benefícios.
+ * Projeto Empresa de Cartão de Benefícios.- parte 1
  * Trabalho em grupo - Grupo JavAlelo.
  * Curso Java - Share RH & Alelo".
  * Para mais detalhes, acesse o "Readme.txt" no GITHUB.

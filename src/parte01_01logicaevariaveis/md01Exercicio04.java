@@ -1,9 +1,9 @@
-package parte01_md01;
+package parte01_01logicaevariaveis;
 
 //Importa o pacote necessário para receber entrada pelo usuário
 import java.util.Scanner;
 
-/** Classe com a implementação "parte 01" do "exercício04" do material "md01".
+/** Classe com a implementação "parte 01" do "exercício04" do material "01logicaevariaveis".
  * Curso Java - Share RH & Alelo"
  *
  * @author Jonatas "Kallrish" Ribeiro

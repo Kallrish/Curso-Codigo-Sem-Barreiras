@@ -1,4 +1,4 @@
-package parte02_03arrayselistas;
+package parte02_04arrayselistas;
 
 //Importa o pacote necessário para receber entrada pelo usuário
 
@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author Jonatas "Kallrish" Ribeiro
  * @version 1.0
  */
-public class md02Exercicio03 {
+public class md04Exercicio03 {
   /**
    * Roda o programa principal.
    */

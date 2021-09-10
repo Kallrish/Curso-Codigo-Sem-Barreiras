@@ -95,7 +95,7 @@ Abaixo deixo a lista com os enunciados de cada exercício para que seja possíve
   - *md06Exercício01 -*Fazer um programa com as seguintes características:
     * Uma classe chamada Universidade que terá como atributo um nome e terá um método para informar o seu nome;
     * Uma classe Pessoa, que terá como atributo seu nome, em que universidade estuda, quando entrou na universidade e um método que dirá seu nome e em que universidade estuda;
-    * Relacionar a classe Pessoa para com a classe Universidade. Cada Universidade poderá ser associada a uma Pessoa.
+    * Relacionar a classe Pessoa para com a classe Universidade. Cada Pessoa poderá ser associada a uma Universidade.
   - *md06Exercício02 -*Crie uma classe Televisão e uma classe ControleRemoto que pode controlar o volume e trocar os canais da televisão. O controle de volume permite:
     * Aumentar ou diminuir a potência do volume de som em uma unidade de cada vez;
     * Aumentar e diminuir o número do canal em uma unidade;

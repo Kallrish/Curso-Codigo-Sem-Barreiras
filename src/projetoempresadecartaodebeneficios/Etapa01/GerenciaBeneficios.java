@@ -1,4 +1,4 @@
-package projetoempresadecartaodebeneficios;
+package projetoempresadecartaodebeneficios.Etapa01;
 
 //Importa a biblioteca para receber a entrada do usuário
 import java.util.Scanner;

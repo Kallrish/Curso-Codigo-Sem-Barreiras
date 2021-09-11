@@ -25,6 +25,7 @@ public class Beneficiario {
       pessoa.cartao1.senha = in.nextLine().trim();
       pessoa.dataDoCadastro = LocalDate.now();
       pessoa.cartao1.validade = pessoa.dataDoCadastro.plusYears(2);
+     pessoa.cartao1.saldo = 1000.0;
       pessoa.cartao1.transacoes = new ArrayList<>();
       System.out.println("---------------------------------------");
       System.out.println("3 - Dados do Vale Refeição");
@@ -32,6 +33,7 @@ public class Beneficiario {
       pessoa.cartao2.senha = in.nextLine().trim();
       pessoa.dataDoCadastro = LocalDate.now();
       pessoa.cartao2.validade = pessoa.dataDoCadastro.plusYears(2);
+     pessoa.cartao1.saldo = 1000.0;
       pessoa.cartao2.transacoes = new ArrayList<>();
       System.out.println("---------------------------------------");
       System.out.println("4 - Dados do Vale Transporte");
@@ -39,6 +41,7 @@ public class Beneficiario {
       pessoa.cartao3.senha = in.nextLine().trim();
       pessoa.dataDoCadastro = LocalDate.now();
       pessoa.cartao3.validade = pessoa.dataDoCadastro.plusYears(2);
+     pessoa.cartao1.saldo = 1000.0;
       pessoa.cartao3.transacoes = new ArrayList<>();
       System.out.println("---------------------------------------");
       System.out.println("Cadastro realizado com sucesso!");

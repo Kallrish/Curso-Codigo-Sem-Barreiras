@@ -7,4 +7,8 @@ public class Estabelecimento {
   String tipo;
   String Localizacao;
 
+  public void cadastrarEstabelecimento(){
+
+  }
+
 }

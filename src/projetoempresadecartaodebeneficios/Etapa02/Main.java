@@ -6,8 +6,6 @@ public class Main {
 
     Beneficiario.cadastrarBeneficiario();
 
-    Beneficiario.imprimeBeneficiario();
-
   }
 //   try (
 //  Scanner scanner = new Scanner(System.in)) {

@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 
 public class Transacao {
 
-  String identificadorTransacao;
-  LocalDateTime dataEHoraDaTransacao;
-  Estabelecimento Localizacao;
-  Estabelecimento identicadorDoEstabelecimento;
+  private String identificadorTransacao;
+  private LocalDateTime dataHoraTransacao;
+  private Estabelecimento localizacaoEstabelecimento;
+  private Estabelecimento identicadorEstabelecimento;
 
   public void sistemaAntiFraude() {
 

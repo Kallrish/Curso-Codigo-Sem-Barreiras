@@ -4,23 +4,23 @@ public enum TiposDeCartaoDeBeneficio {
 
   VA {
     @Override
-    public ICartaoDeBeneficio fabricar() {
+    public InterfaceCartaoDeBeneficio fabricar() {
       return new ValeAlimentacao();
     }
   },
   VR {
     @Override
-    public ICartaoDeBeneficio fabricar() {
+    public InterfaceCartaoDeBeneficio fabricar() {
       return new ValeRefeicao();
     }
   },
   VT {
     @Override
-    public ICartaoDeBeneficio fabricar() {
-      return new ValeTransporte();
+    public InterfaceCartaoDeBeneficio fabricar() {
+      return new ValeCombustivel();
     }
   };
 
-  abstract ICartaoDeBeneficio fabricar();
+  abstract InterfaceCartaoDeBeneficio fabricar();
 
 }

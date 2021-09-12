@@ -7,7 +7,7 @@ public class Pessoa {
   String nome;
   ValeAlimentacao cartao1 = new ValeAlimentacao();
   ValeRefeicao cartao2 = new ValeRefeicao();
-  ValeTransporte cartao3 = new ValeTransporte();
+  ValeCombustivel cartao3 = new ValeCombustivel();
   LocalDate dataDoCadastro;
 
   @Override

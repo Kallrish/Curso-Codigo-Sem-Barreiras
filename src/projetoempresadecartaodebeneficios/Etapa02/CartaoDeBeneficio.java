@@ -7,7 +7,7 @@ public abstract class CartaoDeBeneficio {
 
   //Crias as variáveis necessárias para classe
   public String identificadorCartao;
-  protected Double saldoCartao;
+  protected Double saldoCartao = 1000.0;
   public LocalDate dataDoCadastro;
   public LocalDate validadeCartao;
   public ArrayList<Transacao> transacoesCartao = new ArrayList<>();

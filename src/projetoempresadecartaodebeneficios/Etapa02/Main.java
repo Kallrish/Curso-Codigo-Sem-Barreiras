@@ -4,8 +4,8 @@ public class Main {
 
   public static void main(String[] args) {
 
+    Estabelecimento.inicializaEstabelecimentos();
 
-    Beneficiario.cadastrarBeneficiario();
 
   }
 //   try (

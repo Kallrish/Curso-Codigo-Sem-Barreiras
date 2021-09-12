@@ -21,7 +21,6 @@ public class Transacao {
   //Cria uma lista para armazenar as transações do VC
   public static List<Transacao> listaTransacoesVC = new ArrayList<>();
 
-
   public Transacao(Long identificadorDaTransacao, String identificadorDoCartao, LocalDateTime dataHoraTransacao,
                    String identicadorDoEstabelecimento, String localizacaoDoEstabelecimento,
                    String tipoDoEstabelecimento, Double valorDaTransacao) {
@@ -33,6 +32,10 @@ public class Transacao {
     this.tipoDoEstabelecimento = tipoDoEstabelecimento;
     this.valorDaTransacao = valorDaTransacao;
   }
+
+  //TODO implementar o método de cadastro (tipo o do beneficiario)
+
+  //TODO método para tirar o extrato (pessoa seleciona extrato do dia ou extrato da semana, ou extrato do mês)
 
   public Long getIdentificadorDaTransacao() {
     return identificadorDaTransacao;

@@ -68,4 +68,6 @@ public class Ferramentas {
    return data2.isBefore(data1);
   }
 
+
+  //TODO implementar verificaEstabelecimento e verificaValor
 }

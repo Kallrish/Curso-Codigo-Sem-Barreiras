@@ -6,8 +6,9 @@ import java.util.ArrayList;
 public abstract class CartaoDeBeneficio {
 
   //Crias as variáveis necessárias para classe
+  public String identificadorCartao;
   protected Double saldoCartao;
-  protected String senhaCartao;
+  public LocalDate dataDoCadastro;
   public LocalDate validadeCartao;
   public ArrayList<Transacao> transacoesCartao = new ArrayList<>();
   public String nomeBeneficiario;

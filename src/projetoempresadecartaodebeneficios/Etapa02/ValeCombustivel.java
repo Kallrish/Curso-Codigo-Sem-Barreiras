@@ -1,6 +1,24 @@
 package projetoempresadecartaodebeneficios.Etapa02;
 
+import java.time.LocalDate;
+
 public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCartaoDeBeneficio {
+
+  @Override
+  public void criaDataDeCadastro() {
+
+    //Cria a data de cadastro pegando a data atual do momento do cadastro
+    this.dataDoCadastro = LocalDate.now();
+
+  }
+
+  @Override
+  public void criaDataDeValidade() {
+
+    //Cria a validade do cartão, definindo 2 anos como padrão.
+    this.validadeCartao = this.dataDoCadastro.plusYears(2);
+
+  }
 
   @Override
   public void adicionarTransacao(Double valor, Integer identificadorEstabelecimento, String tipoEstabelecimento) {
@@ -14,23 +32,23 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
       System.out.println("Digite um valor maior que zero!");
 
       //Verifica a validade do cartão
-    } else if (!verificaValidade(pega data do cadastro do cartao)) {
+    } else if (!Ferramentas.verificaValidade(pega data do cadastro do cartao)) {
       System.out.println("Cartão vencido! Não é possível realizar essa transação!");
 
       //Verifica se saldo é suficiente para transação
     } else if (valor > this.saldoCartao) {
       System.out.println("Você não tem saldo suficiente para realizar esta operação!");
 
-    } else if (!verificaTempoSegundos(pega registro datahora da ultima compra) &&
-            verificaEstabalecimento(pega registro ultimo estabelecimento) &&
-            verificaValor (pega registro valor ultima compra)) {
+    } else if (!Ferramentas.verificaTempoSegundos(pega registro datahora da ultima compra) &&
+            Ferramentas.verificaEstabalecimento(pega registro ultimo estabelecimento) &&
+            Ferramentas.verificaValor (pega registro valor ultima compra)) {
       System.out.println("Você só pode realizar uma transação de mesmo valor a cada 30 segundos!");
 
     } else if () {
       System.out.println("Você não pode realizar mais que duas compras em 1 minuto!");
 
     ////Regra específica 2 do VC: Uma compra a cada 2 minutos
-    } else if (!verificaTempoDoisMinutos(pega registro datahora da ultima compra)) {
+    } else if (!Ferramentas.verificaTempoDoisMinutos(pega registro datahora da ultima compra)) {
       System.out.println("Você só pode realizar uma transação a cada 2 minutos!");
 
     } else {

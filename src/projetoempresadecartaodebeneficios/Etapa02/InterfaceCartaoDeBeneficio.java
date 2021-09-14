@@ -2,13 +2,12 @@ package projetoempresadecartaodebeneficios.Etapa02;
 
 public interface InterfaceCartaoDeBeneficio {
 
-  void adicionarTransacao(Double valor, Integer identificadorEstabelecimento, String tipoDeEstabelecimento);
+  void adicionarTransacao(String nomeBeneficiario, Double valor, Integer identificadorEstabelecimento, String tipoDeEstabelecimento);
 
-  void mostrarSaldo();
+  public void mostrarSaldo(Double saldoAtual1) ;
 
   void criaDataDeCadastro();
 
   void criaDataDeValidade();
-
 
 }

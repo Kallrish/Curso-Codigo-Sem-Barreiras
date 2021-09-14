@@ -12,12 +12,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
   //Cria variáveis necessárias para classe
   public static Integer incrementoIdentificadorVA = 1;
   public static Integer incrementoIdentificadorTransacoesVA = 1;
-
   int index = 0;
-
-  //Instancia classes necessárias
-  Beneficiario beneficiario = new Beneficiario();
-  Transacao transacao = new Transacao();
 
   //Cria uma lista para armazenar as transações do VA
   public static List<ValeAlimentacao> listaCartoesVA = new ArrayList<>();
@@ -26,10 +21,10 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
   }
 
-  public ValeAlimentacao(Integer indentificadorCartao, String nomeBeneficiario, String senhaCartao,
+  public ValeAlimentacao(Integer identificadorCartao, String nomeBeneficiario, String senhaCartao,
                          Double saldoCartao, LocalDate dataDoCadastro, LocalDate validadeCartao) {
 
-    this.identificadorCartao = indentificadorCartao;
+    this.identificadorCartao = identificadorCartao;
     this.saldoCartao = saldoCartao;
     this.senhaCartao = senhaCartao;
     this.criaDataDeCadastro();
@@ -47,7 +42,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
       do {
         System.out.println("==================================================================");
-        System.out.println("Cadastro de Vale Alimentação");
+        System.out.println("Menu -> Cadastrar: Vale Alimentação");
         System.out.println("==================================================================");
         System.out.println("Insira o nome do(a) beneficiário(a):");
         System.out.print("Nome: ");
@@ -62,11 +57,13 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
           if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().equals(nome)) {
-//            Beneficiario.listaBeneficiarios.get(i).setVaIdentificador(incrementoIdentificadorVA);
 
             //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
-            this.identificadorCartao = incrementoIdentificadorVA++;
-            this.senhaCartao = senhaCartao;
+            this.identificadorCartao = incrementoIdentificadorVA;
+
+            //this.senhaCartao = senhaCartao;
+            this.senhaCartao = senha;
+
             Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e100();
             this.saldoCartao = valorAleatorioSaldo;
             this.criaDataDeCadastro();
@@ -117,7 +114,9 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
   @Override
   public void adicionarTransacao(String nomeBeneficiario, Double valor,
-                                 Integer identificadorEstabelecimento, String tipoDeEstabelecimento) {
+                                 Integer identificadorEstabelecimento,
+                                 String tipoDeEstabelecimento) {
+    Integer identificadorDoCartao = 0;
 
     try (Scanner in = new Scanner(System.in)) {
 
@@ -127,87 +126,128 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
       index = listaTransacoes.size() - 1;
 
       do {
-        System.out.println("==================================================================");
-        System.out.println("Cadastro de Transação");
-        System.out.println("==================================================================");
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Cadastrar: Transação -> Login");
+        System.out.println("==================================================================\n");
         System.out.println("Insira o nome do(a) beneficiário(a):");
         System.out.print("Nome: ");
         nome = in.nextLine().trim();
-        System.out.println("-----------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------\n");
         System.out.println("Digite uma senha para usar o cartão:");
         System.out.print("Senha: ");
         senha = in.nextLine().trim();
 
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < Beneficiario.listaBeneficiarios.size() - 1; i++) {
+        for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size() - 1; i++) {
 
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().contains(nome)) {
-//            Beneficiario.listaBeneficiarios.get(i).setVaIdentificador(incrementoIdentificadorVA);
+          if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().contains(nome) &&
+                  ValeAlimentacao.listaCartoesVA.get(i).getSenhaVA().contains(senha)) {
 
-            LocalDate dataCadastroCartao = ValeAlimentacao.listaCartoesVA.get(i).getDatadoCadastroVA();
-            String identificadorUltimoEstabelecimento = ValeAlimentacao.listaTransacoes.get(i).getIdenticadorDoEstabelecimento();
-            Double valorUltimaCompra = ValeAlimentacao.listaTransacoes.get(i).getValorDaTransacao();
+            identificadorDoCartao = listaCartoesVA.get(i).identificadorCartao;
 
-            LocalDateTime dataHoraUltimaCompra = ValeAlimentacao.listaTransacoes.get(i).getDataHoraTransacao();
-            LocalTime horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
+            //Laço para percorrer a lista de beneficiários
+//          for (int j = 0; j < Beneficiario.listaBeneficiarios.size() - 1; i++) {
 
-            //Regra específica do VA: Verifica se é posto de combustível
-            if (tipoDeEstabelecimento.equals("Posto_combustível")) {
-              System.out.println("Não é possível usar este benefício neste estabelecimento!");
+//          Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+//          if (Beneficiario.listaBeneficiarios.get(j).getNomeBeneficiario().contains(nome)) {
+//          Beneficiario.listaBeneficiarios.get(i).setVaIdentificador(incrementoIdentificadorVA);
 
-              //Verifica se é valor negativo
-            } else if (valor < 0) {
-              System.out.println("Digite um valor maior que zero!");
+            System.out.println("\n==================================================================");
+            System.out.println("Menu -> Cadastrar: Transação no Vale Alimentação");
+            System.out.println("==================================================================\n");
+            String continua;
 
-              //Verifica a validade do cartão
-            } else if (!Ferramentas.verificaValidade(dataCadastroCartao)){
-              System.out.println("Cartão vencido! Não é possível realizar essa transação!");
+            do {
 
-              //Verifica se saldo é suficiente para transação
-            } else if (valor > this.saldoCartao) {
-              System.out.println("Você não tem saldo suficiente para realizar esta operação!");
+              LocalDate dataCadastroCartao = ValeAlimentacao.listaCartoesVA.get(i).dataDoCadastro;
+              String identificadorUltimoEstabelecimento = ValeAlimentacao.listaTransacoes.get(index).getIdenticadorDoEstabelecimento();
+              Double valorUltimaCompra = ValeAlimentacao.listaTransacoes.get(index).getValorDaTransacao();
 
-            } else if (Ferramentas.verificaTempoSegundos(horaUltimaCompra) &&
-                        Ferramentas.verificaIdentificadorEstabelecimento(i, identificadorUltimoEstabelecimento) &&
-                        Ferramentas.verificaValorVA(i, valorUltimaCompra)) {
-
-              System.out.println("Você não pode realizar mais que duas compras em 1 minuto!");
-
-            } else {
-
-              //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
-              transacao.identificadorDaTransacao
-              //TODO implementar acesso aos valores para passar como parâmetro pra criação do objeto
-              listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVA++, identificadorTransacao, identicadorCartao,
-                      dataHoraTransacao, identificadorEstabelecimento, localizadorEstabelecimento, tipoEstabelecimento, valorTranscao));
+              LocalDateTime dataHoraUltimaCompra = ValeAlimentacao.listaTransacoes.get(index).getDataHoraTransacao();
+              LocalDateTime dataHoraPenultimaCompra = ValeAlimentacao.listaTransacoes.get(index - 1).getDataHoraTransacao();
+              LocalTime horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
+              LocalTime horaPenultimaCompra = dataHoraPenultimaCompra.toLocalTime();
 
 
-              this.saldoCartao -= valor;
-              this.saldoCartao += valor * 0.015;
+//              for (i = 0; i > listaCartoesVA.size(); i++) {
+//                if (listaCartoesVA.get(i).nomeBeneficiario.equals(nome)) {
+//                  identificadorDoCartao = listaCartoesVA.get(i).identificadorCartao;
+//                }
+//              }
 
-              System.out.println("\n---------------------------------------------------------------");
-              System.out.printf("Compra efetuada com sucesso!%n");
-              System.out.printf("Você recebeu R$%.2f de cashback.", valor * 0.015);
-              System.out.printf("Seu saldo atual: R$%.2f.", this.saldoCartao);
-            }
+              System.out.println("Digite o código do estabelecimento onde foi efetuada a compra: " +
+                      "[PO01] - Posto Delta" +
+                      "[ME01] - Mercearia São José" +
+                      "[SU01] - Supermercado ABC" +
+                      "[PA01] - Padaria Sonhos" +
+                      "[RE01] - Restaurante La Marmita");
+              String codigoEstabelecimento = in.nextLine().trim();
 
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("Deseja cadastrar outra transação?");
-            System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
-            System.out.print("Opção: ");
-            opcao = in.nextLine().trim().toLowerCase().charAt(0);
+              String identicadorDoEstabelecimento = Estabelecimento.buscaEstabelecimento(codigoEstabelecimento);
+              String localizacaoEstabelecimento = Estabelecimento.buscaLocalizacaoEstabelecimento(codigoEstabelecimento);
 
-            //Retorna mensagem de erro caso não encontra o beneficiário
+              System.out.println("Qual o valor da transação?");
+              Double valorDaTransacao = in.nextDouble();
+
+              //Regra específica 1 do VA: Verifica se é posto de combustível
+              if (identicadorDoEstabelecimento.contains("Posto Delta")) {
+                System.out.println("Não é possível usar este benefício neste estabelecimento!");
+
+                //Verifica se é valor negativo
+              } else if (valorDaTransacao < 0) {
+                System.out.println("Digite um valor maior que zero!");
+
+                //Verifica a validade do cartão
+              } else if (!Ferramentas.verificaValidade(dataCadastroCartao)) {
+                System.out.println("Cartão vencido! Não é possível realizar essa transação!");
+
+                //Verifica se saldo é suficiente para transação
+              } else if (valorDaTransacao > this.saldoCartao) {
+                System.out.println("Você não tem saldo suficiente para realizar esta operação!");
+
+                //Verifica se houve duas compras do mesmo valor em menos de 30 segundos
+              } else if (Ferramentas.verificaTempoSegundos(horaUltimaCompra) &&
+                      Ferramentas.verificaIdentificadorEstabelecimento(i, identificadorUltimoEstabelecimento) &&
+                      Ferramentas.verificaValorVA(i, valorUltimaCompra)) {
+                System.out.println("Você só pode realizar uma transação de mesmo valor a cada 30 segundos!");
+
+                //Verifica se houve três compras do mesmo valor em menos de 1 minuto
+              } else if (Ferramentas.verificaTempoUmMinuto(horaPenultimaCompra)) {
+                System.out.println("Você não pode realizar mais que duas compras em 1 minuto!");
+
+              } else {
+                // Armazena os dados da transação no lista de transações
+                LocalDateTime dataDoCadastroTransacao = LocalDateTime.now();
+                listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
+                        dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
+                        codigoEstabelecimento, valorDaTransacao));
+
+                this.saldoCartao -= valorDaTransacao;
+                this.saldoCartao += valorDaTransacao * 0.015;
+
+                System.out.println("\n---------------------------------------------------------------");
+                System.out.printf("Compra efetuada com sucesso!%n");
+                System.out.printf("Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.015);
+                System.out.printf("Seu saldo atual: R$%.2f.", this.saldoCartao);
+              }
+
+              System.out.println("-----------------------------------------------------------------");
+              System.out.println("Deseja cadastrar outra transação?");
+              System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+              System.out.print("Opção: ");
+              opcao = in.nextLine().trim().toLowerCase().charAt(0);
+
+
+            } while (opcao != 'n');
+
           } else {
             System.out.println("-----------------------------------------------------------------");
-            System.out.printf("Não foi possível realizar o cadastro.%nBeneficiário %s não encontrado!%n", nome);
-            System.out.println("Deseja tentar cadastrar outra transação?");
+            System.out.println("Nome e/ou senha estão incorretos!%n");
+            System.out.println("Deseja tentar digitar usuário e senha outra vez?");
             System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
             System.out.print("Opção: ");
             opcao = in.nextLine().trim().toLowerCase().charAt(0);
           }
-
         }
       } while (opcao == 's');
     }
@@ -225,5 +265,13 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
   public LocalDate getDatadoCadastroVA() {
     return dataDoCadastro;
+  }
+
+  public String getNomeBeneficiarioVA() {
+    return nomeBeneficiario;
+  }
+
+  public String getSenhaVA() {
+    return senhaCartao;
   }
 }

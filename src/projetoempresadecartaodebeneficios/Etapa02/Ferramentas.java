@@ -42,9 +42,9 @@ public class Ferramentas {
 
   //Verifica se passou 1 minutos desde a última transação do cartão
   //True se passou, false se ainda precisa esperar
-  public static boolean verificaTempoUmMinuto(LocalTime ultimaCompra, LocalTime t2) {
+  public static boolean verificaTempoUmMinuto(LocalTime penultimaCompra) {
 
-    long tempoQuePassou = ChronoUnit.MINUTES.between(ultimaCompra, LocalTime.now());
+    long tempoQuePassou = ChronoUnit.MINUTES.between(penultimaCompra, LocalTime.now());
 
     return tempoQuePassou > 1;
   }
@@ -227,9 +227,12 @@ public class Ferramentas {
 
     try (Scanner in = new Scanner(System.in)) {
 
-      String nome, senha;
+      //Cria variáveis necessárias para receber as entradas do usuário
+      String nome, senha, cartao;
       char opcao = 's';
 
+      //Inicia laço para verificar se o nome e senha do usuário estão corretos
+      //e permite acesso a itens do submenu na tela principal
       do {
 
         System.out.println("Insira o nome do(a) beneficiário(a):");
@@ -239,27 +242,40 @@ public class Ferramentas {
         System.out.println("Digite uma senha para usar o cartão:");
         System.out.print("Senha: ");
         senha = in.nextLine().trim();
-        if () {
 
-        } else {
-          System.out.println("-----------------------------------------------------------------");
-          System.out.printf("Não foi possível realizar o cadastro.%nBeneficiário %s não encontrado!%n", nome);
-          System.out.println("Deseja tentar digitar usuário e senha outra vez?");
-          System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
-          System.out.print("Opção: ");
-          opcao = in.nextLine().trim().toLowerCase().charAt(0);
+        for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size() - 1; i++) {
+
+          //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+          if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().contains(nome) &&
+                  ValeAlimentacao.listaCartoesVA.get(i).getSenhaVA().contains(senha)) {
+
+
+          } else {
+            System.out.println("-----------------------------------------------------------------");
+            System.out.println("Nome e/ou senha estão incorretos!%n");
+            System.out.println("Deseja tentar digitar usuário e senha outra vez?");
+            System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+            System.out.print("Opção: ");
+            opcao = in.nextLine().trim().toLowerCase().charAt(0);
+          }
         }
 
-      } while (opcao == 's');
-    }
+    } while (opcao == 's') ;
   }
 
+}
+
+  //Método para invocar o menu principal, após o acesso inicial ao programa
   public static void inicializaMenuPrincipal() {
 
+    //Instancia a classe Scanner para receber dados do usuário
     try (Scanner in = new Scanner(System.in)) {
 
+      //Cria a variável necessária para manter o laço de repetição logo abaixo
       boolean escolhaValidaMenu;
 
+      //Inicia laço para informar opções possíveis no programa e direcionar o usuário
+      //para a função desejada
       do {
         escolhaValidaMenu = false;
         System.out.println("\n==================================================================");
@@ -276,7 +292,7 @@ public class Ferramentas {
         System.out.println("8 - Sair do programa");
         int opcao1 = in.nextInt();
 
-
+        //Usa condicional para direcionar o usuário para a função escolhida do programa
         switch (opcao1) {
           case 1 -> Beneficiario.cadastrarBeneficiario();
           case 2 -> Ferramentas.cadastrarCartoesBeneficio();
@@ -292,8 +308,10 @@ public class Ferramentas {
     }
   }
 
+  //Método para inicializar o programa na classe Main
   public static void inicializaPrograma() {
 
+    //Invoca o método para inicializar os estabelecimentos com dados pré-preenchidos
     Estabelecimento.inicializaEstabelecimentos();
 
     //Inicio do programa com retorno ao usuário
@@ -304,7 +322,7 @@ public class Ferramentas {
     System.out.println("Vamos lá!");
     System.out.println("");
 
-    //Chama método para cadastrar beneficiário
+    //Invoca o método para cadastrar o primeiro beneficiário
     Beneficiario.cadastrarBeneficiario();
 
     System.out.println("\n---------------------------------------------------------------");
@@ -312,12 +330,14 @@ public class Ferramentas {
     System.out.println("Agora precisamos cadastrar os 3 cartões desse beneficiário.");
     System.out.println("---------------------------------------------------------------\n");
 
+    //Invoca o método para realizar o cadastro de cartões do primeiro beneficiário
     Ferramentas.cadastrarCartoesBeneficio();
 
     System.out.println("\n---------------------------------------------------------------");
     System.out.println("Perfeito!");
     System.out.println("Carregando o módulo principal do gerenciador...");
     System.out.println("---------------------------------------------------------------\n");
+    Ferramentas.inicializaMenuPrincipal();
   }
 
 }

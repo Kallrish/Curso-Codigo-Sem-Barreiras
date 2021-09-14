@@ -1,7 +1,6 @@
 package projetoempresadecartaodebeneficios.Etapa02;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Estabelecimento {
@@ -17,7 +16,7 @@ public class Estabelecimento {
 
   //Método para cadastrar estabelecimentos
   public Estabelecimento(String identificadorEstabelecimento,String nomeEstabelecimento,
-                                       String tipoEstabelecimento, String localizacaoEstabelecimento) {
+                         String tipoEstabelecimento, String localizacaoEstabelecimento) {
 
     this.identificadorEstabelecimento = identificadorEstabelecimento;
     this.nomeEstabelecimento = nomeEstabelecimento;
@@ -42,6 +41,28 @@ public class Estabelecimento {
     //Restaurante
     listaEstabelecimentos.add(new Estabelecimento("RE01", "Restaurante La Marmita",
             "restaurante", "Lauro de Freitas/BA"));
+  }
+
+  public static String buscaEstabelecimento(String codigoEstabelecimento) {
+    for (int i = 0; i < listaEstabelecimentos.size(); i++) {
+      if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().contains(codigoEstabelecimento)) {
+        return listaEstabelecimentos.get(i).nomeEstabelecimento;
+      } else {
+        System.out.println("O código digitado está errado");
+      }
+    }
+    return "";
+  }
+
+  public static String buscaLocalizacaoEstabelecimento(String codigoEstabelecimento) {
+    for (int i = 0; i < listaEstabelecimentos.size(); i++) {
+      if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().contains(codigoEstabelecimento)) {
+        return listaEstabelecimentos.get(i).localizacaoEstabelecimento;
+      } else {
+        System.out.println("O código digitado está errado");
+      }
+    }
+    return "";
   }
 
   public String getIdentificadorEstabelecimento() {

@@ -6,9 +6,10 @@ import java.util.List;
 
 public class Transacao {
 
-  private Long identificadorDaTransacao;
-  private Integer identificadorUsuario;
-  private String identificadorDoCartao;
+  private Integer identificadorDaTransacao;
+  private String beneficiario;
+  //private Integer identificadorUsuario;
+  private Integer identificadorDoCartao;
   private LocalDateTime dataHoraTransacao;
   private String identicadorDoEstabelecimento;
   private String localizacaoDoEstabelecimento;
@@ -19,11 +20,11 @@ public class Transacao {
 
   }
 
-  public Transacao(Long identificadorDaTransacao, Integer identificadorUsuario, String identificadorDoCartao,
+  public Transacao(Integer identificadorDaTransacao, String beneficiario, Integer identificadorDoCartao,
                    LocalDateTime dataHoraTransacao, String identicadorDoEstabelecimento, String localizacaoDoEstabelecimento,
                    String tipoDoEstabelecimento, Double valorDaTransacao) {
     this.identificadorDaTransacao = identificadorDaTransacao;
-    this.identificadorUsuario = identificadorUsuario;
+    this.beneficiario = beneficiario;
     this.identificadorDoCartao = identificadorDoCartao;
     this.dataHoraTransacao = dataHoraTransacao;
     this.identicadorDoEstabelecimento = identicadorDoEstabelecimento;
@@ -32,23 +33,23 @@ public class Transacao {
     this.valorDaTransacao = valorDaTransacao;
   }
 
-//TODO implementar o método de cadastro (tipo o do beneficiario)
+  //TODO implementar o método de cadastro (tipo o do beneficiario)
 
   //TODO método para tirar o extrato (pessoa seleciona extrato do dia ou extrato da semana, ou extrato do mês)
 
-  public Long getIdentificadorDaTransacao() {
+  public Integer getIdentificadorDaTransacao() {
     return identificadorDaTransacao;
   }
 
-  public void setIdentificadorDaTransacao(Long identificadorDaTransacao) {
+  public void setIdentificadorDaTransacao(Integer identificadorDaTransacao) {
     this.identificadorDaTransacao = identificadorDaTransacao;
   }
 
-  public String getIdentificadorDoCartao() {
+  public Integer getIdentificadorDoCartao() {
     return identificadorDoCartao;
   }
 
-  public void setIdentificadorDoCartao(String identificadorDoCartao) {
+  public void setIdentificadorDoCartao(Integer identificadorDoCartao) {
     this.identificadorDoCartao = identificadorDoCartao;
   }
 
@@ -92,5 +93,3 @@ public class Transacao {
     this.valorDaTransacao = valorDaTransacao;
   }
 }
-
-

@@ -147,13 +147,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
 
             identificadorDoCartao = listaCartoesVC.get(i).identificadorCartao;
 
-            //Laço para percorrer a lista de beneficiários
-//          for (int j = 0; j < Beneficiario.listaBeneficiarios.size() - 1; i++) {
-
-//          Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-//          if (Beneficiario.listaBeneficiarios.get(j).getNomeBeneficiario().contains(nome)) {
-//          Beneficiario.listaBeneficiarios.get(i).setVaIdentificador(incrementoIdentificadorVA);
-
             System.out.println("\n==================================================================");
             System.out.println("Menu -> Cadastrar: Transação no Vale Combustível");
             System.out.println("==================================================================\n");
@@ -167,12 +160,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
 
               LocalDateTime dataHoraUltimaCompra = ValeAlimentacao.listaTransacoes.get(index).getDataHoraTransacao();
               LocalTime horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
-
-//              for (i = 0; i > listaCartoesVA.size(); i++) {
-//                if (listaCartoesVA.get(i).nomeBeneficiario.equals(nome)) {
-//                  identificadorDoCartao = listaCartoesVA.get(i).identificadorCartao;
-//                }
-//              }
 
               System.out.println("Digite o código do estabelecimento onde foi efetuada a compra: " +
                       "[PO01] - Posto Delta" +
@@ -225,23 +212,23 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
                 listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVC++, nome, identificadorDoCartao,
                         dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                         codigoEstabelecimento, valorDaTransacao));
+
+                this.saldoCartao -= valor;
+                //Regra específica 3 do VC: Desconta R$1 de taxa do saldo.
+                this.saldoCartao -= 1.00;
+
+                System.out.println("\n---------------------------------------------------------------");
+                System.out.println("Compra efetuada com sucesso!");
+                System.out.println("Você pagou uma taxa de R$1,00 pelo abastecimento.");
+                System.out.printf("Seu saldo atual: R$%.2f.", this.saldoCartao);
               }
-              this.saldoCartao -= valor;
-              //Regra específica 3 do VC: Desconta R$1 de taxa do saldo.
-              this.saldoCartao -= 1.00;
-
-              System.out.println("\n---------------------------------------------------------------");
-              System.out.println("Compra efetuada com sucesso!");
-              System.out.println("Você pagou uma taxa de R$1,00 pelo abastecimento.");
-              System.out.printf("Seu saldo atual: R$%.2f.", this.saldoCartao);
-
 
               System.out.println("-----------------------------------------------------------------");
               System.out.println("Deseja cadastrar outra transação?");
               System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
               System.out.print("Opção: ");
               opcao = in.nextLine().trim().toLowerCase().charAt(0);
-
+              if (opcao != 'n') { Ferramentas.inicializaMenuPrincipal();}
 
             } while (opcao != 'n');
 
@@ -252,30 +239,31 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
             System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
             System.out.print("Opção: ");
             opcao = in.nextLine().trim().toLowerCase().charAt(0);
+            if (opcao != 's') { Ferramentas.inicializaMenuPrincipal();}
           }
         }
       } while (opcao == 's');
     }
-
+  }
     @Override
-    public void mostrarSaldo (Double saldoAtual1){
+    public void mostrarSaldo(Double saldoAtual1) {
 
       System.out.printf("Vale Alimentação: R$%.2f.%n", saldoAtual1);
     }
 
-    public Double getSaldoVC () {
+    public Double getSaldoVC() {
       return saldoCartao;
     }
 
-    public LocalDate getDatadoCadastroVC () {
+    public LocalDate getDatadoCadastroVC() {
       return dataDoCadastro;
     }
 
-    public String getNomeBeneficiarioVC () {
+    public String getNomeBeneficiarioVC() {
       return nomeBeneficiario;
     }
 
-    public String getSenhaVC () {
+    public String getSenhaVC() {
       return senhaCartao;
     }
   }

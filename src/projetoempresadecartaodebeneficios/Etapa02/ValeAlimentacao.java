@@ -145,13 +145,6 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
             identificadorDoCartao = listaCartoesVA.get(i).identificadorCartao;
 
-            //Laço para percorrer a lista de beneficiários
-//          for (int j = 0; j < Beneficiario.listaBeneficiarios.size() - 1; i++) {
-
-//          Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-//          if (Beneficiario.listaBeneficiarios.get(j).getNomeBeneficiario().contains(nome)) {
-//          Beneficiario.listaBeneficiarios.get(i).setVaIdentificador(incrementoIdentificadorVA);
-
             System.out.println("\n==================================================================");
             System.out.println("Menu -> Cadastrar: Transação no Vale Alimentação");
             System.out.println("==================================================================\n");
@@ -167,13 +160,6 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
               LocalDateTime dataHoraPenultimaCompra = ValeAlimentacao.listaTransacoes.get(index - 1).getDataHoraTransacao();
               LocalTime horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
               LocalTime horaPenultimaCompra = dataHoraPenultimaCompra.toLocalTime();
-
-
-//              for (i = 0; i > listaCartoesVA.size(); i++) {
-//                if (listaCartoesVA.get(i).nomeBeneficiario.equals(nome)) {
-//                  identificadorDoCartao = listaCartoesVA.get(i).identificadorCartao;
-//                }
-//              }
 
               System.out.println("Digite o código do estabelecimento onde foi efetuada a compra: " +
                       "[PO01] - Posto Delta" +
@@ -236,7 +222,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
               System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
               System.out.print("Opção: ");
               opcao = in.nextLine().trim().toLowerCase().charAt(0);
-
+              if (opcao != 'n') { Ferramentas.inicializaMenuPrincipal();}
 
             } while (opcao != 'n');
 
@@ -247,6 +233,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
             System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
             System.out.print("Opção: ");
             opcao = in.nextLine().trim().toLowerCase().charAt(0);
+            if (opcao != 's') { Ferramentas.inicializaMenuPrincipal();}
           }
         }
       } while (opcao == 's');

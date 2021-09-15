@@ -93,6 +93,7 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
           }
         }
       } while (opcao == 's');
+      Ferramentas.inicializaMenuPrincipal();
     }
   }
 
@@ -218,9 +219,9 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
               System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
               System.out.print("Opção: ");
               opcao = in.nextLine().trim().toLowerCase().charAt(0);
-              if (opcao != 'n') { Ferramentas.inicializaMenuPrincipal();}
 
             } while (opcao != 'n');
+            Ferramentas.inicializaMenuPrincipal();
 
           } else {
             System.out.println("-----------------------------------------------------------------");
@@ -229,10 +230,11 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
             System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
             System.out.print("Opção: ");
             opcao = in.nextLine().trim().toLowerCase().charAt(0);
-            if (opcao != 's') { Ferramentas.inicializaMenuPrincipal();}
+
           }
         }
       } while (opcao == 's');
+      Ferramentas.inicializaMenuPrincipal();
     }
   }
 

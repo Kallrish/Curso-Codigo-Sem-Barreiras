@@ -90,9 +90,9 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
             System.out.print("Opção: ");
             opcao = in.nextLine().trim().toLowerCase().charAt(0);
           }
-
         }
       } while (opcao == 's');
+      Ferramentas.inicializaMenuPrincipal();
     }
   }
 
@@ -230,9 +230,9 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
               System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
               System.out.print("Opção: ");
               opcao = in.nextLine().trim().toLowerCase().charAt(0);
-              if (opcao != 'n') { Ferramentas.inicializaMenuPrincipal();}
 
             } while (opcao != 'n');
+            Ferramentas.inicializaMenuPrincipal();
 
           } else {
             System.out.println("\n-----------------------------------------------------------------\n");
@@ -241,10 +241,11 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
             System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
             System.out.print("Opção: ");
             opcao = in.nextLine().trim().toLowerCase().charAt(0);
-            if (opcao != 's') { Ferramentas.inicializaMenuPrincipal();}
+
           }
         }
       } while (opcao == 's');
+      Ferramentas.inicializaMenuPrincipal();
     }
   }
     @Override

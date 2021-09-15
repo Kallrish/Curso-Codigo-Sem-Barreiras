@@ -114,170 +114,357 @@ public class Ferramentas {
 
   //Método para gerenciar o submenu 2: cadastro de cartões
   public static void cadastrarCartoesBeneficio() {
+
     System.out.println("\n==================================================================");
-    System.out.println("Menu -> Cadastrar: Novo cartão de benefício");
+    System.out.println("Menu -> Cadastrar: Novos cartões de benefício");
     System.out.println("==================================================================\n");
-
-
-  }
-
-  //Método para gerenciar o submenu 3: adicionar saldo em benefício
-  public static void adicionarSaldoBeneficio() {
-    System.out.println("\n==================================================================");
-    System.out.println("Menu -> Adicionar: Saldo em um cartão de benefício");
-    System.out.println("==================================================================\n");
-
-
-  }
-
-  //Método para gerenciar o submenu 4: cadastrar transacoes em um cartão
-  public static void cadastrarTransacoesCartao() {
-    System.out.println("\n==================================================================");
-    System.out.println("Menu -> Cadastrar: Transações de um Cartão");
-    System.out.println("==================================================================\n");
-
-
-  }
-
-  //Método para gerenciar o submenu 5: alterar validade de um cartão
-  public static void alterarValidadeCartao() {
-    System.out.println("\n==================================================================");
-    System.out.println("Menu -> Alterar: Validade de Cartão");
-    System.out.println("==================================================================\n");
-
-
-  }
-
-  //Método para gerenciar o submenu 6: alterar validade de um cartão
-  public static void mostrarSaldos() {
-
-    String nome;
-    ValeAlimentacao va = new ValeAlimentacao();
-    ValeRefeicao vr = new ValeRefeicao();
-    ValeCombustivel vc = new ValeCombustivel();
-
     try (Scanner in = new Scanner(System.in)) {
 
+      //Instancia classes para efetuar o cadastro dos cartões
+      ValeAlimentacao va = new ValeAlimentacao();
+      ValeRefeicao vr = new ValeRefeicao();
+      ValeCombustivel vc = new ValeCombustivel();
+
+      //Declara variáveis necessárias
+      String nome, senha;
+      LocalDate data1, data2;
       char opcao = 's';
 
       do {
         System.out.println("\n==================================================================");
-        System.out.println("Menu -> Visualizar: Saldo dos cartões de benefício");
+        System.out.println("Menu -> Cadastrar: Vale Alimentação");
         System.out.println("==================================================================\n");
         System.out.println("Insira o nome do(a) beneficiário(a):");
         System.out.print("Nome: ");
         nome = in.nextLine().trim();
+        System.out.println("-----------------------------------------------------------------\n");
+        System.out.println("Digite uma senha para usar o cartão:");
+        System.out.print("Senha: ");
+        senha = in.nextLine().trim();
 
         //Laço para percorrer a lista de beneficiários
         for (int i = 0; i < Beneficiario.listaBeneficiarios.size() - 1; i++) {
 
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().contains(nome)) {
+          if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().equals(nome) &&
+                  !ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome)) {
 
-            Double saldoAtualVA = ValeAlimentacao.listaCartoesVA.get(i).getSaldoVA();
-            Double saldoAtualVR = ValeRefeicao.listaCartoesVR.get(i).getSaldoVR();
-            Double saldoAtualVC = ValeCombustivel.listaCartoesVC.get(i).getSaldoVC();
+            //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
+            va.identificadorCartao = ValeAlimentacao.incrementoIdentificadorVA;
+
+            //this.senhaCartao = senhaCartao;
+            va.senhaCartao = senha;
+
+            Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e100();
+            va.saldoCartao = valorAleatorioSaldo;
+            va.criaDataDeCadastro();
+            data1 = va.dataDoCadastro;
+            data2 = va.validadeCartao;
+            va.criaDataDeValidade();
+            ValeAlimentacao.listaCartoesVA.add(new ValeAlimentacao(ValeAlimentacao.incrementoIdentificadorVA++, nome, senha,
+                    valorAleatorioSaldo, data1, data2));
+
+            System.out.println("\n---------------------------------------------------------------");
+            System.out.println("Cadastro realizado com sucesso!");
             System.out.println("-----------------------------------------------------------------\n");
-            System.out.printf("%s,%n", nome);
-            System.out.println("Aqui estão os saldos atuais dos seus benefícios:");
-            va.mostrarSaldo(saldoAtualVA);
-            vr.mostrarSaldo(saldoAtualVR);
-            vc.mostrarSaldo(saldoAtualVC);
-            System.out.println("\n-----------------------------------------------------------------\n");
-            System.out.println("Deseja cadastrar outro beneficiário?");
-            System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
-            System.out.print("Opção: ");
-            opcao = in.nextLine().trim().toLowerCase().charAt(0);
-
-            //Retorna mensagem de erro caso não encontra o beneficiário
-          } else {
-            System.out.println("-----------------------------------------------------------------");
-            System.out.printf("Não foi possível realizar o cadastro.%nBeneficiário %s não encontrado!%n", nome);
-            System.out.println("Deseja digitar o nome de outro beneficiário?");
-            System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
-            System.out.print("Opção: ");
-            opcao = in.nextLine().trim().toLowerCase().charAt(0);
           }
         }
-      } while (opcao == 's');
-    }
-  }
-
-  //Método para gerenciar o submenu 7: Visualizar extrato de um cartão
-  public static void visualizarExtratoCartao() {
-    System.out.println("\n==================================================================");
-    System.out.println("Menu -> Visualizar: Extrato de um cartão de benefício");
-    System.out.println("==================================================================\n");
-
-
-  }
-
-  //Método para gerenciar o submenu 8: Sair do programa
-  public static void sairPrograma() {
-    System.out.println("\n==================================================================");
-    System.out.println("\nObrigado por usar nossos serviços.\n");
-    System.out.println("==================================================================\n");
-    System.out.println("A \"JavAlelo\" agradece a sua preferência!");
-    System.out.println("Tenha um ótimo dia!\n");
-    System.out.println("-----------------------------------------------------------------");
-    System.exit(0);
-  }
-
-  public static Boolean validaUsuarioSenha() {
-
-    try (Scanner in = new Scanner(System.in)) {
-
-      //Cria variáveis necessárias para receber as entradas do usuário
-      String nome, senha, cartao;
-      char opcao = 's';
-
-      //Inicia laço para verificar se o nome e senha do usuário estão corretos
-      //e permite acesso a itens do submenu na tela principal
-      do {
-
-        System.out.println("Insira o nome do(a) beneficiário(a):");
-        System.out.print("Nome: ");
-        nome = in.nextLine().trim();
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Cadastrar: Vale Refeição");
+        System.out.println("==================================================================\n");
         System.out.println("-----------------------------------------------------------------");
         System.out.println("Digite uma senha para usar o cartão:");
         System.out.print("Senha: ");
         senha = in.nextLine().trim();
 
-        for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size() - 1; i++) {
+        //Laço para percorrer a lista de beneficiários
+        for (int j = 0; j < Beneficiario.listaBeneficiarios.size() - 1; j++) {
 
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().contains(nome) &&
-                  ValeAlimentacao.listaCartoesVA.get(i).getSenhaVA().contains(senha)) {
+          if (Beneficiario.listaBeneficiarios.get(j).getNomeBeneficiario().equals(nome) &&
+                  !ValeRefeicao.listaCartoesVR.get(j).getNomeBeneficiarioVR().equals(nome)) {
 
+            //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
+            vr.identificadorCartao = ValeRefeicao.incrementoIdentificadorVR;
 
-          } else {
+            //this.senhaCartao = senhaCartao;
+            vr.senhaCartao = senha;
+
+            Double valorAleatorioSaldo2 = Ferramentas.valorAleatorioEntre200e100();
+            vr.saldoCartao = valorAleatorioSaldo2;
+            vr.criaDataDeCadastro();
+            data1 = vr.dataDoCadastro;
+            data2 = vr.validadeCartao;
+            vr.criaDataDeValidade();
+            ValeRefeicao.listaCartoesVR.add(new ValeRefeicao(ValeRefeicao.incrementoIdentificadorVR++, nome, senha,
+                    valorAleatorioSaldo2, data1, data2));
+
+            System.out.println("\n---------------------------------------------------------------");
+            System.out.println("Cadastro realizado com sucesso!");
             System.out.println("-----------------------------------------------------------------");
-            System.out.println("Nome e/ou senha estão incorretos!%n");
-            System.out.println("Deseja tentar digitar usuário e senha outra vez?");
-            System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
-            System.out.print("Opção: ");
-            opcao = in.nextLine().trim().toLowerCase().charAt(0);
+
+            System.out.println("\n==================================================================");
+            System.out.println("Menu -> Cadastrar: Vale Combustível");
+            System.out.println("==================================================================\n");
           }
         }
+        System.out.println("-----------------------------------------------------------------\n");
+        System.out.println("Digite uma senha para usar o cartão:");
+        System.out.print("Senha: ");
+        senha = in.nextLine().trim();
 
-    } while (opcao == 's') ;
+        //Laço para percorrer a lista de beneficiários
+        for (int k = 0; k < Beneficiario.listaBeneficiarios.size() - 1; k++) {
+
+          //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+          if (Beneficiario.listaBeneficiarios.get(k).getNomeBeneficiario().equals(nome) &&
+                  !ValeCombustivel.listaCartoesVC.get(k).getNomeBeneficiarioVC().equals(nome)) {
+
+            //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
+            vc.identificadorCartao = ValeCombustivel.incrementoIdentificadorVC;
+
+            //this.senhaCartao = senhaCartao;
+            vc.senhaCartao = senha;
+
+            Double valorAleatorioSaldo3 = Ferramentas.valorAleatorioEntre200e100();
+            vc.saldoCartao = valorAleatorioSaldo3;
+            vc.criaDataDeCadastro();
+            data1 = vc.dataDoCadastro;
+            data2 = vc.validadeCartao;
+            vc.criaDataDeValidade();
+            ValeCombustivel.listaCartoesVC.add(new ValeCombustivel(ValeCombustivel.incrementoIdentificadorVC++, nome, senha,
+                    valorAleatorioSaldo3, data1, data2));
+
+            System.out.println("\n---------------------------------------------------------------");
+            System.out.println("Cadastro realizado com sucesso!");
+            System.out.println("-----------------------------------------------------------------\n");
+          }
+        }
+        //Retorna mensagem de erro caso não encontra o beneficiário
+      } else{
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println("Não foi possível realizar o cadastro.%nBeneficiário não existe ou cartão já existe!%n");
+        System.out.println("Deseja tentar digitar outro nome?");
+        System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+        System.out.print("Opção: ");
+        opcao = in.nextLine().trim().toLowerCase().charAt(0);
+
+      }
+    }
+  } while(opcao =='s');
+}
   }
 
-}
+//Método que cadastra os cartões na primeira vez que o programa é executado
+public static void cadastrarCartoesBeneficioPrimeiravez(){
 
-  //Método para invocar o menu principal, após o acesso inicial ao programa
-  public static void inicializaMenuPrincipal() {
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Cadastrar: Novos cartões de benefício");
+        System.out.println("==================================================================\n");
+        try(Scanner in1=new Scanner(System.in)){
 
-    //Instancia a classe Scanner para receber dados do usuário
-    try (Scanner in = new Scanner(System.in)) {
+        //Instancia classes para efetuar o cadastro dos cartões
+        ValeAlimentacao va1=new ValeAlimentacao();
+        ValeRefeicao vr1=new ValeRefeicao();
+        ValeCombustivel vc1=new ValeCombustivel();
 
-      //Cria a variável necessária para manter o laço de repetição logo abaixo
-      boolean escolhaValidaMenu;
+        //Declara variáveis necessárias
+        String nome1,senha1;
+        LocalDate data10,data20;
+        char opcao1='s';
 
-      //Inicia laço para informar opções possíveis no programa e direcionar o usuário
-      //para a função desejada
-      do {
-        escolhaValidaMenu = false;
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Cadastrar: Vale Alimentação");
+        System.out.println("==================================================================\n");
+        nome1=Beneficiario.listaBeneficiarios.get(0).getNomeBeneficiario();
+        System.out.println("Digite uma senha para usar o cartão:");
+        System.out.print("Senha: ");
+        senha1=in.nextLine().trim();
+
+        //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
+        va1.identificadorCartao=ValeAlimentacao.incrementoIdentificadorVA;
+        va1.senhaCartao=senha1;
+
+        Double valorAleatorioSaldoA=Ferramentas.valorAleatorioEntre200e100();
+        va1.saldoCartao=valorAleatorioSaldoA;
+        va1.criaDataDeCadastro();
+        data10=va1.dataDoCadastro;
+        data20=va1.validadeCartao;
+        va1.criaDataDeValidade();
+        ValeAlimentacao.listaCartoesVA.add(new ValeAlimentacao(ValeAlimentacao.incrementoIdentificadorVA++,nome1,senha1,
+        valorAleatorioSaldoA,data10,data20));
+
+        System.out.println("\n---------------------------------------------------------------");
+        System.out.println("Cadastro realizado com sucesso!");
+        System.out.println("-----------------------------------------------------------------\n");
+
+
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Cadastrar: Vale Refeição");
+        System.out.println("==================================================================\n");
+        System.out.println("Digite uma senha para usar o cartão:");
+        System.out.print("Senha: ");
+        senha1=in.nextLine().trim();
+
+        //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
+        vr1.identificadorCartao=ValeRefeicao.incrementoIdentificadorVR;
+        vr1.senhaCartao=senha1;
+
+        Double valorAleatorioSaldoB=Ferramentas.valorAleatorioEntre200e100();
+        vr1.saldoCartao=valorAleatorioSaldoB;
+        vr1.criaDataDeCadastro();
+        data10=vr1.dataDoCadastro;
+        data20=vr1.validadeCartao;
+        vr1.criaDataDeValidade();
+        ValeRefeicao.listaCartoesVR.add(new ValeRefeicao(ValeRefeicao.incrementoIdentificadorVR++,nome1,senha1,
+        valorAleatorioSaldoB,data10,data20));
+
+        System.out.println("\n---------------------------------------------------------------");
+        System.out.println("Cadastro realizado com sucesso!");
+        System.out.println("-----------------------------------------------------------------\n");
+
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Cadastrar: Vale Combustível");
+        System.out.println("==================================================================\n");
+        System.out.println("Digite uma senha para usar o cartão:");
+        System.out.print("Senha: ");
+        senha=in.nextLine().trim();
+
+        //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
+        vc1.identificadorCartao=ValeCombustivel.incrementoIdentificadorVC;
+        vc1.senhaCartao=senha1;
+
+        Double valorAleatorioSaldoC=Ferramentas.valorAleatorioEntre200e100();
+        vc1.saldoCartao=valorAleatorioSaldoC;
+        vc1.criaDataDeCadastro();
+        data1=vc1.dataDoCadastro;
+        data2=vc1.validadeCartao;
+        vc1.criaDataDeValidade();
+        ValeCombustivel.listaCartoesVC.add(new ValeCombustivel(ValeCombustivel.incrementoIdentificadorVC++,nome1,senha1,
+        valorAleatorioSaldoC,data10,data20));
+
+        System.out.println("\n---------------------------------------------------------------");
+        System.out.println("Cadastro realizado com sucesso!");
+        System.out.println("-----------------------------------------------------------------\n");
+        }
+        }
+
+//Método para gerenciar o submenu 3: adicionar saldo em benefício
+public static void adicionarSaldoBeneficio(){
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Adicionar: Saldo em um cartão de benefício");
+        System.out.println("==================================================================\n");
+
+
+        }
+
+//Método para gerenciar o submenu 4: cadastrar transacoes em um cartão
+public static void cadastrarTransacoesCartao(){
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Cadastrar: Transações de um Cartão");
+        System.out.println("==================================================================\n");
+
+
+        }
+
+//Método para gerenciar o submenu 5: alterar validade de um cartão
+public static void alterarValidadeCartao(){
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Alterar: Validade de Cartão");
+        System.out.println("==================================================================\n");
+
+
+        }
+
+//Método para gerenciar o submenu 6: alterar validade de um cartão
+public static void mostrarSaldos(){
+
+        String nome;
+        ValeAlimentacao va=new ValeAlimentacao();
+        ValeRefeicao vr=new ValeRefeicao();
+        ValeCombustivel vc=new ValeCombustivel();
+
+        try(Scanner in=new Scanner(System.in)){
+
+        char opcao='s';
+
+        do{
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Visualizar: Saldo dos cartões de benefício");
+        System.out.println("==================================================================\n");
+        System.out.println("Insira o nome do(a) beneficiário(a):");
+        System.out.print("Nome: ");
+        nome=in.nextLine().trim();
+
+        //Laço para percorrer a lista de beneficiários
+        for(int i=0;i<Beneficiario.listaBeneficiarios.size()-1;i++){
+
+        //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+        if(Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().contains(nome)){
+
+        Double saldoAtualVA=ValeAlimentacao.listaCartoesVA.get(i).getSaldoVA();
+        Double saldoAtualVR=ValeRefeicao.listaCartoesVR.get(i).getSaldoVR();
+        Double saldoAtualVC=ValeCombustivel.listaCartoesVC.get(i).getSaldoVC();
+        System.out.println("-----------------------------------------------------------------\n");
+        System.out.printf("%s,%n",nome);
+        System.out.println("Aqui estão os saldos atuais dos seus benefícios:");
+        va.mostrarSaldo(saldoAtualVA);
+        vr.mostrarSaldo(saldoAtualVR);
+        vc.mostrarSaldo(saldoAtualVC);
+        System.out.println("\n-----------------------------------------------------------------\n");
+        System.out.println("Deseja cadastrar outro beneficiário?");
+        System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+        System.out.print("Opção: ");
+        opcao=in.nextLine().trim().toLowerCase().charAt(0);
+
+        //Retorna mensagem de erro caso não encontra o beneficiário
+        }else{
+        System.out.println("-----------------------------------------------------------------");
+        System.out.printf("Não foi possível realizar o cadastro.%nBeneficiário %s não encontrado!%n",nome);
+        System.out.println("Deseja digitar o nome de outro beneficiário?");
+        System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+        System.out.print("Opção: ");
+        opcao=in.nextLine().trim().toLowerCase().charAt(0);
+
+        }
+        }
+        }while(opcao=='s');
+        }
+        }
+
+//Método para gerenciar o submenu 7: Visualizar extrato de um cartão
+public static void visualizarExtratoCartao(){
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Visualizar: Extrato de um cartão de benefício");
+        System.out.println("==================================================================\n");
+
+
+        }
+
+//Método para gerenciar o submenu 8: Sair do programa
+public static void sairPrograma(){
+        System.out.println("\n==================================================================");
+        System.out.println("\nObrigado por usar nossos serviços.\n");
+        System.out.println("==================================================================\n");
+        System.out.println("A \"JavAlelo\" agradece a sua preferência!");
+        System.out.println("Tenha um ótimo dia!\n");
+        System.out.println("-----------------------------------------------------------------");
+        System.exit(0);
+        }
+
+//Método para invocar o menu principal, após o acesso inicial ao programa
+public static void inicializaMenuPrincipal(){
+
+        //Instancia a classe Scanner para receber dados do usuário
+        try(Scanner in=new Scanner(System.in)){
+
+        //Cria a variável necessária para manter o laço de repetição logo abaixo
+        boolean escolhaValidaMenu;
+
+        //Inicia laço para informar opções possíveis no programa e direcionar o usuário
+        //para a função desejada
+        do{
+        escolhaValidaMenu=false;
         System.out.println("\n==================================================================");
         System.out.println("Menu -> Tela Principal");
         System.out.println("==================================================================\n");
@@ -290,54 +477,54 @@ public class Ferramentas {
         System.out.println("6 - Visualizar saldo dos cartões de benefício");
         System.out.println("7 - Visualizar extrato de um cartão");
         System.out.println("8 - Sair do programa");
-        int opcao1 = in.nextInt();
+        int opcao1=in.nextInt();
 
         //Usa condicional para direcionar o usuário para a função escolhida do programa
-        switch (opcao1) {
-          case 1 -> Beneficiario.cadastrarBeneficiario();
-          case 2 -> Ferramentas.cadastrarCartoesBeneficio();
-          case 3 -> Ferramentas.adicionarSaldoBeneficio();
-          case 4 -> Ferramentas.cadastrarTransacoesCartao();
-          case 5 -> Ferramentas.alterarValidadeCartao();
-          case 6 -> Ferramentas.mostrarSaldos();
-          case 7 -> Ferramentas.visualizarExtratoCartao();
-          case 8 -> Ferramentas.sairPrograma();
-          default -> System.out.println("Escolha um número entre 1 a 8!");
+        switch(opcao1){
+        case 1->Beneficiario.cadastrarBeneficiario();
+        case 2->Ferramentas.cadastrarCartoesBeneficio();
+        case 3->Ferramentas.adicionarSaldoBeneficio();
+        case 4->Ferramentas.cadastrarTransacoesCartao();
+        case 5->Ferramentas.alterarValidadeCartao();
+        case 6->Ferramentas.mostrarSaldos();
+        case 7->Ferramentas.visualizarExtratoCartao();
+        case 8->Ferramentas.sairPrograma();
+default ->System.out.println("Escolha um número entre 1 a 8!");
         }
-      } while (!escolhaValidaMenu);
-    }
-  }
+        }while(!escolhaValidaMenu);
+        }
+        }
 
-  //Método para inicializar o programa na classe Main
-  public static void inicializaPrograma() {
+//Método para inicializar o programa na classe Main
+public static void inicializaPrograma(){
 
-    //Invoca o método para inicializar os estabelecimentos com dados pré-preenchidos
-    Estabelecimento.inicializaEstabelecimentos();
+        //Invoca o método para inicializar os estabelecimentos com dados pré-preenchidos
+        Estabelecimento.inicializaEstabelecimentos();
 
-    //Inicio do programa com retorno ao usuário
-    System.out.println("\n==================================================================");
-    System.out.println("Olá! Bem-vindo(a) ao gerenciador de benefícios da \"JavAlelo\"!");
-    System.out.println("==================================================================\n");
-    System.out.println("Para começar, você precisa cadastrar um beneficiário.");
-    System.out.println("Vamos lá!");
-    System.out.println("");
+        //Inicio do programa com retorno ao usuário
+        System.out.println("\n==================================================================");
+        System.out.println("Olá! Bem-vindo(a) ao gerenciador de benefícios da \"JavAlelo\"!");
+        System.out.println("==================================================================\n");
+        System.out.println("Para começar, você precisa cadastrar um beneficiário.");
+        System.out.println("Vamos lá!");
+        System.out.println("");
 
-    //Invoca o método para cadastrar o primeiro beneficiário
-    Beneficiario.cadastrarBeneficiario();
+        //Invoca o método para cadastrar o primeiro beneficiário
+        Beneficiario.cadastrarBeneficiario();
 
-    System.out.println("\n---------------------------------------------------------------");
-    System.out.println("Perfeito!");
-    System.out.println("Agora precisamos cadastrar os 3 cartões desse beneficiário.");
-    System.out.println("---------------------------------------------------------------\n");
+        System.out.println("\n---------------------------------------------------------------");
+        System.out.println("Perfeito!");
+        System.out.println("Agora precisamos cadastrar os 3 cartões desse beneficiário.");
+        System.out.println("---------------------------------------------------------------\n");
 
-    //Invoca o método para realizar o cadastro de cartões do primeiro beneficiário
-    Ferramentas.cadastrarCartoesBeneficio();
+        //Invoca o método para realizar o cadastro de cartões do primeiro beneficiário
+        Ferramentas.cadastrarCartoesBeneficio();
 
-    System.out.println("\n---------------------------------------------------------------");
-    System.out.println("Perfeito!");
-    System.out.println("Carregando o módulo principal do gerenciador...");
-    System.out.println("---------------------------------------------------------------\n");
-    Ferramentas.inicializaMenuPrincipal();
-  }
+        System.out.println("\n---------------------------------------------------------------");
+        System.out.println("Perfeito!");
+        System.out.println("Carregando o módulo principal do gerenciador...");
+        System.out.println("---------------------------------------------------------------\n");
+        Ferramentas.inicializaMenuPrincipal();
+        }
 
-}
+        }

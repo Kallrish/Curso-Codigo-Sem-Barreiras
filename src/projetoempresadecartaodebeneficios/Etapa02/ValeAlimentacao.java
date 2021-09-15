@@ -41,13 +41,13 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
       LocalDate data1, data2;
 
       do {
-        System.out.println("==================================================================");
+        System.out.println("\n==================================================================");
         System.out.println("Menu -> Cadastrar: Vale Alimentação");
-        System.out.println("==================================================================");
+        System.out.println("==================================================================\n");
         System.out.println("Insira o nome do(a) beneficiário(a):");
         System.out.print("Nome: ");
         nome = in.nextLine().trim();
-        System.out.println("-----------------------------------------------------------------");
+        System.out.println("\n-----------------------------------------------------------------\n");
         System.out.println("Digite uma senha para usar o cartão:");
         System.out.print("Senha: ");
         senha = in.nextLine().trim();
@@ -75,7 +75,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
             System.out.println("\n---------------------------------------------------------------");
             System.out.println("Cadastro realizado com sucesso!");
-            System.out.println("-----------------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------\n");
             System.out.println("Deseja cadastrar outro beneficiário?");
             System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
             System.out.print("Opção: ");
@@ -83,7 +83,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
             //Retorna mensagem de erro caso não encontra o benefiário
           } else {
-            System.out.println("-----------------------------------------------------------------");
+            System.out.println("\n-----------------------------------------------------------------\n");
             System.out.printf("Não foi possível realizar o cadastro.%nBeneficiário %s não encontrado!%n", nome);
             System.out.println("Deseja cadastrar outro beneficiário?");
             System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
@@ -161,12 +161,14 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
               LocalTime horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
               LocalTime horaPenultimaCompra = dataHoraPenultimaCompra.toLocalTime();
 
+              //TODO verificar a entrada abaixo - switch-case
               System.out.println("Digite o código do estabelecimento onde foi efetuada a compra: " +
                       "[PO01] - Posto Delta" +
                       "[ME01] - Mercearia São José" +
                       "[SU01] - Supermercado ABC" +
                       "[PA01] - Padaria Sonhos" +
-                      "[RE01] - Restaurante La Marmita");
+                      "[RE01] - Restaurante La Marmita\n");
+              System.out.print("Código: ");
               String codigoEstabelecimento = in.nextLine().trim();
 
               String identicadorDoEstabelecimento = Estabelecimento.buscaEstabelecimento(codigoEstabelecimento);
@@ -177,29 +179,29 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
               //Regra específica 1 do VA: Verifica se é posto de combustível
               if (identicadorDoEstabelecimento.contains("Posto Delta")) {
-                System.out.println("Não é possível usar este benefício neste estabelecimento!");
+                System.out.println("Não é possível usar este benefício neste estabelecimento!\n");
 
                 //Verifica se é valor negativo
               } else if (valorDaTransacao < 0) {
-                System.out.println("Digite um valor maior que zero!");
+                System.out.println("Digite um valor maior que zero!\n");
 
                 //Verifica a validade do cartão
               } else if (!Ferramentas.verificaValidade(dataCadastroCartao)) {
-                System.out.println("Cartão vencido! Não é possível realizar essa transação!");
+                System.out.println("Cartão vencido! Não é possível realizar essa transação!\n");
 
                 //Verifica se saldo é suficiente para transação
               } else if (valorDaTransacao > this.saldoCartao) {
-                System.out.println("Você não tem saldo suficiente para realizar esta operação!");
+                System.out.println("Você não tem saldo suficiente para realizar esta operação!\n");
 
                 //Verifica se houve duas compras do mesmo valor em menos de 30 segundos
               } else if (Ferramentas.verificaTempoSegundos(horaUltimaCompra) &&
                       Ferramentas.verificaIdentificadorEstabelecimento(i, identificadorUltimoEstabelecimento) &&
                       Ferramentas.verificaValorVA(i, valorUltimaCompra)) {
-                System.out.println("Você só pode realizar uma transação de mesmo valor a cada 30 segundos!");
+                System.out.println("Você só pode realizar uma transação de mesmo valor a cada 30 segundos!\n");
 
                 //Verifica se houve três compras do mesmo valor em menos de 1 minuto
               } else if (Ferramentas.verificaTempoUmMinuto(horaPenultimaCompra)) {
-                System.out.println("Você não pode realizar mais que duas compras em 1 minuto!");
+                System.out.println("Você não pode realizar mais que duas compras em 1 minuto!\n");
 
               } else {
                 // Armazena os dados da transação no lista de transações
@@ -211,13 +213,13 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
                 this.saldoCartao -= valorDaTransacao;
                 this.saldoCartao += valorDaTransacao * 0.015;
 
-                System.out.println("\n---------------------------------------------------------------");
+                System.out.println("\n---------------------------------------------------------------\n");
                 System.out.printf("Compra efetuada com sucesso!%n");
                 System.out.printf("Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.015);
                 System.out.printf("Seu saldo atual: R$%.2f.", this.saldoCartao);
               }
 
-              System.out.println("-----------------------------------------------------------------");
+              System.out.println("\n-----------------------------------------------------------------\n");
               System.out.println("Deseja cadastrar outra transação?");
               System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
               System.out.print("Opção: ");
@@ -227,7 +229,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
             } while (opcao != 'n');
 
           } else {
-            System.out.println("-----------------------------------------------------------------");
+            System.out.println("\n-----------------------------------------------------------------\n");
             System.out.println("Nome e/ou senha estão incorretos!%n");
             System.out.println("Deseja tentar digitar usuário e senha outra vez?");
             System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");

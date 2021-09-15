@@ -261,9 +261,16 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
     this.validadeCartao = validadeCartao;
   }
 
-  public void adicionaSaldoVR(Integer valor) {
-    Double novoValor = Double.valueOf(valor);
-    this.saldoCartao += novoValor;
+  public static void adicionaSaldoVR(Integer index, Double valor) {
+
+    Double pegaValorAtual = ValeRefeicao.listaCartoesVR.get(index).getSaldoVR();
+    Double pegaValorFinal = pegaValorAtual + valor;
+    ValeRefeicao.listaCartoesVR.get(index).setSaldoCartaoVR(pegaValorFinal);
+
+  }
+
+  public void setSaldoCartaoVR(Double saldoCartao) {
+    this.saldoCartao = saldoCartao;
   }
 
   @Override

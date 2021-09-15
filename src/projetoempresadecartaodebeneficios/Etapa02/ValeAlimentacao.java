@@ -266,9 +266,16 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
     return senhaCartao;
   }
 
-  public void adicionaSaldoVA(Integer valor) {
-    Double novoValor = Double.valueOf(valor);
-    this.saldoCartao += novoValor;
+  public static void adicionaSaldoVA(Integer index, Double valor) {
+
+    Double pegaValorAtual = ValeAlimentacao.listaCartoesVA.get(index).getSaldoVA();
+    Double pegaValorFinal = pegaValorAtual + valor;
+    ValeAlimentacao.listaCartoesVA.get(index).setSaldoCartaoVA(pegaValorFinal);
+
+  }
+
+  public void setSaldoCartaoVA(Double saldoCartao) {
+    this.saldoCartao = saldoCartao;
   }
 
   @Override

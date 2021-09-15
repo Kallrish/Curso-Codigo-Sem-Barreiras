@@ -271,9 +271,16 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
     this.validadeCartao = validadeCartao;
   }
 
-  public void adicionaSaldoVC(Integer valor) {
-    Double novoValor = Double.valueOf(valor);
-    this.saldoCartao += novoValor;
+  public static void adicionaSaldoVC(Integer index, Double valor) {
+
+    Double pegaValorAtual = ValeCombustivel.listaCartoesVC.get(index).getSaldoVC();
+    Double pegaValorFinal = pegaValorAtual + valor;
+    ValeCombustivel.listaCartoesVC.get(index).setSaldoCartaoVC(pegaValorFinal);
+
+  }
+
+  public void setSaldoCartaoVC(Double saldoCartao) {
+    this.saldoCartao = saldoCartao;
   }
 
   @Override

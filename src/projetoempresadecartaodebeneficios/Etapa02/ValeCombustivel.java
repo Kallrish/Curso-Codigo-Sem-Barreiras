@@ -269,7 +269,14 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
     return senhaCartao;
   }
 
-  public Double adicionaSaldoVC(Double valor) {
-    return this.saldoCartao += valor;
+  public LocalDate getValidadeCartaoVC() {
+    return validadeCartao;
   }
+
+  public void setValidadeCartaoVC(LocalDate validadeCartao) {
+    this.validadeCartao = validadeCartao;
+  }
+
+  public void adicionaSaldoVC(Double valor) {this.saldoCartao += valor;}
+
 }

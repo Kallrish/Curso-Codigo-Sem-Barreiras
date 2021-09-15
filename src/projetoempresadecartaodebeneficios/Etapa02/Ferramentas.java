@@ -360,7 +360,7 @@ public class Ferramentas {
         vale = in.nextLine().trim();
         System.out.println("\nDigite o nome do beneficiário:");
         nome = in.nextLine().trim();
-        System.out.println("\nDigite o valora ser adicionado: ");
+        System.out.println("\nDigite o valor a ser adicionado: ");
         valorParaAdicionar = in.nextDouble();
 
         if (vale.contains("VA")) {
@@ -444,13 +444,106 @@ public class Ferramentas {
 
   }
 
-  //Método para gerenciar o submenu 5: alterar validade de um cartão
+  //Método para gerenciar o submenu 5: expirar validade de um cartão
   public static void alterarValidadeCartao() {
-    System.out.println("\n==================================================================");
-    System.out.println("Menu -> Alterar: Validade de Cartão");
-    System.out.println("==================================================================\n");
+    //Instancia classes para efetuar o cadastro dos cartões
+    ValeAlimentacao va = new ValeAlimentacao();
+    ValeRefeicao vr = new ValeRefeicao();
+    ValeCombustivel vc = new ValeCombustivel();
 
+    //Cria as variáveis necessárias
+    String vale, nome;
+    Double valorParaAdicionar;
+    char option = 's';
 
+    try (Scanner in = new Scanner(System.in)) {
+
+      do {
+        System.out.println("\n==================================================================");
+        System.out.println("Menu -> Expirar: Validade de um cartão");
+        System.out.println("==================================================================\n");
+        System.out.println("Digite o código do benefício:");
+        System.out.println("\"VA\" - Vale Alimentação");
+        System.out.println("\"VR\" - Vale Refeição");
+        System.out.println("\"VC\" - Vale Combustível");
+        System.out.print("Opção: ");
+        vale = in.nextLine().trim();
+        System.out.println("\nDigite o nome do beneficiário:");
+        nome = in.nextLine().trim();
+
+        if (vale.contains("VA")) {
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size() - 1; i++) {
+
+            //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+            if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().contains(nome)) {
+              va.validadeCartao = va.dataDoCadastro.minusDays(1);
+              ValeAlimentacao.listaCartoesVA.get(i).setValidadeCartaoVA(va.validadeCartao);
+              System.out.println("\n-----------------------------------------------------------------\n");
+              System.out.printf("A data de validade do cartão foi alterada!%n");
+              System.out.printf("%nData de validade expirada com sucesso!");
+
+              //Retorna mensagem de erro caso não encontra o beneficiário
+            } else {
+              System.out.println("-----------------------------------------------------------------");
+              System.out.println("O beneficiário e/ou o cartão não existe!%n");
+              System.out.println("Deseja tentar digitar outro nome?");
+              System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+              System.out.print("Opção: ");
+              option = in.nextLine().trim().toLowerCase().charAt(0);
+            }
+          }
+        } else if (vale.contains("VR")) {
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeRefeicao.listaCartoesVR.size() - 1; i++) {
+
+            //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+            if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().contains(nome)) {
+              vr.validadeCartao = vr.dataDoCadastro.minusDays(1);
+              ValeRefeicao.listaCartoesVR.get(i).setValidadeCartaoVR(vr.validadeCartao);
+              System.out.println("\n-----------------------------------------------------------------\n");
+              System.out.printf("A data de validade do cartão foi alterada!%n");
+              System.out.printf("%nData de validade expirada com sucesso!");
+
+              //Retorna mensagem de erro caso não encontra o beneficiário
+            } else {
+              System.out.println("-----------------------------------------------------------------");
+              System.out.println("O beneficiário e/ou o cartão não existe!%n");
+              System.out.println("Deseja tentar digitar outro nome?");
+              System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+              System.out.print("Opção: ");
+              option = in.nextLine().trim().toLowerCase().charAt(0);
+            }
+          }
+        } else if (vale.contains("VC")) {
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeCombustivel.listaCartoesVC.size() - 1; i++) {
+
+            //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+            if (ValeCombustivel.listaCartoesVC.get(i).getNomeBeneficiarioVC().contains(nome)) {
+              vc.validadeCartao = vc.dataDoCadastro.minusDays(1);
+              ValeCombustivel.listaCartoesVC.get(i).setValidadeCartaoVC(vc.validadeCartao);
+              System.out.println("\n-----------------------------------------------------------------\n");
+              System.out.printf("A data de validade do cartão foi alterada!%n");
+              System.out.printf("%nData de validade expirada com sucesso!");
+
+              //Retorna mensagem de erro caso não encontra o beneficiário
+            } else {
+              System.out.println("-----------------------------------------------------------------");
+              System.out.println("O beneficiário e/ou o cartão não existe!%n");
+              System.out.println("Deseja tentar digitar outro nome?");
+              System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+              System.out.print("Opção: ");
+              option = in.nextLine().trim().toLowerCase().charAt(0);
+            }
+          }
+        } else {
+          System.out.println("-----------------------------------------------------------------\n");
+          System.out.println("Opção inválida! Digite uma opção dentre as disponíveis!\n");
+        }
+      } while (option == 's');
+      Ferramentas.inicializaMenuPrincipal();
+    }
   }
 
   //Método para gerenciar o submenu 6: alterar validade de um cartão

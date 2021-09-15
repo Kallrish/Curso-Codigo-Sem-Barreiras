@@ -255,6 +255,14 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
     return dataDoCadastro;
   }
 
+  public LocalDate getValidadeCartaoVA() {
+    return validadeCartao;
+  }
+
+  public void setValidadeCartaoVA(LocalDate validadeCartao) {
+    this.validadeCartao = validadeCartao;
+  }
+
   public String getNomeBeneficiarioVA() {
     return nomeBeneficiario;
   }
@@ -263,7 +271,5 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
     return senhaCartao;
   }
 
-  public Double adicionaSaldoVA(Double valor) {
-    return this.saldoCartao += valor;
-  }
+  public void adicionaSaldoVA(Double valor) {this.saldoCartao += valor;}
 }

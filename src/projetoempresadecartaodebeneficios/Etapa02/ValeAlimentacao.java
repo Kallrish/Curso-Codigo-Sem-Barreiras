@@ -93,7 +93,6 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
         }
       } while (opcao == 's');
-      Ferramentas.inicializaMenuPrincipal();
   }
 
   @Override
@@ -224,7 +223,6 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
               System.out.print("Opção: ");
               opcao = in.nextLine().trim().toLowerCase().charAt(0);
             } while (opcao != 'n');
-            Ferramentas.inicializaMenuPrincipal();
 
           } else {
             System.out.println("\n-----------------------------------------------------------------\n");
@@ -236,7 +234,6 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
           }
         }
       } while (opcao == 's');
-      Ferramentas.inicializaMenuPrincipal();
   }
 
   @Override

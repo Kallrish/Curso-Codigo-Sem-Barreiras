@@ -92,7 +92,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
           }
         }
       } while (opcao == 's');
-      Ferramentas.inicializaMenuPrincipal();
   }
 
 
@@ -228,7 +227,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
               opcao = in.nextLine().trim().toLowerCase().charAt(0);
 
             } while (opcao != 'n');
-            Ferramentas.inicializaMenuPrincipal();
 
           } else {
             System.out.println("\n-----------------------------------------------------------------\n");
@@ -241,7 +239,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
           }
         }
       } while (opcao == 's');
-      Ferramentas.inicializaMenuPrincipal();
   }
 
   @Override

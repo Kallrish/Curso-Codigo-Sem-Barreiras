@@ -93,7 +93,6 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
           }
         }
       } while (opcao == 's');
-      Ferramentas.inicializaMenuPrincipal();
   }
 
   @Override
@@ -218,7 +217,6 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
               opcao = in.nextLine().trim().toLowerCase().charAt(0);
 
             } while (opcao != 'n');
-            Ferramentas.inicializaMenuPrincipal();
 
           } else {
             System.out.println("-----------------------------------------------------------------");
@@ -231,7 +229,6 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
           }
         }
       } while (opcao == 's');
-      Ferramentas.inicializaMenuPrincipal();
   }
 
   @Override

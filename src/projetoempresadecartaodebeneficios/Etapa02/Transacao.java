@@ -8,7 +8,6 @@ public class Transacao {
 
   private Integer identificadorDaTransacao;
   private String beneficiario;
-  //private Integer identificadorUsuario;
   private Integer identificadorDoCartao;
   private LocalDateTime dataHoraTransacao;
   private String identicadorDoEstabelecimento;

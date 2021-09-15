@@ -375,11 +375,11 @@ public class Ferramentas {
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
           if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome) && valorParaAdicionar > 0) {
             verificador = true;
-
+            Double saldoFinal = ValeAlimentacao.listaCartoesVA.get(i).getSaldoVA();
             ValeAlimentacao.adicionaSaldoVA(i, valorParaAdicionar);
             System.out.println("\n-----------------------------------------------------------------\n");
-            System.out.printf("%nValor de %f adicionado com sucesso!%n", valorParaAdicionar);
-            System.out.printf("%nAgora o saldo do Vale Alimentação de%n%s é %f!%n", nome, va.getSaldoVA());
+            System.out.printf("%nValor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
+            System.out.printf("%nAgora o saldo do Vale Alimentação de%n%s é %.2f!%n", nome, saldoFinal);
 
             //Retorna mensagem de erro caso não encontra o beneficiário
           }
@@ -398,10 +398,11 @@ public class Ferramentas {
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
           if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().equals(nome) && valorParaAdicionar > 0) {
             verificador = true;
+            Double saldoFinal = ValeAlimentacao.listaCartoesVA.get(i).getSaldoVA();
             ValeRefeicao.adicionaSaldoVR(i, valorParaAdicionar);
             System.out.println("\n-----------------------------------------------------------------\n");
-            System.out.printf("%nValor de %f adicionado com sucesso!%n", valorParaAdicionar);
-            System.out.printf("%nAgora o saldo do Vale Refeição de%n%s é %f!%n", nome, vr.getSaldoVR());
+            System.out.printf("%nValor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
+            System.out.printf("%nAgora o saldo do Vale Refeição de%n%s é %.2f!%n", nome, saldoFinal);
 
           }
           //Retorna mensagem de erro caso não encontra o beneficiário
@@ -423,10 +424,11 @@ public class Ferramentas {
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
           if (ValeCombustivel.listaCartoesVC.get(i).getNomeBeneficiarioVC().equals(nome) && valorParaAdicionar > 0) {
             verificador = true;
+            Double saldoFinal = ValeAlimentacao.listaCartoesVA.get(i).getSaldoVA();
             ValeCombustivel.adicionaSaldoVC(i, valorParaAdicionar);
             System.out.println("\n-----------------------------------------------------------------\n");
-            System.out.printf("%nValor de %f adicionado com sucesso!%n", valorParaAdicionar);
-            System.out.printf("%nAgora o saldo do Vale Combustível de%n%s é %f!%n", nome, vc.getSaldoVC());
+            System.out.printf("%nValor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
+            System.out.printf("%nAgora o saldo do Vale Combustível de%n%s é %.2f!%n", nome, saldoFinal);
 
             //Retorna mensagem de erro caso não encontra o beneficiário
           }
@@ -448,7 +450,6 @@ public class Ferramentas {
       option = in.nextLine().trim().toLowerCase().charAt(0);
 
     } while (option == 's');
-    Ferramentas.inicializaMenuPrincipal();
   }
 
   //Método para gerenciar o submenu 4: cadastrar transacoes em um cartão

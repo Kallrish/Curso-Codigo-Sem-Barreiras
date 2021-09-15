@@ -81,7 +81,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
             System.out.print("Opção: ");
             opcao = in.nextLine().trim().toLowerCase().charAt(0);
 
-            //Retorna mensagem de erro caso não encontra o benefiário
+            //Retorna mensagem de erro caso não encontre o beneficiário
           } else {
             System.out.println("\n-----------------------------------------------------------------\n");
             System.out.printf("Não foi possível realizar o cadastro.%nBeneficiário %s não encontrado!%n", nome);
@@ -135,7 +135,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
         System.out.print("Senha: ");
         senha = in.nextLine().trim();
 
-        for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size() - 1; i++) {
+        for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
 
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
           if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome) &&
@@ -271,6 +271,8 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
     Double pegaValorAtual = ValeAlimentacao.listaCartoesVA.get(index).getSaldoVA();
     Double pegaValorFinal = pegaValorAtual + valor;
     ValeAlimentacao.listaCartoesVA.get(index).setSaldoCartaoVA(pegaValorFinal);
+
+    ValeAlimentacao.listaCartoesVA.set(index, ValeAlimentacao);
 
   }
 

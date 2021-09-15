@@ -34,7 +34,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
   public void cadastrarVA() {
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       String nome, senha;
       char opcao = 's';
@@ -94,7 +94,6 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
         }
       } while (opcao == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   @Override
@@ -118,7 +117,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
   public void adicionarTransacao() {
     Integer identificadorDoCartao = 0;
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       String nome, senha;
       char opcao = 's';
@@ -238,7 +237,6 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
         }
       } while (opcao == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   @Override

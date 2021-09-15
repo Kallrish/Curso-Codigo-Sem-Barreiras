@@ -35,7 +35,7 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
 
   public void cadastrarVR() {
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       String nome, senha;
       char opcao = 's';
@@ -94,7 +94,6 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
         }
       } while (opcao == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   @Override
@@ -117,7 +116,7 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
   public void adicionarTransacao() {
     Integer identificadorDoCartao = 0;
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       String nome, senha;
       char opcao = 's';
@@ -233,7 +232,6 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
         }
       } while (opcao == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   @Override

@@ -118,7 +118,8 @@ public class Ferramentas {
     System.out.println("\n==================================================================");
     System.out.println("Menu -> Cadastrar: Novos cartões de benefício");
     System.out.println("==================================================================\n");
-    try (Scanner in = new Scanner(System.in)) {
+
+    Scanner in = new Scanner(System.in);
 
       //Instancia classes para efetuar o cadastro dos cartões
       ValeAlimentacao va = new ValeAlimentacao();
@@ -146,8 +147,8 @@ public class Ferramentas {
         for (int i = 0; i < Beneficiario.listaBeneficiarios.size() - 1; i++) {
 
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().equals(nome) &&
-                  !ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome)) {
+          if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().contains(nome) &&
+                  !ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().contains(nome)) {
 
             //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
             va.identificadorCartao = ValeAlimentacao.incrementoIdentificadorVA;
@@ -236,7 +237,6 @@ public class Ferramentas {
       } while (opcao == 's');
 
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   //Método que cadastra os cartões na primeira vez que o programa é executado
@@ -245,7 +245,8 @@ public class Ferramentas {
     System.out.println("\n==================================================================");
     System.out.println("Menu -> Cadastrar: Novos cartões de benefício");
     System.out.println("==================================================================\n");
-    try (Scanner in1 = new Scanner(System.in)) {
+
+    Scanner in = new Scanner(System.in);
 
       //Instancia classes para efetuar o cadastro dos cartões
       ValeAlimentacao va1 = new ValeAlimentacao();
@@ -263,7 +264,7 @@ public class Ferramentas {
       nome1 = Beneficiario.listaBeneficiarios.get(0).getNomeBeneficiario();
       System.out.println("Digite uma senha para usar o cartão:");
       System.out.print("Senha: ");
-      senha1 = in1.nextLine().trim();
+      senha1 = in.nextLine().trim();
 
       //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
       va1.identificadorCartao = ValeAlimentacao.incrementoIdentificadorVA;
@@ -288,7 +289,7 @@ public class Ferramentas {
       System.out.println("==================================================================\n");
       System.out.println("Digite uma senha para usar o cartão:");
       System.out.print("Senha: ");
-      senha1 = in1.nextLine().trim();
+      senha1 = in.nextLine().trim();
 
       //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
       vr1.identificadorCartao = ValeRefeicao.incrementoIdentificadorVR;
@@ -312,7 +313,7 @@ public class Ferramentas {
       System.out.println("==================================================================\n");
       System.out.println("Digite uma senha para usar o cartão:");
       System.out.print("Senha: ");
-      senha1 = in1.nextLine().trim();
+      senha1 = in.nextLine().trim();
 
       //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
       vc1.identificadorCartao = ValeCombustivel.incrementoIdentificadorVC;
@@ -330,7 +331,6 @@ public class Ferramentas {
       System.out.println("\n---------------------------------------------------------------");
       System.out.println("Cadastro realizado com sucesso!");
       System.out.println("-----------------------------------------------------------------\n");
-    }
   }
 
   //Método para gerenciar o submenu 3: adicionar saldo em benefício
@@ -346,7 +346,7 @@ public class Ferramentas {
     Double valorParaAdicionar;
     char option = 's';
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       do {
         System.out.println("\n==================================================================");
@@ -432,7 +432,6 @@ public class Ferramentas {
         }
       } while (option == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   //Método para gerenciar o submenu 4: cadastrar transacoes em um cartão
@@ -442,7 +441,7 @@ public class Ferramentas {
     ValeCombustivel vc = new ValeCombustivel();
     char opcao = 's';
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
       System.out.println("\n==================================================================");
       System.out.println("Menu -> Cadastrar: Transações de um Cartão");
       System.out.println("==================================================================\n");
@@ -463,7 +462,6 @@ public class Ferramentas {
         }
       } while (opcao == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   //Método para gerenciar o submenu 5: expirar validade de um cartão
@@ -479,7 +477,7 @@ public class Ferramentas {
     Double valorParaAdicionar;
     char option = 's';
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       do {
         System.out.println("\n==================================================================");
@@ -566,7 +564,6 @@ public class Ferramentas {
         }
       } while (option == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   //Método para gerenciar o submenu 6: alterar validade de um cartão
@@ -577,7 +574,7 @@ public class Ferramentas {
     ValeRefeicao vr = new ValeRefeicao();
     ValeCombustivel vc = new ValeCombustivel();
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       char opcao = 's';
 
@@ -622,7 +619,6 @@ public class Ferramentas {
           }
         }
       } while (opcao == 's');
-    }
   }
 
   //Método para gerenciar o submenu 7: Visualizar extrato de um cartão
@@ -637,7 +633,7 @@ public class Ferramentas {
     Double valorParaAdicionar;
     char option = 's';
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       do {
         System.out.println("\n==================================================================");
@@ -772,7 +768,6 @@ public class Ferramentas {
         }
       } while (option == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   //Método para gerenciar o submenu 8: Sair do programa
@@ -790,7 +785,7 @@ public class Ferramentas {
   public static void inicializaMenuPrincipal() {
 
     //Instancia a classe Scanner para receber dados do usuário
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       //Cria a variável necessária para manter o laço de repetição logo abaixo
       boolean escolhaValidaMenu;
@@ -826,7 +821,6 @@ public class Ferramentas {
           default -> System.out.println("Escolha um número entre 1 a 8!");
         }
       } while (!escolhaValidaMenu);
-    }
   }
 
   //Método para inicializar o programa na classe Main

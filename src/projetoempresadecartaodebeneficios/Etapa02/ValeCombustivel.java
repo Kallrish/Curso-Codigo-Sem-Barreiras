@@ -34,7 +34,7 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
 
   public void cadastrarVC() {
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       String nome, senha;
       char opcao = 's';
@@ -93,7 +93,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
         }
       } while (opcao == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
 
@@ -118,7 +117,7 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
 
     Integer identificadorDoCartao = 0;
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       String nome, senha;
       char opcao = 's';
@@ -159,7 +158,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
               LocalDateTime dataHoraUltimaCompra = ValeAlimentacao.listaTransacoes.get(index).getDataHoraTransacao();
               LocalTime horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
 
-              //TODO verificar a entrada abaixo - switch-case
               System.out.println("Digite o código do estabelecimento onde foi efetuada a compra: " +
                       "[PO01] - Posto Delta" +
                       "[ME01] - Mercearia São José" +
@@ -244,7 +242,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
         }
       } while (opcao == 's');
       Ferramentas.inicializaMenuPrincipal();
-    }
   }
 
   @Override

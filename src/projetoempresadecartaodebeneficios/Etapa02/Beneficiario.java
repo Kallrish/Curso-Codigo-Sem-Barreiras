@@ -34,7 +34,7 @@ public class Beneficiario {
 
   public static void cadastrarBeneficiario() {
 
-    try (Scanner in = new Scanner(System.in)) {
+    Scanner in = new Scanner(System.in);
 
       String nomeBeneficiario1;
 
@@ -57,7 +57,6 @@ public class Beneficiario {
         System.out.print("Opção: ");
         opcao = in.nextLine().trim().toLowerCase().charAt(0);
       } while (opcao == 's');
-    }
   }
 
   public String getNomeBeneficiario() {

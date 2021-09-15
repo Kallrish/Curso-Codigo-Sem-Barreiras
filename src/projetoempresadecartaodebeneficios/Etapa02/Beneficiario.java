@@ -50,12 +50,13 @@ public class Beneficiario {
       System.out.print("Nome: ");
       nomeBeneficiario1 = in.nextLine().trim();
 
+
       boolean verificador = false;
 
       //Laço para percorrer a lista de beneficiários
       for (int i = 0; i < Beneficiario.listaBeneficiarios.size(); i++) {
 
-        //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+        //Se o beneficiário já existe na lista, retorna erro
         if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().equals(nomeBeneficiario1)) {
           System.out.println("\n---------------------------------------------------------------");
           System.out.println("Já existe um beneficiário cadastrado com esse nome!");
@@ -64,20 +65,23 @@ public class Beneficiario {
         }
       }
 
-      if (!verificador) {
-
+      if(!verificador){
         listaBeneficiarios.add(new Beneficiario(incrementoIdentificadorBeneficiario++,
                 nomeBeneficiario1));
 
         System.out.println("\n-----------------------------------------------------------------");
         System.out.println("Cadastro realizado com sucesso!");
+        System.out.println("-----------------------------------------------------------------");
       }
+
       System.out.println("-----------------------------------------------------------------");
       System.out.println("Deseja cadastrar outro beneficiário?");
       System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
       System.out.print("Opção: ");
       opcao = in.nextLine().trim().toLowerCase().charAt(0);
 
+      // Reinicia a variável para a próxima busca
+      verificador = false;
 
     } while (opcao == 's');
   }

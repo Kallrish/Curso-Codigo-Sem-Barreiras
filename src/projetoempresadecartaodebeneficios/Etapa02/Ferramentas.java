@@ -596,6 +596,8 @@ public class Ferramentas {
       System.out.print("Nome: ");
       nome = in.nextLine().trim();
 
+      boolean verificador = false;
+
       //Laço para percorrer a lista de beneficiários
       for (int i = 0; i < Beneficiario.listaBeneficiarios.size(); i++) {
 
@@ -616,20 +618,21 @@ public class Ferramentas {
           System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
           System.out.print("Opção: ");
           opcao = in.nextLine().trim().toLowerCase().charAt(0);
-
-          //Retorna mensagem de erro caso não encontra o beneficiário
-        } else {
-          System.out.println("-----------------------------------------------------------------");
-          System.out.printf("Não foi possível realizar o cadastro.%nBeneficiário %s não encontrado!%n", nome);
-          System.out.println("Deseja digitar o nome de outro beneficiário?");
-          System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
-          System.out.print("Opção: ");
-          opcao = in.nextLine().trim().toLowerCase().charAt(0);
-
+          verificador = true;
         }
       }
-    } while (opcao == 's');
-  }
+      //Retorna mensagem de erro caso não encontra o beneficiário
+      if (!verificador) {
+        System.out.println("-----------------------------------------------------------------");
+        System.out.printf("Não foi possível realizar a consulta.%nBeneficiário %s não encontrado!%n", nome);
+        System.out.println("Deseja digitar o nome de outro beneficiário?");
+        System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+        System.out.print("Opção: ");
+        opcao = in.nextLine().trim().toLowerCase().charAt(0);
+
+      }
+  } while(opcao =='s');
+}
 
   //Método para gerenciar o submenu 7: Visualizar extrato de um cartão
   public static void visualizarExtratoCartao() {

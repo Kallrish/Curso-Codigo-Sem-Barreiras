@@ -50,50 +50,31 @@ public class Beneficiario {
 
       //Verifica se a segunda posição da lista é nula, para evitar erro no laço de busca
 
-      if (Beneficiario.listaBeneficiarios.get(0).getNomeBeneficiario().equals(nomeBeneficiario1)) {
-        System.out.println("---------------------------------------------------------------");
-        System.out.println("Já existe um beneficiário cadastrado com esse nome!");
-        System.out.println("Não é possível cadastrar dois nomes iguais!");
+      //Laço para percorrer a lista de beneficiários
+      for (int i = 0; i < Beneficiario.listaBeneficiarios.size(); i++) {
 
-      } else if (Beneficiario.listaBeneficiarios.size() < 2){
-        listaBeneficiarios.add(new Beneficiario(incrementoIdentificadorBeneficiario++,
-                nomeBeneficiario1));
-
-        System.out.println("\n---------------------------------------------------------------");
-        System.out.println("Cadastro realizado com sucesso!");
-        System.out.println("-----------------------------------------------------------------");
-        System.out.println("Deseja cadastrar outro beneficiário?");
-        System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
-        System.out.print("Opção: ");
-        opcao = in.nextLine().trim().toLowerCase().charAt(0);
-
-      } else {
-
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < Beneficiario.listaBeneficiarios.size() - 1; i++) {
-
-          //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().equals(nomeBeneficiario1)) {
-            System.out.println("\n---------------------------------------------------------------");
-            System.out.println("Já existe um beneficiário cadastrado com esse nome!");
-            System.out.println("Não é possível cadastrar dois nomes iguais!");
-
-            //Se a segunda posição da lista é nula, cadastra direto
-          } else {
-            listaBeneficiarios.add(new Beneficiario(incrementoIdentificadorBeneficiario++,
-                    nomeBeneficiario1));
-
-            System.out.println("\n---------------------------------------------------------------");
-            System.out.println("Cadastro realizado com sucesso!");
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("Deseja cadastrar outro beneficiário?");
-            System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
-            System.out.print("Opção: ");
-            opcao = in.nextLine().trim().toLowerCase().charAt(0);
-          }
+        //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+        if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().contains(nomeBeneficiario1)) {
+          System.out.println("\n---------------------------------------------------------------");
+          System.out.println("Já existe um beneficiário cadastrado com esse nome!");
+          System.out.println("Não é possível cadastrar dois nomes iguais!");
         }
-
       }
+
+      listaBeneficiarios.add(new Beneficiario(incrementoIdentificadorBeneficiario++,
+              nomeBeneficiario1));
+
+      System.out.println("\n-----------------------------------------------------------------");
+      System.out.println("Cadastro realizado com sucesso!");
+      System.out.println("-----------------------------------------------------------------");
+
+      System.out.println("-----------------------------------------------------------------");
+      System.out.println("Deseja cadastrar outro beneficiário?");
+      System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");
+      System.out.print("Opção: ");
+      opcao = in.nextLine().trim().toLowerCase().charAt(0);
+
+
     } while (opcao == 's');
   }
 
@@ -125,27 +106,27 @@ public class Beneficiario {
     this.nomeBeneficiario = nomeBeneficiario;
   }
 
-//  @Override
-//  public boolean equals(Object obj) {
-//    if (obj == null)
-//      return false;
-//
-//    if (!(obj instanceof Beneficiario))
-//      return false;
-//
-//    if (obj == this)
-//      return true;
-//
-//    Beneficiario p = (Beneficiario) obj;
-//
-//    // Aqui você implementa como deve se feita a comparação.
-//    // Verifica se os nomes dos produtos são iguais, ids e etc.
-//
-//    if (p.nomeBeneficiario == this.nomeBeneficiario) {
-//      return true;
-//    } else {
-//      return false;
-//    }
-//  }
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null)
+      return false;
+
+    if (!(obj instanceof Beneficiario))
+      return false;
+
+    if (obj == this)
+      return true;
+
+    Beneficiario p = (Beneficiario) obj;
+
+    // Aqui você implementa como deve se feita a comparação.
+    // Verifica se os nomes dos produtos são iguais, ids e etc.
+
+    if (p.nomeBeneficiario == this.nomeBeneficiario) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }

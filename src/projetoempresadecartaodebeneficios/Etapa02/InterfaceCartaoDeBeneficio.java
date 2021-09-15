@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public interface InterfaceCartaoDeBeneficio {
 
-  void adicionarTransacao(String nomeBeneficiario, Double valor, Integer identificadorEstabelecimento, String tipoDeEstabelecimento);
+  void adicionarTransacao();
 
   void mostrarSaldo(Double saldoAtual1) ;
 

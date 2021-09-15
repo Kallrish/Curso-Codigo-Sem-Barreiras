@@ -114,9 +114,7 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
   }
 
   @Override
-  public void adicionarTransacao(String nomeBeneficiario, Double valor,
-                                 Integer identificadorEstabelecimento,
-                                 String tipoDeEstabelecimento) {
+  public void adicionarTransacao() {
 
     Integer identificadorDoCartao = 0;
 

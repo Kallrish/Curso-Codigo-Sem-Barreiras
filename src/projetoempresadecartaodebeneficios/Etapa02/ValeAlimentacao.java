@@ -113,10 +113,9 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
   }
 
+
   @Override
-  public void adicionarTransacao(String nomeBeneficiario, Double valor,
-                                 Integer identificadorEstabelecimento,
-                                 String tipoDeEstabelecimento) {
+  public void adicionarTransacao() {
     Integer identificadorDoCartao = 0;
 
     try (Scanner in = new Scanner(System.in)) {

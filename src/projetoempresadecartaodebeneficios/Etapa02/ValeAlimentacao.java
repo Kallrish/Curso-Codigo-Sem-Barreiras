@@ -262,4 +262,8 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
   public String getSenhaVA() {
     return senhaCartao;
   }
+
+  public Double adicionaSaldoVA(Double valor) {
+    return this.saldoCartao += valor;
+  }
 }

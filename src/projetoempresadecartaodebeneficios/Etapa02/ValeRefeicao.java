@@ -257,4 +257,8 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
   public String getSenhaVR() {
     return senhaCartao;
   }
+
+  public Double adicionaSaldoVR(Double valor) {
+    return this.saldoCartao += valor;
+  }
 }

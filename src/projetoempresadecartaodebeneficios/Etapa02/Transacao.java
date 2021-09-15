@@ -33,10 +33,6 @@ public class Transacao {
     this.valorDaTransacao = valorDaTransacao;
   }
 
-  //TODO implementar o método de cadastro (tipo o do beneficiario)
-
-  //TODO método para tirar o extrato (pessoa seleciona extrato do dia ou extrato da semana, ou extrato do mês)
-
   public Integer getIdentificadorDaTransacao() {
     return identificadorDaTransacao;
   }

@@ -213,7 +213,7 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
                         dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                         codigoEstabelecimento, valorDaTransacao));
 
-                this.saldoCartao -= valor;
+                this.saldoCartao -= valorDaTransacao;
                 //Regra específica 3 do VC: Desconta R$1 de taxa do saldo.
                 this.saldoCartao -= 1.00;
 
@@ -246,25 +246,30 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
       Ferramentas.inicializaMenuPrincipal();
     }
   }
-    @Override
-    public void mostrarSaldo(Double saldoAtual1) {
 
-      System.out.printf("Vale Alimentação: R$%.2f.%n", saldoAtual1);
-    }
+  @Override
+  public void mostrarSaldo(Double saldoAtual1) {
 
-    public Double getSaldoVC() {
-      return saldoCartao;
-    }
-
-    public LocalDate getDatadoCadastroVC() {
-      return dataDoCadastro;
-    }
-
-    public String getNomeBeneficiarioVC() {
-      return nomeBeneficiario;
-    }
-
-    public String getSenhaVC() {
-      return senhaCartao;
-    }
+    System.out.printf("Vale Alimentação: R$%.2f.%n", saldoAtual1);
   }
+
+  public Double getSaldoVC() {
+    return saldoCartao;
+  }
+
+  public LocalDate getDatadoCadastroVC() {
+    return dataDoCadastro;
+  }
+
+  public String getNomeBeneficiarioVC() {
+    return nomeBeneficiario;
+  }
+
+  public String getSenhaVC() {
+    return senhaCartao;
+  }
+
+  public Double adicionaSaldoVC(Double valor) {
+    return this.saldoCartao += valor;
+  }
+}

@@ -15,7 +15,7 @@ public class Estabelecimento {
   public static List<Estabelecimento> listaEstabelecimentos = new ArrayList<>();
 
   //Método para cadastrar estabelecimentos
-  public Estabelecimento(String identificadorEstabelecimento,String nomeEstabelecimento,
+  public Estabelecimento(String identificadorEstabelecimento, String nomeEstabelecimento,
                          String tipoEstabelecimento, String localizacaoEstabelecimento) {
 
     this.identificadorEstabelecimento = identificadorEstabelecimento;
@@ -24,7 +24,7 @@ public class Estabelecimento {
     this.localizacaoEstabelecimento = localizacaoEstabelecimento;
   }
 
-  public static void inicializaEstabelecimentos () {
+  public static void inicializaEstabelecimentos() {
 
     //Posto de gasolina
     listaEstabelecimentos.add(new Estabelecimento("PO01", "Posto Delta",
@@ -45,7 +45,7 @@ public class Estabelecimento {
 
   public static String buscaEstabelecimento(String codigoEstabelecimento) {
     for (int i = 0; i < listaEstabelecimentos.size(); i++) {
-      if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().contains(codigoEstabelecimento)) {
+      if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().equals(codigoEstabelecimento)) {
         return listaEstabelecimentos.get(i).nomeEstabelecimento;
       } else {
         System.out.println("O código digitado está errado");
@@ -56,7 +56,7 @@ public class Estabelecimento {
 
   public static String buscaLocalizacaoEstabelecimento(String codigoEstabelecimento) {
     for (int i = 0; i < listaEstabelecimentos.size(); i++) {
-      if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().contains(codigoEstabelecimento)) {
+      if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().equals(codigoEstabelecimento)) {
         return listaEstabelecimentos.get(i).localizacaoEstabelecimento;
       } else {
         System.out.println("O código digitado está errado");
@@ -79,5 +79,28 @@ public class Estabelecimento {
 
   public String getLocalizacaoEstabelecimento() {
     return localizacaoEstabelecimento;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null)
+      return false;
+
+    if (!(obj instanceof Estabelecimento))
+      return false;
+
+    if (obj == this)
+      return true;
+
+    Estabelecimento p = (Estabelecimento) obj;
+
+    // Aqui você implementa como deve se feita a comparação.
+    // Verifica se os nomes dos produtos são iguais, ids e etc.
+
+    if (p.identificadorEstabelecimento == this.identificadorEstabelecimento) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

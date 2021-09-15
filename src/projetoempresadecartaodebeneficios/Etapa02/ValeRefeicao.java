@@ -65,7 +65,7 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
             //this.senhaCartao = senhaCartao;
             this.senhaCartao = senha;
 
-            Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e100();
+            Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e1000();
             this.saldoCartao = valorAleatorioSaldo;
             this.criaDataDeCadastro();
             data1 = this.dataDoCadastro;
@@ -138,8 +138,8 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
         for (int i = 0; i < ValeRefeicao.listaCartoesVR.size() - 1; i++) {
 
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lista
-          if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().contains(nome) &&
-                  ValeRefeicao.listaCartoesVR.get(i).getSenhaVR().contains(senha)) {
+          if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().equals(nome) &&
+                  ValeRefeicao.listaCartoesVR.get(i).getSenhaVR().equals(senha)) {
 
             identificadorDoCartao = listaCartoesVR.get(i).identificadorCartao;
 
@@ -264,5 +264,28 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
 
   public void setValidadeCartaoVR(LocalDate validadeCartao) {
     this.validadeCartao = validadeCartao;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null)
+      return false;
+
+    if (!(obj instanceof ValeCombustivel))
+      return false;
+
+    if (obj == this)
+      return true;
+
+    ValeCombustivel p = (ValeCombustivel) obj;
+
+    // Aqui você implementa como deve se feita a comparação.
+    // Verifica se os nomes dos produtos são iguais, ids e etc.
+
+    if (p.nomeBeneficiario == this.nomeBeneficiario) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

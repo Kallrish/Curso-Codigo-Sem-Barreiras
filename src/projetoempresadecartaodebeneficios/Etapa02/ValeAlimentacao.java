@@ -64,7 +64,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
             //this.senhaCartao = senhaCartao;
             this.senhaCartao = senha;
 
-            Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e100();
+            Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e1000();
             this.saldoCartao = valorAleatorioSaldo;
             this.criaDataDeCadastro();
             data1 = this.dataDoCadastro;
@@ -139,8 +139,8 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
         for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size() - 1; i++) {
 
           //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().contains(nome) &&
-                  ValeAlimentacao.listaCartoesVA.get(i).getSenhaVA().contains(senha)) {
+          if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome) &&
+                  ValeAlimentacao.listaCartoesVA.get(i).getSenhaVA().equals(senha)) {
 
             identificadorDoCartao = listaCartoesVA.get(i).identificadorCartao;
 
@@ -177,7 +177,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
               Double valorDaTransacao = in.nextDouble();
 
               //Regra específica 1 do VA: Verifica se é posto de combustível
-              if (identicadorDoEstabelecimento.contains("Posto Delta")) {
+              if (identicadorDoEstabelecimento.equals("Posto Delta")) {
                 System.out.println("Não é possível usar este benefício neste estabelecimento!\n");
 
                 //Verifica se é valor negativo
@@ -270,4 +270,27 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
   }
 
   public void adicionaSaldoVA(Double valor) {this.saldoCartao += valor;}
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null)
+      return false;
+
+    if (!(obj instanceof ValeAlimentacao))
+      return false;
+
+    if (obj == this)
+      return true;
+
+    ValeAlimentacao p = (ValeAlimentacao) obj;
+
+    // Aqui você implementa como deve se feita a comparação.
+    // Verifica se os nomes dos produtos são iguais, ids e etc.
+
+    if (p.nomeBeneficiario == this.nomeBeneficiario) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

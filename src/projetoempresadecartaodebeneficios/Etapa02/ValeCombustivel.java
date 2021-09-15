@@ -108,7 +108,7 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
   public void criaDataDeValidade() {
 
     //Cria a validade do cartão, definindo 2 anos como padrão.
-    this.validadeCartao = this.dataDoCadastro.plusYears(2);
+    this.validadeCartao = dataDoCadastro.plusYears(2);
 
   }
 
@@ -274,7 +274,10 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
     this.validadeCartao = validadeCartao;
   }
 
-  public void adicionaSaldoVC(Double valor) {this.saldoCartao += valor;}
+  public void adicionaSaldoVC(Integer valor) {
+    Double novoValor = Double.valueOf(valor);
+    this.saldoCartao += novoValor;
+  }
 
   @Override
   public boolean equals(Object obj) {

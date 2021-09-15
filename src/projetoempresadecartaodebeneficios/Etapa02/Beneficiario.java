@@ -17,10 +17,12 @@ public class Beneficiario {
   //Cria uma lista com os beneficiários
   public static List<Beneficiario> listaBeneficiarios = new ArrayList<>();
 
+  //Construtor padrão
   public Beneficiario() {
 
   }
 
+  //Construtor com parâmetros
   public Beneficiario(Integer identificadorBeneficiario,
                       String nomeBeneficiario) {
 
@@ -48,26 +50,28 @@ public class Beneficiario {
       System.out.print("Nome: ");
       nomeBeneficiario1 = in.nextLine().trim();
 
-      //Verifica se a segunda posição da lista é nula, para evitar erro no laço de busca
+      boolean verificador = false;
 
       //Laço para percorrer a lista de beneficiários
       for (int i = 0; i < Beneficiario.listaBeneficiarios.size(); i++) {
 
         //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-        if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().contains(nomeBeneficiario1)) {
+        if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().equals(nomeBeneficiario1)) {
           System.out.println("\n---------------------------------------------------------------");
           System.out.println("Já existe um beneficiário cadastrado com esse nome!");
           System.out.println("Não é possível cadastrar dois nomes iguais!");
+          verificador = true;
         }
       }
 
-      listaBeneficiarios.add(new Beneficiario(incrementoIdentificadorBeneficiario++,
-              nomeBeneficiario1));
+      if (!verificador) {
 
-      System.out.println("\n-----------------------------------------------------------------");
-      System.out.println("Cadastro realizado com sucesso!");
-      System.out.println("-----------------------------------------------------------------");
+        listaBeneficiarios.add(new Beneficiario(incrementoIdentificadorBeneficiario++,
+                nomeBeneficiario1));
 
+        System.out.println("\n-----------------------------------------------------------------");
+        System.out.println("Cadastro realizado com sucesso!");
+      }
       System.out.println("-----------------------------------------------------------------");
       System.out.println("Deseja cadastrar outro beneficiário?");
       System.out.println("Digite \"s\" para SIM e \"n\" para NÃO.");

@@ -108,7 +108,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
   public void criaDataDeValidade() {
 
     //Cria a validade do cartão, definindo 2 anos como padrão.
-    this.validadeCartao = this.dataDoCadastro.plusYears(2);
+    this.validadeCartao = dataDoCadastro.plusYears(2);
 
   }
 
@@ -269,7 +269,10 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
     return senhaCartao;
   }
 
-  public void adicionaSaldoVA(Double valor) {this.saldoCartao += valor;}
+  public void adicionaSaldoVA(Integer valor) {
+    Double novoValor = Double.valueOf(valor);
+    this.saldoCartao += novoValor;
+  }
 
   @Override
   public boolean equals(Object obj) {

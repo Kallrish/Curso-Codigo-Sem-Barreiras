@@ -108,7 +108,7 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
   public void criaDataDeValidade() {
 
     //Cria a validade do cartão, definindo 2 anos como padrão.
-    this.validadeCartao = this.dataDoCadastro.plusYears(2);
+    this.validadeCartao = dataDoCadastro.plusYears(2);
 
   }
 
@@ -258,12 +258,15 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
 
   public void adicionaSaldoVR(Double valor) {this.saldoCartao += valor;}
 
-  public LocalDate getValidadeCartaoVR() {
-    return validadeCartao;
-  }
+  public LocalDate getValidadeCartaoVR() {return validadeCartao;}
 
   public void setValidadeCartaoVR(LocalDate validadeCartao) {
     this.validadeCartao = validadeCartao;
+  }
+
+  public void adicionaSaldoVR(Integer valor) {
+    Double novoValor = Double.valueOf(valor);
+    this.saldoCartao += novoValor;
   }
 
   @Override

@@ -23,7 +23,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
   }
 
   public ValeAlimentacao(Integer identificadorCartao, String nomeBeneficiario, String senhaCartao,
-                         Double saldoCartao, LocalDate data1, LocalDate data2) {
+                         Double saldoCartao, LocalDate dataDoCadastro, LocalDate validadeCartao) {
 
     this.identificadorCartao = identificadorCartao;
     this.saldoCartao = saldoCartao;

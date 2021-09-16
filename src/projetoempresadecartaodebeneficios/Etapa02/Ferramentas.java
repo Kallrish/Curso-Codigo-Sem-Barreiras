@@ -121,11 +121,6 @@ public class Ferramentas {
 
     Scanner in = new Scanner(System.in);
 
-    //Instancia classes para efetuar o cadastro dos cartões
-    ValeAlimentacao va = new ValeAlimentacao();
-    ValeRefeicao vr = new ValeRefeicao();
-    ValeCombustivel vc = new ValeCombustivel();
-
     //Declara variáveis necessárias
     String nome, senha;
     LocalDate data1, data2;
@@ -157,7 +152,6 @@ public class Ferramentas {
 
           //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
           Integer identificadorCartao = ValeAlimentacao.incrementoIdentificadorVA++;
-
           Double saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
           data1 = LocalDate.now();
           data2 = LocalDate.now().plusYears(2);
@@ -179,8 +173,10 @@ public class Ferramentas {
 
           //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
           identificadorCartao = ValeRefeicao.incrementoIdentificadorVR++;
-
           saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
+          data1 = LocalDate.now();
+          data2 = LocalDate.now().plusYears(2);
+
           ValeRefeicao.listaCartoesVR.add(new ValeRefeicao(identificadorCartao, nome, senha,
                   saldoCartao, data1, data2));
 
@@ -199,8 +195,11 @@ public class Ferramentas {
           //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
           identificadorCartao = ValeCombustivel.incrementoIdentificadorVC++;
           saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
-          ValeCombustivel.listaCartoesVC.add(new ValeCombustivel(identificadorCartao, nome,
-                  senha, saldoCartao, data1, data2));
+          data1 = LocalDate.now();
+          data2 = LocalDate.now().plusYears(2);
+
+          ValeCombustivel.listaCartoesVC.add(new ValeCombustivel(identificadorCartao, nome, senha,
+                  saldoCartao, data1, data2));
 
           System.out.println("-----------------------------------------------------------------");
           System.out.println("- Cadastro realizado com sucesso!                               -");
@@ -240,39 +239,28 @@ public class Ferramentas {
 
     Scanner in = new Scanner(System.in);
 
-    //Instancia classes para efetuar o cadastro dos cartões
-    ValeAlimentacao va1 = new ValeAlimentacao();
-    ValeRefeicao vr1 = new ValeRefeicao();
-    ValeCombustivel vc1 = new ValeCombustivel();
-
     //Declara variáveis necessárias
-    String nome1, senha1;
-    LocalDate data10, data20;
+    String nome, senha;
+    LocalDate data1, data2;
     char opcao1 = 's';
 
     //Solicita entrada de nome e senha ao usuário
     System.out.println("=================================================================");
     System.out.println("= Menu -> Cadastrar: Vale Alimentação                           =");
     System.out.println("=================================================================");
-    nome1 = Beneficiario.listaBeneficiarios.get(0).getNomeBeneficiario();
+    nome = Beneficiario.listaBeneficiarios.get(0).getNomeBeneficiario();
     System.out.println("- Digite uma senha para usar o cartão:                          -");
     System.out.print("- Senha: ");
-    senha1 = in.nextLine().trim();
+    senha = in.nextLine().trim();
     System.out.println("-                                                               -");
 
-    //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
-    va1.identificadorCartao = ValeAlimentacao.incrementoIdentificadorVA;
-    va1.senhaCartao = senha1;
+    Integer identificadorCartao = ValeAlimentacao.incrementoIdentificadorVA++;
+    Double saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
+    data1 = LocalDate.now();
+    data2 = LocalDate.now().plusYears(2);
 
-    //Atribui um valor aleatório de saldo entre 200 e 1000 para o beneficiário
-    Double valorAleatorioSaldoA = Ferramentas.valorAleatorioEntre200e1000();
-    va1.saldoCartao = valorAleatorioSaldoA;
-    va1.criaDataDeCadastro();
-    data10 = va1.dataDoCadastro;
-    data20 = va1.validadeCartao;
-    va1.criaDataDeValidade();
-    ValeAlimentacao.listaCartoesVA.add(new ValeAlimentacao(ValeAlimentacao.incrementoIdentificadorVA++, nome1, senha1,
-            valorAleatorioSaldoA, data10, data20));
+    ValeAlimentacao.listaCartoesVA.add(new ValeAlimentacao(identificadorCartao, nome, senha,
+            saldoCartao, data1, data2));
 
     System.out.println("-----------------------------------------------------------------");
     System.out.println("- Cadastro realizado com sucesso!                               -");
@@ -283,25 +271,17 @@ public class Ferramentas {
     System.out.println("=================================================================");
     System.out.println("- Digite uma senha para usar o cartão:                          -");
     System.out.print("- Senha: ");
-    senha1 = in.nextLine().trim();
+    senha = in.nextLine().trim();
     System.out.println("-                                                               -");
 
     //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
-    vr1.identificadorCartao = ValeRefeicao.incrementoIdentificadorVR;
-    vr1.senhaCartao = senha1;
+    identificadorCartao = ValeRefeicao.incrementoIdentificadorVR++;
+    saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
+    data1 = LocalDate.now();
+    data2 = LocalDate.now().plusYears(2);
 
-    //Atribui um valor aleatório de saldo entre 200 e 1000 para o beneficiário
-    Double valorAleatorioSaldoB = Ferramentas.valorAleatorioEntre200e1000();
-    vr1.saldoCartao = valorAleatorioSaldoB;
-
-    vr1.criaDataDeCadastro();
-    data10 = vr1.dataDoCadastro;
-    data20 = vr1.validadeCartao;
-    vr1.criaDataDeValidade();
-
-    //Adiciona o novo cartão VR na lista de cartões VR
-    ValeRefeicao.listaCartoesVR.add(new ValeRefeicao(ValeRefeicao.incrementoIdentificadorVR++, nome1, senha1,
-            valorAleatorioSaldoB, data10, data20));
+    ValeRefeicao.listaCartoesVR.add(new ValeRefeicao(identificadorCartao, nome, senha,
+            saldoCartao, data1, data2));
 
     System.out.println("-----------------------------------------------------------------");
     System.out.println("- Cadastro realizado com sucesso!                               -");
@@ -312,21 +292,17 @@ public class Ferramentas {
     System.out.println("=================================================================");
     System.out.println("- Digite uma senha para usar o cartão:                          -");
     System.out.print("- Senha: ");
-    senha1 = in.nextLine().trim();
+    senha = in.nextLine().trim();
     System.out.println("-                                                               -");
 
     //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
-    vc1.identificadorCartao = ValeCombustivel.incrementoIdentificadorVC;
-    vc1.senhaCartao = senha1;
+    identificadorCartao = ValeCombustivel.incrementoIdentificadorVC++;
+    saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
+    data1 = LocalDate.now();
+    data2 = LocalDate.now().plusYears(2);
 
-    Double valorAleatorioSaldoC = Ferramentas.valorAleatorioEntre200e1000();
-    vc1.saldoCartao = valorAleatorioSaldoC;
-    vc1.criaDataDeCadastro();
-    data10 = vc1.dataDoCadastro;
-    data20 = vc1.validadeCartao;
-    vc1.criaDataDeValidade();
-    ValeCombustivel.listaCartoesVC.add(new ValeCombustivel(ValeCombustivel.incrementoIdentificadorVC++, nome1, senha1,
-            valorAleatorioSaldoC, data10, data20));
+    ValeCombustivel.listaCartoesVC.add(new ValeCombustivel(identificadorCartao, nome, senha,
+            saldoCartao, data1, data2));
 
     System.out.println("-----------------------------------------------------------------");
     System.out.println("- Cadastro realizado com sucesso!                               -");

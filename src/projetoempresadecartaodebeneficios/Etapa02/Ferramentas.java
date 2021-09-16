@@ -2,9 +2,7 @@ package projetoempresadecartaodebeneficios.Etapa02;
 
 //Importa bibliotecas
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Random;
 import java.util.Scanner;
@@ -22,26 +20,6 @@ import java.util.Scanner;
  */
 
 public class Ferramentas {
-  //Formata a data para exibição padrão "dd/MM/yyyy"
-  public static void formatarDataPadrao(LocalDate data1) {
-
-    LocalDate dt1 = LocalDate.parse(data1.toString(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-    System.out.println(dt1.format(formatter));
-  }
-
-  //Formata a data e hora para exibição padrão "dd/MM/yyyy HH:mm:ss"
-  public static void formatarDataHoraPadrao(LocalDateTime evt1) {
-
-    LocalDate evento1 = LocalDate.parse(evt1.toString(), DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-
-    System.out.println(evento1.format(formatter));
-  }
-
   //Verifica se passou 30 segundos desde a última transação do cartão
   //True se passou, false se ainda precisa esperar
   public static boolean verificaTempoSegundos(LocalTime ultimaCompra) {
@@ -135,9 +113,9 @@ public class Ferramentas {
     //Declara variáveis necessárias
     String nome, senha;
     LocalDate data1, data2;
-    char opcao = 's';
+    char opcao;
 
-    int i = 0;
+    int i;
 
     do {
       Ferramentas.imprimeLinhaDupla();

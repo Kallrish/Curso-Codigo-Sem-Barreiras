@@ -261,7 +261,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
         //Regra específica 1 do VC: Verifica se é posto de combustível
         if (identicadorDoEstabelecimento.equals("Posto Delta")) {
           Ferramentas.imprimeEspacador();
-          System.out.println("- Não é possível usar este benefício neste estabelecimento!      -");
+          System.out.println("- Só é possível usar este benefício em postos de combustível!      -");
           Ferramentas.imprimeEspacador();
 
           //Verifica se é valor negativo
@@ -297,6 +297,13 @@ public class ValeCombustivel extends CartaoDeBeneficio {
           System.out.println("- Você não pode realizar mais que duas compras em 1 minuto!      -");
           Ferramentas.imprimeEspacador();
 
+          //Regra específica 2 do VC: Uma compra a cada 2 minutos
+        } else if (!Ferramentas.verificaTempoDoisMinutos(horaUltimaCompra)) {
+          Ferramentas.imprimeEspacador();
+          System.out.println("- Você só pode realizar uma transação a cada 2 minutos!         -");
+          Ferramentas.imprimeEspacador();
+
+
           //Se tudo está correto, finaliza o cadastro
         } else {
           // Armazena os dados da transação no lista de transações
@@ -306,12 +313,13 @@ public class ValeCombustivel extends CartaoDeBeneficio {
                   codigoEstabelecimento, valorDaTransacao));
 
           ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao -= valorDaTransacao;
-          ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao += valorDaTransacao * 0.015;
+          //Regra específica 3 do VC: Desconta R$1 de taxa do saldo.
+          ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao -= 1.00;
           Double exibeSaldo = ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao;
 
           Ferramentas.imprimeLinha();
           System.out.println("- Compra efetuada com sucesso!                                   -");
-          System.out.printf("- Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.015);
+          System.out.printf("- Foi adicionada uma taxa de R$1,00 ao abastecimento.");
           System.out.printf("- Seu saldo atual: R$%.2f.", exibeSaldo);
           Ferramentas.imprimeEspacador();
         }
@@ -350,7 +358,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
   //Método para mostrar o saldo de forma formatada ao usuário
   public static void mostrarSaldo(Double saldoAtual1) {
     Ferramentas.imprimeEspacador();
-    System.out.printf("- Vale Alimentação: R$%.2f.%n", saldoAtual1);
+    System.out.printf("- Vale Combustível: R$%.2f.%n", saldoAtual1);
     Ferramentas.imprimeEspacador();
   }
 
@@ -371,26 +379,26 @@ public class ValeCombustivel extends CartaoDeBeneficio {
     ValeCombustivel.listaCartoesVC.get(index).saldoCartao = pegaValorAtual + valor;
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null)
-      return false;
-
-    if (!(obj instanceof ValeCombustivel))
-      return false;
-
-    if (obj == this)
-      return true;
-
-    ValeCombustivel p = (ValeCombustivel) obj;
-
-    // Aqui você implementa como deve se feita a comparação.
-    // Verifica se os nomes dos produtos são iguais, ids e etc.
-
-    if (p.nomeBeneficiario == this.nomeBeneficiario) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+//  @Override
+//  public boolean equals(Object obj) {
+//    if (obj == null)
+//      return false;
+//
+//    if (!(obj instanceof ValeCombustivel))
+//      return false;
+//
+//    if (obj == this)
+//      return true;
+//
+//    ValeCombustivel p = (ValeCombustivel) obj;
+//
+//    // Aqui você implementa como deve se feita a comparação.
+//    // Verifica se os nomes dos produtos são iguais, ids e etc.
+//
+//    if (p.nomeBeneficiario == this.nomeBeneficiario) {
+//      return true;
+//    } else {
+//      return false;
+//    }
+//  }
 }

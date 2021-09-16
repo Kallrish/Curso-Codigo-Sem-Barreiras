@@ -18,7 +18,8 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
   public static List<ValeAlimentacao> listaCartoesVA = new ArrayList<>();
 
   //Construtor padrão
-  public ValeAlimentacao() {}
+  public ValeAlimentacao() {
+  }
 
   //Construtor com passagem de parâmetros para construir a lista
   public ValeAlimentacao(Integer identificadorCartao, String nomeBeneficiario, String senhaCartao,
@@ -50,12 +51,12 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
     Double saldoAtual = 0.00;
     String identicadorDoEstabelecimento;
     String localizacaoEstabelecimento;
+    String tipoEstabelecimento;
     String nome = "", senha;
     String codigoEstabelecimento;
     Character opcao = 's';
     Character opcao1 = 's';
     Integer opcao2;
-    Boolean senhaOK = false;
     Integer index = ValeAlimentacao.listaTransacoes.size() - 1;
     Integer i;
     Integer verificaSituacaoListaTransacoes;
@@ -69,51 +70,48 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
       ValeAlimentacao.voltaMenuPrincipalVA = false;
       ValeRefeicao.voltaMenuPrincipalVR = false;
       ValeCombustivel.voltaMenuPrincipalVC = false;
-      //Se a senha não está correta, retorna para solicitar novamente
-      //Se a senha está OK, pula direto para cadastrar transações a partir da segunda vez no laço
-      if (!senhaOK) {
+      //Solicita o nome e a senha para entrar no cadastro
+      do {
+        nome = null;
+        senha = null;
+        Ferramentas.imprimeLinhaDupla();
+        System.out.println("= Menu -> Cadastrar: Transação -> Login                         =");
+        Ferramentas.imprimeLinhaDupla();
+        System.out.println("- Insira o nome do(a) beneficiário(a):                          -");
+        System.out.print("- Nome: ");
+        nome = in.nextLine().trim();
+        Ferramentas.imprimeEspacador();
+        System.out.println("- Digite uma senha para usar o cartão:                          -");
+        System.out.print("- Senha: ");
+        senha = in.nextLine().trim();
+        Ferramentas.imprimeEspacador();
 
-        //Solicita o nome e a senha para entrar no cadastro
-        do {
-          Ferramentas.imprimeLinhaDupla();
-          System.out.println("= Menu -> Cadastrar: Transação -> Login                         =");
-          Ferramentas.imprimeLinhaDupla();
-          System.out.println("- Insira o nome do(a) beneficiário(a):                          -");
-          System.out.print("- Nome: ");
-          nome = in.nextLine().trim();
+        //Verifica se já existem os dados de login informados
+        for (i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
+          if (ValeAlimentacao.listaCartoesVA.get(i).nomeBeneficiario.equals(nome) &&
+                  ValeAlimentacao.listaCartoesVA.get(i).senhaCartao.equals(senha)) {
+            saldoAtual = ValeAlimentacao.listaCartoesVA.get(i).saldoCartao;
+            iCerto = i;
+            verificador = true;
+            identificadorDoCartao = ValeAlimentacao.listaCartoesVA.get(iCerto).identificadorCartao;
+            opcao = 'n';
+          }
+        }
+        //Se os dados de login estão errados, pergunta se quer tentar novamente
+        //ou se prefere retornar ao menu principal
+        if (!verificador) {
+          Ferramentas.imprimeLinha();
+          System.out.println("- Nome e/ou senha estão incorretos!                             -");
+          Ferramentas.imprimeLinha();
+          System.out.println("- Deseja tentar digitar usuário e senha outra vez?              -");
+          System.out.println("- Digite [s] para SIM e [n] para NÃO.                           -");
+          Ferramentas.imprimeLinha();
+          System.out.print("- Opção: ");
+          opcao = in.nextLine().trim().toLowerCase().charAt(0);
           Ferramentas.imprimeEspacador();
-          System.out.println("- Digite uma senha para usar o cartão:                          -");
-          System.out.print("- Senha: ");
-          senha = in.nextLine().trim();
-          Ferramentas.imprimeEspacador();
+        }
+      } while (opcao != 'n');
 
-          //Verifica se já existem os dados de login informados
-          for (i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
-            if (ValeAlimentacao.listaCartoesVA.get(i).nomeBeneficiario.equals(nome) &&
-                    ValeAlimentacao.listaCartoesVA.get(i).senhaCartao.equals(senha)) {
-              saldoAtual = ValeAlimentacao.listaCartoesVA.get(i).saldoCartao;
-              iCerto = i;
-              verificador = true;
-              identificadorDoCartao = ValeAlimentacao.listaCartoesVA.get(iCerto).identificadorCartao;
-              senhaOK = true;
-              opcao = 'n';
-            }
-          }
-          //Se os dados de login estão errados, pergunta se quer tentar novamente
-          //ou se prefere retornar ao menu principal
-          if (!verificador) {
-            Ferramentas.imprimeLinha();
-            System.out.println("- Nome e/ou senha estão incorretos!                             -");
-            Ferramentas.imprimeLinha();
-            System.out.println("- Deseja tentar digitar usuário e senha outra vez?              -");
-            System.out.println("- Digite [s] para SIM e [n] para NÃO.                           -");
-            Ferramentas.imprimeLinha();
-            System.out.print("- Opção: ");
-            opcao = in.nextLine().trim().toLowerCase().charAt(0);
-            Ferramentas.imprimeEspacador();
-          }
-        } while (opcao != 'n');
-      }
 
       Ferramentas.imprimeLinhaDupla();
       System.out.println("= Menu -> Cadastrar: Transação no Vale Alimentação               =");
@@ -132,6 +130,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
       //Atribui dados da lista estabelecimento para cadastrar a transação na lista
       identicadorDoEstabelecimento = Estabelecimento.buscaEstabelecimento(codigoEstabelecimento);
       localizacaoEstabelecimento = Estabelecimento.buscaLocalizacaoEstabelecimento(codigoEstabelecimento);
+      tipoEstabelecimento = Estabelecimento.buscaTipoEstabelecimento(codigoEstabelecimento);
       Ferramentas.imprimeEspacador();
       System.out.println("- Qual o valor da transação?                                    -");
       valorDaTransacao = in.nextDouble();
@@ -175,7 +174,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
           dataDoCadastroTransacao = LocalDateTime.now();
           listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
-                  codigoEstabelecimento, valorDaTransacao));
+                  tipoEstabelecimento, valorDaTransacao));
 
           ValeAlimentacao.listaCartoesVA.get(iCerto).saldoCartao -= valorDaTransacao;
           ValeAlimentacao.listaCartoesVA.get(iCerto).saldoCartao += valorDaTransacao * 0.015;
@@ -323,17 +322,15 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
       do {
         Ferramentas.imprimeLinha();
         System.out.println("- Escolha uma opção:                                             -");
-        System.out.println("- [1] Inserir nova transação no V. Alimentação deste usuário     -");
-        System.out.println("- [2] Inserir nova transação no V. Alimentação de outro usuário  -");
-        System.out.println("- [3] Retorna ao menu principal                                  -");
+        System.out.println("- [1] Inserir nova transação                                     -");
+        System.out.println("- [2] Retorna ao menu principal                                  -");
         Ferramentas.imprimeEspacador();
         System.out.print("- Opção: ");
         opcao2 = in.nextInt();
 
         switch (opcao2) {
-          case 1 -> Ferramentas.imprimeEspacador();
-          case 2 -> senhaOK = false;
-          case 3 -> {
+          case 1 -> opcao1 = 'n';
+          case 2 -> {
             opcao1 = 'n';
             ValeAlimentacao.voltaMenuPrincipalVA = true;
             ValeRefeicao.voltaMenuPrincipalVR = true;
@@ -373,26 +370,26 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
     ValeAlimentacao.listaCartoesVA.get(index).saldoCartao = pegaValorAtual + valor;
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null)
-      return false;
-
-    if (!(obj instanceof ValeAlimentacao))
-      return false;
-
-    if (obj == this)
-      return true;
-
-    ValeAlimentacao p = (ValeAlimentacao) obj;
-
-    // Aqui você implementa como deve se feita a comparação.
-    // Verifica se os nomes dos produtos são iguais, ids e etc.
-
-    if (p.nomeBeneficiario == this.nomeBeneficiario) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+//  @Override
+//  public boolean equals(Object obj) {
+//    if (obj == null)
+//      return false;
+//
+//    if (!(obj instanceof ValeAlimentacao))
+//      return false;
+//
+//    if (obj == this)
+//      return true;
+//
+//    ValeAlimentacao p = (ValeAlimentacao) obj;
+//
+//    // Aqui você implementa como deve se feita a comparação.
+//    // Verifica se os nomes dos produtos são iguais, ids e etc.
+//
+//    if (p.nomeBeneficiario == this.nomeBeneficiario) {
+//      return true;
+//    } else {
+//      return false;
+//    }
+//  }
 }

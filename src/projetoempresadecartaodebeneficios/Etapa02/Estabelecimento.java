@@ -67,6 +67,18 @@ public class Estabelecimento {
     return "";
   }
 
+  public static String buscaTipoEstabelecimento(String codigoEstabelecimento) {
+    for (int i = 0; i < listaEstabelecimentos.size(); i++) {
+      if (listaEstabelecimentos.get(i).identificadorEstabelecimento.equals(codigoEstabelecimento)) {
+        return listaEstabelecimentos.get(i).tipoEstabelecimento;
+      }
+    }
+    Ferramentas.imprimeLinha();
+    System.out.println("- O código digitado está errado!                                -");
+    Ferramentas.imprimeLinha();
+    return "";
+  }
+
   public String getIdentificadorEstabelecimento() {
     return identificadorEstabelecimento;
   }
@@ -83,26 +95,26 @@ public class Estabelecimento {
     return localizacaoEstabelecimento;
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null)
-      return false;
-
-    if (!(obj instanceof Estabelecimento))
-      return false;
-
-    if (obj == this)
-      return true;
-
-    Estabelecimento p = (Estabelecimento) obj;
-
-    // Aqui você implementa como deve se feita a comparação.
-    // Verifica se os nomes dos produtos são iguais, ids e etc.
-
-    if (p.identificadorEstabelecimento == this.identificadorEstabelecimento) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+//  @Override
+//  public boolean equals(Object obj) {
+//    if (obj == null)
+//      return false;
+//
+//    if (!(obj instanceof Estabelecimento))
+//      return false;
+//
+//    if (obj == this)
+//      return true;
+//
+//    Estabelecimento p = (Estabelecimento) obj;
+//
+//    // Aqui você implementa como deve se feita a comparação.
+//    // Verifica se os nomes dos produtos são iguais, ids e etc.
+//
+//    if (p.identificadorEstabelecimento == this.identificadorEstabelecimento) {
+//      return true;
+//    } else {
+//      return false;
+//    }
+//  }
 }

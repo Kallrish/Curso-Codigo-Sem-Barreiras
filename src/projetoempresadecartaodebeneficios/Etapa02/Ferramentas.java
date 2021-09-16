@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 
 public class Ferramentas {
-
   //Formata a data para exibição padrão "dd/MM/yyyy"
   public static void formatarDataPadrao(LocalDate data1) {
 
@@ -683,10 +682,11 @@ public class Ferramentas {
               System.out.print("- Número do cartão: ");
               System.out.println(ValeAlimentacao.listaTransacoes.get(i).identificadorDoCartao);
               System.out.print("- Data e hora da transação: ");
-              LocalDateTime dataEHora = ValeAlimentacao.listaTransacoes.get(i).dataHoraTransacao;
-              formatarDataHoraPadrao(dataEHora);
+              System.out.println(ValeAlimentacao.listaTransacoes.get(i).dataHoraTransacao);
               System.out.print("- Identificador do estabelecimento: ");
               System.out.println(ValeAlimentacao.listaTransacoes.get(i).identicadorDoEstabelecimento);
+
+
               System.out.print("- Tipo do estabelecimento: ");
               System.out.println(ValeAlimentacao.listaTransacoes.get(i).tipoDoEstabelecimento);
               System.out.print("- Localização do estabelecimento: ");
@@ -725,8 +725,7 @@ public class Ferramentas {
               System.out.print("- Número do cartão: ");
               System.out.println(ValeRefeicao.listaTransacoes.get(i).identificadorDoCartao);
               System.out.print("- Data e hora da transação: ");
-              LocalDateTime dataEHora = ValeRefeicao.listaTransacoes.get(i).dataHoraTransacao;
-              formatarDataHoraPadrao(dataEHora);
+              System.out.println(ValeRefeicao.listaTransacoes.get(i).dataHoraTransacao);
               System.out.print("- Identificador do estabelecimento: ");
               System.out.println(ValeRefeicao.listaTransacoes.get(i).identicadorDoEstabelecimento);
               System.out.print("- Tipo do estabelecimento: ");
@@ -766,9 +765,8 @@ public class Ferramentas {
               System.out.println(ValeCombustivel.listaTransacoes.get(i).identificadorDaTransacao);
               System.out.print("- Número do cartão: ");
               System.out.println(ValeCombustivel.listaTransacoes.get(i).identificadorDoCartao);
-              System.out.print("- Data e hora da transação: ");
-              LocalDateTime dataEHora = ValeCombustivel.listaTransacoes.get(i).dataHoraTransacao;
-              formatarDataHoraPadrao(dataEHora);
+              System.out.print("- Data e hora: ");
+              System.out.println(ValeCombustivel.listaTransacoes.get(i).dataHoraTransacao);
               System.out.print("- Identificador do estabelecimento: ");
               System.out.println(ValeCombustivel.listaTransacoes.get(i).identicadorDoEstabelecimento);
               System.out.print("- Tipo do estabelecimento: ");

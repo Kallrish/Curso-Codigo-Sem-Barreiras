@@ -119,27 +119,27 @@ public class Beneficiario {
     this.nomeBeneficiario = nomeBeneficiario;
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null)
-      return false;
-
-    if (!(obj instanceof Beneficiario))
-      return false;
-
-    if (obj == this)
-      return true;
-
-    Beneficiario p = (Beneficiario) obj;
-
-    // Aqui você implementa como deve se feita a comparação.
-    // Verifica se os nomes dos produtos são iguais, ids e etc.
-
-    if (p.nomeBeneficiario == this.nomeBeneficiario) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+//  @Override
+//  public boolean equals(Object obj) {
+//    if (obj == null)
+//      return false;
+//
+//    if (!(obj instanceof Beneficiario))
+//      return false;
+//
+//    if (obj == this)
+//      return true;
+//
+//    Beneficiario p = (Beneficiario) obj;
+//
+//    // Aqui você implementa como deve se feita a comparação.
+//    // Verifica se os nomes dos produtos são iguais, ids e etc.
+//
+//    if (p.nomeBeneficiario == this.nomeBeneficiario) {
+//      return true;
+//    } else {
+//      return false;
+//    }
+//  }
 
 }

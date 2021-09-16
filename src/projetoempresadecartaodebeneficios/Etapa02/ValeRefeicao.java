@@ -257,14 +257,8 @@ public class ValeRefeicao extends CartaoDeBeneficio {
         dataHoraPenultimaCompra = ValeRefeicao.listaTransacoes.get(index - 1).dataHoraTransacao;
         horaPenultimaCompra = dataHoraPenultimaCompra.toLocalTime();
 
-        //Regra específica 1 do VR: Verifica se é posto de combustível
-        if (identicadorDoEstabelecimento.equals("Posto Delta")) {
-          Ferramentas.imprimeEspacador();
-          System.out.println("- Não é possível usar este benefício neste estabelecimento!      -");
-          Ferramentas.imprimeEspacador();
-
-          //Verifica se é valor negativo
-        } else if (valorDaTransacao < 0) {
+        //Verifica valor negativo
+        if (valorDaTransacao < 0) {
           Ferramentas.imprimeEspacador();
           System.out.println("- Digite um valor maior que zero!                                -");
           Ferramentas.imprimeEspacador();
@@ -305,12 +299,12 @@ public class ValeRefeicao extends CartaoDeBeneficio {
                   codigoEstabelecimento, valorDaTransacao));
 
           ValeRefeicao.listaCartoesVR.get(iCerto).saldoCartao -= valorDaTransacao;
-          ValeRefeicao.listaCartoesVR.get(iCerto).saldoCartao += valorDaTransacao * 0.015;
+          ValeRefeicao.listaCartoesVR.get(iCerto).saldoCartao += valorDaTransacao * 0.03;
           Double exibeSaldo = ValeRefeicao.listaCartoesVR.get(iCerto).saldoCartao;
 
           Ferramentas.imprimeLinha();
           System.out.println("- Compra efetuada com sucesso!                                   -");
-          System.out.printf("- Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.015);
+          System.out.printf("- Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.03);
           System.out.printf("- Seu saldo atual: R$%.2f.", exibeSaldo);
           Ferramentas.imprimeEspacador();
         }
@@ -349,7 +343,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
   //Método para mostrar o saldo de forma formatada ao usuário
   public static void mostrarSaldo(Double saldoAtual1) {
     Ferramentas.imprimeEspacador();
-    System.out.printf("- Vale Alimentação: R$%.2f.%n", saldoAtual1);
+    System.out.printf("- Vale Refeição: R$%.2f.%n", saldoAtual1);
     Ferramentas.imprimeEspacador();
   }
 
@@ -370,26 +364,26 @@ public class ValeRefeicao extends CartaoDeBeneficio {
     ValeRefeicao.listaCartoesVR.get(index).saldoCartao = pegaValorAtual + valor;
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null)
-      return false;
-
-    if (!(obj instanceof ValeRefeicao))
-      return false;
-
-    if (obj == this)
-      return true;
-
-    ValeRefeicao p = (ValeRefeicao) obj;
-
-    // Aqui você implementa como deve se feita a comparação.
-    // Verifica se os nomes dos produtos são iguais, ids e etc.
-
-    if (p.nomeBeneficiario == this.nomeBeneficiario) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+//  @Override
+//  public boolean equals(Object obj) {
+//    if (obj == null)
+//      return false;
+//
+//    if (!(obj instanceof ValeRefeicao))
+//      return false;
+//
+//    if (obj == this)
+//      return true;
+//
+//    ValeRefeicao p = (ValeRefeicao) obj;
+//
+//    // Aqui você implementa como deve se feita a comparação.
+//    // Verifica se os nomes dos produtos são iguais, ids e etc.
+//
+//    if (p.nomeBeneficiario == this.nomeBeneficiario) {
+//      return true;
+//    } else {
+//      return false;
+//    }
+//  }
 }

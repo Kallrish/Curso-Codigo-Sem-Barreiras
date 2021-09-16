@@ -86,26 +86,26 @@ public class Transacao {
     this.valorDaTransacao = valorDaTransacao;
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null)
-      return false;
-
-    if (!(obj instanceof Transacao))
-      return false;
-
-    if (obj == this)
-      return true;
-
-    Transacao p = (Transacao) obj;
-
-    // Aqui você implementa como deve se feita a comparação.
-    // Verifica se os nomes dos produtos são iguais, ids e etc.
-
-    if (p.identificadorDaTransacao == this.identificadorDaTransacao) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+//  @Override
+//  public boolean equals(Object obj) {
+//    if (obj == null)
+//      return false;
+//
+//    if (!(obj instanceof Transacao))
+//      return false;
+//
+//    if (obj == this)
+//      return true;
+//
+//    Transacao p = (Transacao) obj;
+//
+//    // Aqui você implementa como deve se feita a comparação.
+//    // Verifica se os nomes dos produtos são iguais, ids e etc.
+//
+//    if (p.identificadorDaTransacao == this.identificadorDaTransacao) {
+//      return true;
+//    } else {
+//      return false;
+//    }
+//  }
 }

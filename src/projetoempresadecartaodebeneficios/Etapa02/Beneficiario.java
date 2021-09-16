@@ -107,7 +107,7 @@ public class Beneficiario {
             nomeBeneficiario1));
 
     Ferramentas.imprimeLinha();
-    System.out.println(">>>Cadastro realizado com sucesso!<<<");
+    System.out.println("- Cadastro realizado com sucesso!                               - ");
     Ferramentas.imprimeLinha();
   }
 

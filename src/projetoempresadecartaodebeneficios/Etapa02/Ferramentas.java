@@ -8,7 +8,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Random;
 import java.util.Scanner;
 
-
 public class Ferramentas {
   //Formata a data para exibição padrão "dd/MM/yyyy"
   public static void formatarDataPadrao(LocalDate data1) {
@@ -230,7 +229,7 @@ public class Ferramentas {
   public static void cadastrarCartoesBeneficioPrimeiravez() {
 
     Ferramentas.imprimeLinhaDupla();
-    System.out.println("= Menu -> Cadastrar: Novos cartões de benefício                 =");
+    System.out.println("= Menu -> Cadastrar: Novos cartões de benefício                   =");
     Ferramentas.imprimeLinhaDupla();
     Ferramentas.imprimeEspacador();
 
@@ -243,10 +242,10 @@ public class Ferramentas {
 
     //Solicita entrada de nome e senha ao usuário
     Ferramentas.imprimeLinhaDupla();
-    System.out.println("= Menu -> Cadastrar: Vale Alimentação                           =");
+    System.out.println("= Menu -> Cadastrar: Vale Alimentação                            =");
     Ferramentas.imprimeLinhaDupla();
     nome = Beneficiario.listaBeneficiarios.get(0).getNomeBeneficiario();
-    System.out.println("- Digite uma senha para usar o cartão:                          -");
+    System.out.println("- Digite uma senha para usar o cartão:                           -");
     System.out.print("- Senha: ");
     senha = in.nextLine().trim();
     Ferramentas.imprimeEspacador();
@@ -260,13 +259,13 @@ public class Ferramentas {
             saldoCartao, data1, data2));
 
     Ferramentas.imprimeLinha();
-    System.out.println("- Cadastro realizado com sucesso!                               -");
+    System.out.println("- Cadastro realizado com sucesso!                                -");
     Ferramentas.imprimeLinha();
     Ferramentas.imprimeEspacador();
     Ferramentas.imprimeLinhaDupla();
-    System.out.println("= Menu -> Cadastrar: Vale Refeição                              =");
+    System.out.println("= Menu -> Cadastrar: Vale Refeição                               =");
     Ferramentas.imprimeLinhaDupla();
-    System.out.println("- Digite uma senha para usar o cartão:                          -");
+    System.out.println("- Digite uma senha para usar o cartão:                           -");
     System.out.print("- Senha: ");
     senha = in.nextLine().trim();
     Ferramentas.imprimeEspacador();
@@ -281,13 +280,13 @@ public class Ferramentas {
             saldoCartao, data1, data2));
 
     Ferramentas.imprimeLinha();
-    System.out.println("- Cadastro realizado com sucesso!                               -");
+    System.out.println("- Cadastro realizado com sucesso!                                -");
     Ferramentas.imprimeLinha();
 
     Ferramentas.imprimeLinhaDupla();
-    System.out.println("= Menu -> Cadastrar: Vale Combustível                           =");
+    System.out.println("= Menu -> Cadastrar: Vale Combustível                            =");
     Ferramentas.imprimeLinhaDupla();
-    System.out.println("- Digite uma senha para usar o cartão:                          -");
+    System.out.println("- Digite uma senha para usar o cartão:                           -");
     System.out.print("- Senha: ");
     senha = in.nextLine().trim();
     Ferramentas.imprimeEspacador();
@@ -302,7 +301,7 @@ public class Ferramentas {
             saldoCartao, data1, data2));
 
     Ferramentas.imprimeLinha();
-    System.out.println("- Cadastro realizado com sucesso!                               -");
+    System.out.println("- Cadastro realizado com sucesso!                                -");
     Ferramentas.imprimeLinha();
   }
 
@@ -317,7 +316,6 @@ public class Ferramentas {
 
     Scanner in = new Scanner(System.in);
 
-    do {
       Ferramentas.imprimeLinhaDupla();
       System.out.println("= Menu -> Adicionar: Saldo em um cartão de benefício             =");
       Ferramentas.imprimeLinhaDupla();
@@ -411,13 +409,6 @@ public class Ferramentas {
           System.out.println("- Opção inválida! Digite uma opção dentre as disponíveis!      -");
         }
       }
-      System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-      Ferramentas.imprimeEspacador();
-      System.out.print("- Opção: ");
-      opcao = in.nextLine().trim().toLowerCase().charAt(0);
-      Ferramentas.imprimeEspacador();
-
-    } while (opcao == 's');
   }
 
   //Método para gerenciar o submenu 4: cadastrar transacoes em um cartão
@@ -870,8 +861,8 @@ public class Ferramentas {
     System.out.println("= Olá! Bem-vindo(a) ao gerenciador de benefícios da \"JavAlelo\"   =");
     Ferramentas.imprimeLinhaDupla();
     Ferramentas.imprimeEspacador();
-    System.out.println("-Para começar, você precisa cadastrar um beneficiário.           -");
-    System.out.println("-Vamos lá!                                                       -");
+    System.out.println("- Para começar, você precisa cadastrar um beneficiário.          -");
+    System.out.println("- Vamos lá!                                                      -");
     Ferramentas.imprimeEspacador();
 
     //Invoca o método para cadastrar o primeiro beneficiário
@@ -880,7 +871,6 @@ public class Ferramentas {
     System.out.println("- Perfeito!                                                      -");
     System.out.println("- Agora precisamos cadastrar os 3 cartões desse beneficiário.    -");
     Ferramentas.imprimeLinha();
-
 
     //Invoca o método para realizar o cadastro de cartões do primeiro beneficiário
     Ferramentas.cadastrarCartoesBeneficioPrimeiravez();

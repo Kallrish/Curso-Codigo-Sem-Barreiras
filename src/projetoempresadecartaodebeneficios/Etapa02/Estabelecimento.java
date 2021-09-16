@@ -45,23 +45,25 @@ public class Estabelecimento {
 
   public static String buscaEstabelecimento(String codigoEstabelecimento) {
     for (int i = 0; i < listaEstabelecimentos.size(); i++) {
-      if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().equals(codigoEstabelecimento)) {
+      if (listaEstabelecimentos.get(i).identificadorEstabelecimento.equals(codigoEstabelecimento)) {
         return listaEstabelecimentos.get(i).nomeEstabelecimento;
-      } else {
-        System.out.println("O código digitado está errado");
       }
     }
+    System.out.println("-----------------------------------------------------------------");
+    System.out.println("- O código digitado está errado!                                -");
+    System.out.println("-----------------------------------------------------------------");
     return "";
   }
 
   public static String buscaLocalizacaoEstabelecimento(String codigoEstabelecimento) {
     for (int i = 0; i < listaEstabelecimentos.size(); i++) {
-      if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().equals(codigoEstabelecimento)) {
+      if (listaEstabelecimentos.get(i).identificadorEstabelecimento.equals(codigoEstabelecimento)) {
         return listaEstabelecimentos.get(i).localizacaoEstabelecimento;
-      } else {
-        System.out.println("O código digitado está errado");
       }
     }
+    System.out.println("-----------------------------------------------------------------");
+    System.out.println("- O código digitado está errado!                                -");
+    System.out.println("-----------------------------------------------------------------");
     return "";
   }
 

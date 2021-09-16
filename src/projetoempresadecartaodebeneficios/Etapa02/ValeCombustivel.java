@@ -1,11 +1,25 @@
 package projetoempresadecartaodebeneficios.Etapa02;
 
+//Importa bibliotecas
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+/**
+ * Projeto Empresa de Cartão de Benefícios.- Etapa 02
+ * Trabalho em grupo - Grupo JavAlelo.
+ * Curso Java - Share RH & Alelo".
+ * Para mais detalhes, acesse o "Readme.txt" no GITHUB.
+ *
+ * @author Jonatas, Ana Paula Rodrigues,
+ * @author Antônio Carlos, Natália, Karina, Giovanna, Cristovão, Sérgio.
+ *
+ * @version 2.5
+ */
 
 public class ValeCombustivel extends CartaoDeBeneficio {
 
@@ -42,16 +56,18 @@ public class ValeCombustivel extends CartaoDeBeneficio {
     //Cria as variáveis necessárias
     Integer identificadorDoCartao = 0;
     LocalDateTime dataDoCadastroTransacao;
-    Double valorDaTransacao;
+    Double valorDaTransacao = 0.00;
     LocalTime horaUltimaCompra;
     Double valorUltimaCompra;
     LocalTime horaPenultimaCompra;
     LocalDateTime dataHoraUltimaCompra;
     LocalDateTime dataHoraPenultimaCompra;
     Double saldoAtual = 0.00;
-    String identicadorDoEstabelecimento;
-    String localizacaoEstabelecimento;
-    String tipoEstabelecimento;
+    String identicadorDoEstabelecimento = "";
+    String localizacaoEstabelecimento = "";
+    String tipoEstabelecimento = "";
+    Integer escolhaEstabelecimento;
+    String codigoEstabelecimento = "";
     String nome = "", senha;
     Character opcao = 's';
     Character opcao1 = 's';
@@ -117,28 +133,37 @@ public class ValeCombustivel extends CartaoDeBeneficio {
       }
 
       Ferramentas.imprimeLinhaDupla();
-      System.out.println("= Menu -> Cadastrar: Transação no Vale Alimentação               =");
+      System.out.println("= Menu -> Cadastrar: Transação no Combustível                    =");
       Ferramentas.imprimeLinhaDupla();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o código do estabelecimento onde foi efetuada a compra: -");
-      System.out.println("- [PO01] - Posto Delta                                           -");
-      System.out.println("- [ME01] - Mercearia São José                                    -");
-      System.out.println("- [SU01] - Supermercado ABC                                      -");
-      System.out.println("- [PA01] - Padaria Sonhos                                        -");
-      System.out.println("- [RE01] - Restaurante La Marmita                                -");
+      System.out.println("- [1] - Posto Delta                                              -");
+      System.out.println("- [2] - Mercearia São José                                       -");
+      System.out.println("- [3] - Supermercado ABC                                         -");
+      System.out.println("- [4] - Padaria Sonhos                                           -");
+      System.out.println("- [5] - Restaurante La Marmita                                   -");
       System.out.print("- Código: ");
-      String codigoEstabelecimento = in.nextLine().trim();
-      Ferramentas.imprimeEspacador();
+      escolhaEstabelecimento = in.nextInt();
 
-      //Atribui dados da lista estabelecimento para cadastrar a transação na lista
-      identicadorDoEstabelecimento = Estabelecimento.buscaEstabelecimento(codigoEstabelecimento);
-      localizacaoEstabelecimento = Estabelecimento.buscaLocalizacaoEstabelecimento(codigoEstabelecimento);
-      tipoEstabelecimento = Estabelecimento.buscaTipoEstabelecimento(codigoEstabelecimento);
 
-      Ferramentas.imprimeEspacador();
-      System.out.println("- Qual o valor da transação?                                    -");
-      valorDaTransacao = in.nextDouble();
-      Ferramentas.imprimeEspacador();
+      switch (escolhaEstabelecimento) {
+        case 1 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(0).identificadorEstabelecimento;
+        }
+        case 2 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(1).identificadorEstabelecimento;
+        }
+        case 3 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(2).identificadorEstabelecimento;
+        }
+        case 4 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(3).identificadorEstabelecimento;
+        }
+        case 5 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(4).identificadorEstabelecimento;
+        }
+        default -> {System.out.println("- Código não existe!                                             -");}
+      }
 
       //Variável pega o tamanho do array de transações para realizar verificação
       verificaSituacaoListaTransacoes = ValeCombustivel.listaTransacoes.size();

@@ -1,5 +1,6 @@
 package projetoempresadecartaodebeneficios.Etapa02;
 
+//Importa bibliotecas
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -7,6 +8,18 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Random;
 import java.util.Scanner;
+
+/**
+ * Projeto Empresa de Cartão de Benefícios.- Etapa 02
+ * Trabalho em grupo - Grupo JavAlelo.
+ * Curso Java - Share RH & Alelo".
+ * Para mais detalhes, acesse o "Readme.txt" no GITHUB.
+ *
+ * @author Jonatas, Ana Paula Rodrigues,
+ * @author Antônio Carlos, Natália, Karina, Giovanna, Cristovão, Sérgio.
+ *
+ * @version 2.5
+ */
 
 public class Ferramentas {
   //Formata a data para exibição padrão "dd/MM/yyyy"
@@ -345,7 +358,7 @@ public class Ferramentas {
               Double saldoFinal = ValeAlimentacao.listaCartoesVA.get(i).saldoCartao;
               Ferramentas.imprimeLinha();
               System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
-              System.out.println("- Agora o saldo do Vale Combustível de                           -");
+              System.out.println("- Agora o saldo do Vale Alimentação de                            -");
               System.out.printf("%s é %.2f!%n", nome, saldoFinal);
               Ferramentas.imprimeEspacador();
             }
@@ -368,7 +381,7 @@ public class Ferramentas {
               Double saldoFinal = ValeRefeicao.listaCartoesVR.get(i).saldoCartao;
               Ferramentas.imprimeLinha();
               System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
-              System.out.println("- Agora o saldo do Vale Combustível de                           -");
+              System.out.println("- Agora o saldo do Vale Refeição de                              -");
               System.out.printf("%s é %.2f!%n", nome, saldoFinal);
               Ferramentas.imprimeEspacador();
             }
@@ -606,7 +619,7 @@ public class Ferramentas {
           ValeRefeicao.mostrarSaldo(saldoAtualVR);
           ValeCombustivel.mostrarSaldo(saldoAtualVC);
           Ferramentas.imprimeLinha();
-          System.out.println("- Deseja cadastrar outro beneficiário?                           -");
+          System.out.println("- Deseja verificar outro saldo?                                  -");
           System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
           Ferramentas.imprimeLinha();
           System.out.print("- Opção: ");

@@ -1,11 +1,24 @@
 package projetoempresadecartaodebeneficios.Etapa02;
 
+//Importa bibliotecas
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+/**
+ * Projeto Empresa de Cartão de Benefícios.- Etapa 02
+ * Trabalho em grupo - Grupo JavAlelo.
+ * Curso Java - Share RH & Alelo".
+ * Para mais detalhes, acesse o "Readme.txt" no GITHUB.
+ *
+ * @author Jonatas, Ana Paula Rodrigues,
+ * @author Antônio Carlos, Natália, Karina, Giovanna, Cristovão, Sérgio.
+ *
+ * @version 2.5
+ */
 
 public class ValeAlimentacao extends CartaoDeBeneficio {
 
@@ -52,8 +65,9 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
     String identicadorDoEstabelecimento;
     String localizacaoEstabelecimento;
     String tipoEstabelecimento;
+    Integer escolhaEstabelecimento;
     String nome = "", senha;
-    String codigoEstabelecimento;
+    String codigoEstabelecimento = "";
     Character opcao = 's';
     Character opcao1 = 's';
     Integer opcao2;
@@ -118,13 +132,34 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
       Ferramentas.imprimeLinhaDupla();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o código do estabelecimento onde foi efetuada a compra: -");
-      System.out.println("- [PO01] - Posto Delta                                           -");
-      System.out.println("- [ME01] - Mercearia São José                                    -");
-      System.out.println("- [SU01] - Supermercado ABC                                      -");
-      System.out.println("- [PA01] - Padaria Sonhos                                        -");
-      System.out.println("- [RE01] - Restaurante La Marmita                                -");
+      System.out.println("- [1] - Posto Delta                                              -");
+      System.out.println("- [2] - Mercearia São José                                       -");
+      System.out.println("- [3] - Supermercado ABC                                         -");
+      System.out.println("- [4] - Padaria Sonhos                                           -");
+      System.out.println("- [5] - Restaurante La Marmita                                   -");
       System.out.print("- Código: ");
-      codigoEstabelecimento = in.nextLine().trim();
+      escolhaEstabelecimento = in.nextInt();
+
+
+      switch (escolhaEstabelecimento) {
+        case 1 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(0).identificadorEstabelecimento;
+        }
+        case 2 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(1).identificadorEstabelecimento;
+        }
+        case 3 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(2).identificadorEstabelecimento;
+        }
+        case 4 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(3).identificadorEstabelecimento;
+        }
+        case 5 -> {
+          codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(4).identificadorEstabelecimento;
+        }
+        default -> {System.out.println("- Código não existe!                                             -");}
+      }
+
       Ferramentas.imprimeEspacador();
 
       //Atribui dados da lista estabelecimento para cadastrar a transação na lista

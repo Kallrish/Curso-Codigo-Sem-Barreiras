@@ -1,15 +1,28 @@
 package projetoempresadecartaodebeneficios.Etapa02;
 
+//Importa bibliotecas
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Projeto Empresa de Cartão de Benefícios.- Etapa 02
+ * Trabalho em grupo - Grupo JavAlelo.
+ * Curso Java - Share RH & Alelo".
+ * Para mais detalhes, acesse o "Readme.txt" no GITHUB.
+ *
+ * @author Jonatas, Ana Paula Rodrigues,
+ * @author Antônio Carlos, Natália, Karina, Giovanna, Cristovão, Sérgio.
+ *
+ * @version 2.5
+ */
 
 public class Estabelecimento {
 
   //Cria as variáveis necessárias para classe
-  private final String identificadorEstabelecimento;
-  private String nomeEstabelecimento;
-  private String tipoEstabelecimento;
-  private String localizacaoEstabelecimento;
+  public final String identificadorEstabelecimento;
+  public String nomeEstabelecimento;
+  public String tipoEstabelecimento;
+  public String localizacaoEstabelecimento;
 
   //Cria uma lista de dados inicializada com os estabelecimentos
   public static List<Estabelecimento> listaEstabelecimentos = new ArrayList<>();

@@ -78,7 +78,7 @@ public class Beneficiario {
       System.out.println("-                                                                -");
       System.out.println("------------------------------------------------------------------");
       System.out.println("- Deseja cadastrar outro beneficiário?                           -");
-      System.out.println("- Digite \"s\" para SIM e \"n\" para NÃO.                        -");
+      System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
       System.out.println("------------------------------------------------------------------");
       System.out.print("- Opção: ");
       System.out.println("-                                                                -");

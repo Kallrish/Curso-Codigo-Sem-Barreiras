@@ -156,14 +156,12 @@ public class Ferramentas {
           verificador = true;
 
           //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
-          Integer identificadorCartao = ValeAlimentacao.incrementoIdentificadorVA;
+          Integer identificadorCartao = ValeAlimentacao.incrementoIdentificadorVA++;
 
-          Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e1000();
-          Double saldoCartao = valorAleatorioSaldo;
-          //va.criaDataDeCadastro();
-          data1 = va.getDatadoCadastroVA();
-          data2 = va.getValidadeCartaoVA();
-          //va.criaDataDeValidade();
+          Double saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
+          data1 = LocalDate.now();
+          data2 = LocalDate.now().plusYears(2);
+
           ValeAlimentacao.listaCartoesVA.add(new ValeAlimentacao(identificadorCartao, nome, senha,
                   saldoCartao, data1, data2));
 
@@ -180,14 +178,9 @@ public class Ferramentas {
           System.out.println("-                                                               -");
 
           //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
-          identificadorCartao = ValeRefeicao.incrementoIdentificadorVR;
+          identificadorCartao = ValeRefeicao.incrementoIdentificadorVR++;
 
-          Double valorAleatorioSaldo2 = Ferramentas.valorAleatorioEntre200e1000();
-          saldoCartao = valorAleatorioSaldo2;
-          vr.criaDataDeCadastro();
-          data1 = vr.getDatadoCadastroVR();
-          data2 = vr.getValidadeCartaoVR();
-          vr.criaDataDeValidade();
+          saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
           ValeRefeicao.listaCartoesVR.add(new ValeRefeicao(identificadorCartao, nome, senha,
                   saldoCartao, data1, data2));
 
@@ -204,14 +197,8 @@ public class Ferramentas {
           System.out.println("-----------------------------------------------------------------");
 
           //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
-          identificadorCartao = ValeCombustivel.incrementoIdentificadorVC;
-
-
-          Double valorAleatorioSaldo3 = Ferramentas.valorAleatorioEntre200e1000();
-          saldoCartao = valorAleatorioSaldo3;
-          vc.criaDataDeCadastro();
-          data1 = vc.getDatadoCadastroVC();
-          data2 = vc.getValidadeCartaoVC();
+          identificadorCartao = ValeCombustivel.incrementoIdentificadorVC++;
+          saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
           ValeCombustivel.listaCartoesVC.add(new ValeCombustivel(identificadorCartao, nome,
                   senha, saldoCartao, data1, data2));
 
@@ -352,7 +339,7 @@ public class Ferramentas {
     //Cria as variáveis necessárias
     String vale, nome;
     Double valorParaAdicionar;
-    char option = 's';
+    char opcao = 's';
     boolean verificador = false;
 
     Scanner in = new Scanner(System.in);
@@ -368,10 +355,12 @@ public class Ferramentas {
       System.out.print("- Opção: ");
       vale = in.nextLine().trim();
       System.out.println("- Digite o nome do beneficiário:                                 -");
+      System.out.print("- Nome: ");
       nome = in.nextLine().trim();
       System.out.println("- Digite o valor a ser adicionado:                               -");
+      System.out.print("- Valor: ");
       valorParaAdicionar = in.nextDouble();
-      System.out.println("-                                                               -");
+      System.out.println("-                                                                -");
 
       if (vale.equals("va")) {
         //Laço para percorrer a lista de beneficiários
@@ -382,18 +371,17 @@ public class Ferramentas {
             verificador = true;
             ValeAlimentacao.adicionaSaldoVA(i, valorParaAdicionar);
             Double saldoFinal = ValeAlimentacao.listaCartoesVA.get(i).saldoCartao;
-            System.out.println("-----------------------------------------------------------------");
-            System.out.printf("- Valor de %.2f adicionado com sucesso!                        -", valorParaAdicionar);
-            System.out.println("- Agora o saldo do Vale Combustível de                          -");
-            System.out.printf("%s é %.2f!                                     -", nome, saldoFinal);
-            System.out.println("-                                                               -");
-
-            //Retorna mensagem de erro caso não encontra o beneficiário
+            System.out.println("------------------------------------------------------------------");
+            System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
+            System.out.println("- Agora o saldo do Vale Combustível de                           -");
+            System.out.printf("%s é %.2f!%n",nome, saldoFinal);
+            System.out.println("-                                                                -");
           }
 
           if (!verificador){
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("- O beneficiário não existe ou o valor é negativo!              -");
+            System.out.println("------------------------------------------------------------------");
+            System.out.println("- O beneficiário não existe ou o valor é negativo!               -");
+            System.out.println("-                                                                -");
 
           }
         }
@@ -407,11 +395,11 @@ public class Ferramentas {
             verificador = true;
             ValeRefeicao.adicionaSaldoVR(i, valorParaAdicionar);
             Double saldoFinal = ValeRefeicao.listaCartoesVR.get(i).saldoCartao;
-            System.out.println("-----------------------------------------------------------------");
-            System.out.printf("- Valor de %.2f adicionado com sucesso!                        -", valorParaAdicionar);
-            System.out.println("- Agora o saldo do Vale Combustível de                          -");
-            System.out.printf("%s é %.2f!                                     -", nome, saldoFinal);
-            System.out.println("-                                                               -");
+            System.out.println("------------------------------------------------------------------");
+            System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
+            System.out.println("- Agora o saldo do Vale Combustível de                           -");
+            System.out.printf("%s é %.2f!%n",nome, saldoFinal);
+            System.out.println("-                                                                -");
 
           }
           //Retorna mensagem de erro caso não encontra o beneficiário
@@ -421,7 +409,7 @@ public class Ferramentas {
             System.out.println("- Deseja tentar digitar outro nome?                             -");
             System.out.println("- Digite [s] para SIM e [n] para NÃO.                           -");
             System.out.print("- Opção: ");
-            option = in.nextLine().trim().toLowerCase().charAt(0);
+            opcao = in.nextLine().trim().toLowerCase().charAt(0);
             System.out.println("-                                                               -");
           }
         }
@@ -437,10 +425,10 @@ public class Ferramentas {
             ValeCombustivel.adicionaSaldoVC(i, valorParaAdicionar);
             Double saldoFinal = ValeCombustivel.listaCartoesVC.get(i).saldoCartao;
             System.out.println("-----------------------------------------------------------------");
-            System.out.printf("- Valor de %.2f adicionado com sucesso!                        -", valorParaAdicionar);
-            System.out.println("- Agora o saldo do Vale Combustível de                          -");
-            System.out.printf("%s é %.2f!                                     -", nome, saldoFinal);
-            System.out.println("-                                                               -");
+            System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
+            System.out.println("- Agora o saldo do Vale Combustível de                           -");
+            System.out.printf("%s é %.2f!%n",nome, saldoFinal);
+            System.out.println("-                                                                -");
 
             //Retorna mensagem de erro caso não encontra o beneficiário
           }
@@ -451,7 +439,7 @@ public class Ferramentas {
             System.out.println("- Deseja tentar digitar outro nome?                             -");
             System.out.println("- Digite [s] para SIM e [n] para NÃO.                           -");
             System.out.print("- Opção: ");
-            option = in.nextLine().trim().toLowerCase().charAt(0);
+            opcao = in.nextLine().trim().toLowerCase().charAt(0);
             System.out.println("-                                                               -");
           }
         }
@@ -463,10 +451,10 @@ public class Ferramentas {
       System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
       System.out.println("-                                                                -");
       System.out.print("- Opção: ");
-      option = in.nextLine().trim().toLowerCase().charAt(0);
+      opcao = in.nextLine().trim().toLowerCase().charAt(0);
       System.out.println("-                                                                -");
 
-    } while (option == 's');
+    } while (opcao == 's');
   }
 
   //Método para gerenciar o submenu 4: cadastrar transacoes em um cartão
@@ -507,11 +495,6 @@ public class Ferramentas {
 
   //Método para gerenciar o submenu 5: expirar validade de um cartão
   public static void alterarValidadeCartao() {
-
-    //Instancia classes para efetuar o cadastro dos cartões
-    ValeAlimentacao va = new ValeAlimentacao();
-    ValeRefeicao vr = new ValeRefeicao();
-    ValeCombustivel vc = new ValeCombustivel();
 
     //Cria as variáveis necessárias
     String vale, nome;
@@ -617,10 +600,10 @@ public class Ferramentas {
           System.out.println("-----------------------------------------------------------------");
           System.out.print("- Opção: ");
           option = in.nextLine().trim().toLowerCase().charAt(0);
-          System.out.println("-                                                                -");
+          System.out.println("-                                                               -");
         }
       } else {
-        System.out.println("-----------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------");
         System.out.println("Opção inválida! Digite uma opção dentre as disponíveis!");
         System.out.println("-                                                                -");
       }

@@ -68,8 +68,8 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
             Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e1000();
             this.saldoCartao = valorAleatorioSaldo;
             this.criaDataDeCadastro();
-            data1 = this.dataDoCadastro;
-            data2 = this.validadeCartao;
+            data1 = LocalDate.now();
+            data2 = LocalDate.now().plusYears(2);
             this.criaDataDeValidade();
             listaCartoesVC.add(new ValeCombustivel(incrementoIdentificadorVC++, nome, senha,
                     valorAleatorioSaldo, data1, data2));

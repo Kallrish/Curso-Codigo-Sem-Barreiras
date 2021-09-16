@@ -6,8 +6,4 @@ public interface InterfaceCartaoDeBeneficio {
 
   void adicionarTransacao();
 
-  void criaDataDeCadastro();
-
-  void criaDataDeValidade();
-
 }

@@ -49,9 +49,9 @@ public class Estabelecimento {
         return listaEstabelecimentos.get(i).nomeEstabelecimento;
       }
     }
-    System.out.println("-----------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
     System.out.println("- O código digitado está errado!                                -");
-    System.out.println("-----------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
     return "";
   }
 
@@ -61,9 +61,9 @@ public class Estabelecimento {
         return listaEstabelecimentos.get(i).localizacaoEstabelecimento;
       }
     }
-    System.out.println("-----------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
     System.out.println("- O código digitado está errado!                                -");
-    System.out.println("-----------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
     return "";
   }
 

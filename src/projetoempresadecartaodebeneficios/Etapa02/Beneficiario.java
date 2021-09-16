@@ -43,13 +43,13 @@ public class Beneficiario {
     char opcao = 's';
 
     do {
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("= Cadastro inicial de beneficiário                               =");
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("- Insira o nome do(a) beneficiário(a):                           -");
       System.out.print("- Nome: ");
       nomeBeneficiario1 = in.nextLine().trim();
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
 
 
       boolean verificador = false;
@@ -59,7 +59,7 @@ public class Beneficiario {
 
         //Se o beneficiário já existe na lista, retorna erro
         if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().equals(nomeBeneficiario1)) {
-          System.out.println("------------------------------------------------------------------");
+          Ferramentas.imprimeLinha();
           System.out.println("- Já existe um beneficiário cadastrado com esse nome!            -");
           System.out.println("- Não é possível cadastrar dois nomes iguais!                    -");
           verificador = true;
@@ -70,18 +70,18 @@ public class Beneficiario {
         listaBeneficiarios.add(new Beneficiario(incrementoIdentificadorBeneficiario++,
                 nomeBeneficiario1));
 
-        System.out.println("------------------------------------------------------------------");
+        Ferramentas.imprimeLinha();
         System.out.println("- Cadastro realizado com sucesso!                                -");
-        System.out.println("------------------------------------------------------------------");
+        Ferramentas.imprimeLinha();
       }
 
-      System.out.println("-                                                                -");
-      System.out.println("------------------------------------------------------------------");
+      Ferramentas.imprimeEspacador();
+      Ferramentas.imprimeLinha();
       System.out.println("- Deseja cadastrar outro beneficiário?                           -");
       System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-      System.out.println("------------------------------------------------------------------");
+      Ferramentas.imprimeLinha();
       System.out.print("- Opção: ");
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
       opcao = in.nextLine().trim().toLowerCase().charAt(0);
 
       // Reinicia a variável para a próxima busca
@@ -96,19 +96,19 @@ public class Beneficiario {
 
     String nomeBeneficiario1;
 
-    System.out.println("==================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("= Cadastro inicial de beneficiário                               =");
-    System.out.println("==================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("- Insira o nome do(a) beneficiário(a):                           -");
     System.out.print("Nome: ");
     nomeBeneficiario1 = in.nextLine().trim();
-    System.out.println("-                                                                -");
+    Ferramentas.imprimeEspacador();
     listaBeneficiarios.add(new Beneficiario(incrementoIdentificadorBeneficiario++,
             nomeBeneficiario1));
 
-    System.out.println("------------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
     System.out.println(">>>Cadastro realizado com sucesso!<<<");
-    System.out.println("------------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
   }
 
   public String getNomeBeneficiario() {

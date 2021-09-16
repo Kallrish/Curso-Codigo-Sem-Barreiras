@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDeBeneficio {
+public class ValeRefeicao extends CartaoDeBeneficio {
 
   //Cria variáveis necessárias para classe
   public static Integer incrementoIdentificadorVR = 1;
   public static Integer incrementoIdentificadorTransacoesVR = 1;
-  int index = 0;
 
   //Cria uma lista para armazenar as transações do VR
   public static List<ValeRefeicao> listaCartoesVR = new ArrayList<>();
@@ -27,8 +26,6 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
     this.identificadorCartao = identificadorCartao;
     this.saldoCartao = saldoCartao;
     this.senhaCartao = senhaCartao;
-    this.criaDataDeCadastro();
-    this.criaDataDeValidade();
     this.nomeBeneficiario = nomeBeneficiario;
   }
 
@@ -66,10 +63,8 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
 
             Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e1000();
             this.saldoCartao = valorAleatorioSaldo;
-            this.criaDataDeCadastro();
             data1 = this.dataDoCadastro;
             data2 = this.validadeCartao;
-            this.criaDataDeValidade();
             listaCartoesVR.add(new ValeRefeicao(incrementoIdentificadorVR++, nome, senha,
                     valorAleatorioSaldo, data1, data2));
 
@@ -98,31 +93,13 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
       } while (opcao == 's');
   }
 
-  @Override
-  public void criaDataDeCadastro() {
-
-    //Cria a data de cadastro pegando a data atual do momento do cadastro
-    this.dataDoCadastro = LocalDate.now();
-
-  }
-
-  @Override
-  public void criaDataDeValidade() {
-
-    //Cria a validade do cartão, definindo 2 anos como padrão.
-    this.validadeCartao = dataDoCadastro.plusYears(2);
-
-  }
-
-  @Override
-  public void adicionarTransacao() {
+  public static void adicionarTransacaoVR() {
     Integer identificadorDoCartao = 0;
 
     Scanner in = new Scanner(System.in);
 
       String nome, senha;
       char opcao = 's';
-      LocalDate data1, data2;
       index = listaTransacoes.size() - 1;
 
       do {
@@ -194,7 +171,7 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
                 System.out.println("-                                                               -");
 
                 //Verifica se saldo é suficiente para transação
-              } else if (valorDaTransacao > this.saldoCartao) {
+       //       } else if (valorDaTransacao > this.saldoCartao) {
                 System.out.println("-                                                               -");
                 System.out.println("- Você não tem saldo suficiente para realizar esta operação!    -");
                 System.out.println("-                                                               -");
@@ -220,13 +197,13 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
                 listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVR++, nome, identificadorDoCartao,
                         dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                         codigoEstabelecimento, valorDaTransacao));
-                this.saldoCartao -= valorDaTransacao;
-                this.saldoCartao += valorDaTransacao * 0.03;
+      //          this.saldoCartao -= valorDaTransacao;
+      //          this.saldoCartao += valorDaTransacao * 0.03;
 
                 System.out.println("-----------------------------------------------------------------");
                 System.out.println("- Compra efetuada com sucesso!                                  -");
                 System.out.printf("Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.03);
-                System.out.printf("Seu saldo atual: R$%.2f.", this.saldoCartao);
+       //         System.out.printf("Seu saldo atual: R$%.2f.", this.saldoCartao);
                 System.out.println("-                                                               -");
 
               }

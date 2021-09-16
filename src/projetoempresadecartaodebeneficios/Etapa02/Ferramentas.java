@@ -115,9 +115,9 @@ public class Ferramentas {
   //Método para gerenciar o submenu 2: cadastro de cartões
   public static void cadastrarCartoesBeneficio() {
 
-    System.out.println("=================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("= Menu -> Cadastrar: Novos cartões de benefício                 =");
-    System.out.println("=================================================================");
+    Ferramentas.imprimeLinhaDupla();
 
     Scanner in = new Scanner(System.in);
 
@@ -129,24 +129,25 @@ public class Ferramentas {
     int i = 0;
 
     do {
-      System.out.println("=================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("Menu -> Cadastrar: Vale Alimentação");
-      System.out.println("=================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("- Insira o nome do(a) beneficiário(a):                          -");
       System.out.print("- Nome: ");
       nome = in.nextLine().trim();
-      System.out.println("-                                                               -");
+      Ferramentas.imprimeEspacador();
       System.out.println("- Digite uma senha para usar o cartão:                          -");
       System.out.print("- Senha: ");
       senha = in.nextLine().trim();
-      System.out.println("-                                                               -");
+      Ferramentas.imprimeEspacador();
 
       boolean verificador = false;
 
       //Laço para percorrer a lista de beneficiários
       for (i = 0; i < Beneficiario.listaBeneficiarios.size(); i++) {
 
-        //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+        //Se encontra o beneficiário, armazena dados nas variáveis para passar por
+        //parâmetro na criação da lista
         if (Beneficiario.listaBeneficiarios.get(i).getNomeBeneficiario().equals(nome)) {
           verificador = true;
 
@@ -159,17 +160,17 @@ public class Ferramentas {
           ValeAlimentacao.listaCartoesVA.add(new ValeAlimentacao(identificadorCartao, nome, senha,
                   saldoCartao, data1, data2));
 
-          System.out.println("-----------------------------------------------------------------");
+          Ferramentas.imprimeLinha();
           System.out.println("- Cadastro realizado com sucesso!                               -");
-          System.out.println("-----------------------------------------------------------------");
-          System.out.println("-                                                               -");
-          System.out.println("=================================================================");
+          Ferramentas.imprimeLinha();
+          Ferramentas.imprimeEspacador();
+          Ferramentas.imprimeLinhaDupla();
           System.out.println("= Menu -> Cadastrar: Vale Refeição                              =");
-          System.out.println("=================================================================");
+          Ferramentas.imprimeLinhaDupla();
           System.out.println("- Digite uma senha para usar o cartão:                          -");
           System.out.print("- Senha: ");
           senha = in.nextLine().trim();
-          System.out.println("-                                                               -");
+          Ferramentas.imprimeEspacador();
 
           //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
           identificadorCartao = ValeRefeicao.incrementoIdentificadorVR++;
@@ -180,17 +181,17 @@ public class Ferramentas {
           ValeRefeicao.listaCartoesVR.add(new ValeRefeicao(identificadorCartao, nome, senha,
                   saldoCartao, data1, data2));
 
-          System.out.println("-----------------------------------------------------------------");
+          Ferramentas.imprimeLinha();
           System.out.println("- Cadastro realizado com sucesso!                               -");
-          System.out.println("-----------------------------------------------------------------");
-          System.out.println("-                                                               -");
-          System.out.println("=================================================================");
+          Ferramentas.imprimeLinha();
+          Ferramentas.imprimeEspacador();
+          Ferramentas.imprimeLinhaDupla();
           System.out.println("- Menu -> Cadastrar: Vale Combustível                           -");
-          System.out.println("=================================================================");
+          Ferramentas.imprimeLinhaDupla();
           System.out.println("- Digite uma senha para usar o cartão:                          -");
           System.out.print("- Senha: ");
           senha = in.nextLine().trim();
-          System.out.println("-----------------------------------------------------------------");
+          Ferramentas.imprimeLinha();
 
           //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
           identificadorCartao = ValeCombustivel.incrementoIdentificadorVC++;
@@ -201,9 +202,9 @@ public class Ferramentas {
           ValeCombustivel.listaCartoesVC.add(new ValeCombustivel(identificadorCartao, nome, senha,
                   saldoCartao, data1, data2));
 
-          System.out.println("-----------------------------------------------------------------");
+          Ferramentas.imprimeLinha();
           System.out.println("- Cadastro realizado com sucesso!                               -");
-          System.out.println("-----------------------------------------------------------------");
+          Ferramentas.imprimeLinha();
 
           //Retorna mensagem de erro caso não encontra o beneficiário
         }
@@ -211,31 +212,28 @@ public class Ferramentas {
       }
 
       if (!verificador && i == Beneficiario.listaBeneficiarios.size()) {
-        System.out.println("-----------------------------------------------------------------");
+        Ferramentas.imprimeLinha();
         System.out.println("- Não foi possível realizar o cadastro.                         -");
         System.out.println("- Beneficiário não existe ou cartão já existe!                  -");
-        System.out.println("-                                                               -");
+        Ferramentas.imprimeEspacador();
       }
-      System.out.println("-----------------------------------------------------------------");
+      Ferramentas.imprimeLinha();
       System.out.println("- Deseja tentar digitar outro nome?                             -");
       System.out.println("- Digite [s] para SIM e [n] para NÃO.                           -");
-      System.out.println("-----------------------------------------------------------------");
+      Ferramentas.imprimeLinha();
       System.out.print("- Opção: ");
       opcao = in.nextLine().trim().toLowerCase().charAt(0);
-      System.out.println("-                                                               -");
-      verificador = false;
-
-
+      Ferramentas.imprimeEspacador();
     } while (opcao == 's');
   }
 
   //Método que cadastra os cartões na primeira vez que o programa é executado
   public static void cadastrarCartoesBeneficioPrimeiravez() {
 
-    System.out.println("=================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("= Menu -> Cadastrar: Novos cartões de benefício                 =");
-    System.out.println("=================================================================");
-    System.out.println("-                                                               -");
+    Ferramentas.imprimeLinhaDupla();
+    Ferramentas.imprimeEspacador();
 
     Scanner in = new Scanner(System.in);
 
@@ -245,14 +243,14 @@ public class Ferramentas {
     char opcao1 = 's';
 
     //Solicita entrada de nome e senha ao usuário
-    System.out.println("=================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("= Menu -> Cadastrar: Vale Alimentação                           =");
-    System.out.println("=================================================================");
+    Ferramentas.imprimeLinhaDupla();
     nome = Beneficiario.listaBeneficiarios.get(0).getNomeBeneficiario();
     System.out.println("- Digite uma senha para usar o cartão:                          -");
     System.out.print("- Senha: ");
     senha = in.nextLine().trim();
-    System.out.println("-                                                               -");
+    Ferramentas.imprimeEspacador();
 
     Integer identificadorCartao = ValeAlimentacao.incrementoIdentificadorVA++;
     Double saldoCartao = Ferramentas.valorAleatorioEntre200e1000();
@@ -262,17 +260,17 @@ public class Ferramentas {
     ValeAlimentacao.listaCartoesVA.add(new ValeAlimentacao(identificadorCartao, nome, senha,
             saldoCartao, data1, data2));
 
-    System.out.println("-----------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
     System.out.println("- Cadastro realizado com sucesso!                               -");
-    System.out.println("-----------------------------------------------------------------");
-    System.out.println("-                                                               -");
-    System.out.println("=================================================================");
+    Ferramentas.imprimeLinha();
+    Ferramentas.imprimeEspacador();
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("= Menu -> Cadastrar: Vale Refeição                              =");
-    System.out.println("=================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("- Digite uma senha para usar o cartão:                          -");
     System.out.print("- Senha: ");
     senha = in.nextLine().trim();
-    System.out.println("-                                                               -");
+    Ferramentas.imprimeEspacador();
 
     //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
     identificadorCartao = ValeRefeicao.incrementoIdentificadorVR++;
@@ -283,17 +281,17 @@ public class Ferramentas {
     ValeRefeicao.listaCartoesVR.add(new ValeRefeicao(identificadorCartao, nome, senha,
             saldoCartao, data1, data2));
 
-    System.out.println("-----------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
     System.out.println("- Cadastro realizado com sucesso!                               -");
-    System.out.println("-----------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
 
-    System.out.println("=================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("= Menu -> Cadastrar: Vale Combustível                           =");
-    System.out.println("=================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("- Digite uma senha para usar o cartão:                          -");
     System.out.print("- Senha: ");
     senha = in.nextLine().trim();
-    System.out.println("-                                                               -");
+    Ferramentas.imprimeEspacador();
 
     //Armazena no cartão: identificador, saldo inicial, senha e cria data de cadastro e validade
     identificadorCartao = ValeCombustivel.incrementoIdentificadorVC++;
@@ -304,9 +302,9 @@ public class Ferramentas {
     ValeCombustivel.listaCartoesVC.add(new ValeCombustivel(identificadorCartao, nome, senha,
             saldoCartao, data1, data2));
 
-    System.out.println("-----------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
     System.out.println("- Cadastro realizado com sucesso!                               -");
-    System.out.println("-----------------------------------------------------------------");
+    Ferramentas.imprimeLinha();
   }
 
   //Método para gerenciar o submenu 3: adicionar saldo em benefício
@@ -321,9 +319,9 @@ public class Ferramentas {
     Scanner in = new Scanner(System.in);
 
     do {
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("= Menu -> Adicionar: Saldo em um cartão de benefício             =");
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("- Digite o código do benefício:                                  -");
       System.out.println("- [va] - Vale Alimentação                                        -");
       System.out.println("- [vr] - Vale Refeição                                           -");
@@ -336,99 +334,89 @@ public class Ferramentas {
       System.out.println("- Digite o valor a ser adicionado:                               -");
       System.out.print("- Valor: ");
       valorParaAdicionar = in.nextDouble();
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
 
-      if (vale.equals("va")) {
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
+      switch (vale) {
+        case "va" -> {
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
 
-          //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome) && valorParaAdicionar > 0) {
-            verificador = true;
-            ValeAlimentacao.adicionaSaldoVA(i, valorParaAdicionar);
-            Double saldoFinal = ValeAlimentacao.listaCartoesVA.get(i).saldoCartao;
-            System.out.println("------------------------------------------------------------------");
-            System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
-            System.out.println("- Agora o saldo do Vale Combustível de                           -");
-            System.out.printf("%s é %.2f!%n",nome, saldoFinal);
-            System.out.println("-                                                                -");
+            //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+            if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome) && valorParaAdicionar > 0) {
+              verificador = true;
+              ValeAlimentacao.adicionaSaldoVA(i, valorParaAdicionar);
+              Double saldoFinal = ValeAlimentacao.listaCartoesVA.get(i).saldoCartao;
+              Ferramentas.imprimeLinha();
+              System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
+              System.out.println("- Agora o saldo do Vale Combustível de                           -");
+              System.out.printf("%s é %.2f!%n", nome, saldoFinal);
+              Ferramentas.imprimeEspacador();
+            }
+
+            if (!verificador) {
+              Ferramentas.imprimeLinha();
+              System.out.println("- O beneficiário não existe ou o valor é negativo!               -");
+              Ferramentas.imprimeEspacador();
+            }
           }
-
-          if (!verificador){
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("- O beneficiário não existe ou o valor é negativo!               -");
-            System.out.println("-                                                                -");
-
-          }
+          verificador = false;
         }
-        verificador = false;
-      } else if (vale.equals("vr")) {
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < ValeRefeicao.listaCartoesVR.size(); i++) {
+        case "vr" -> {
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeRefeicao.listaCartoesVR.size(); i++) {
 
-          //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().equals(nome) && valorParaAdicionar > 0) {
-            verificador = true;
-            ValeRefeicao.adicionaSaldoVR(i, valorParaAdicionar);
-            Double saldoFinal = ValeRefeicao.listaCartoesVR.get(i).saldoCartao;
-            System.out.println("------------------------------------------------------------------");
-            System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
-            System.out.println("- Agora o saldo do Vale Combustível de                           -");
-            System.out.printf("%s é %.2f!%n",nome, saldoFinal);
-            System.out.println("-                                                                -");
+            if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().equals(nome) && valorParaAdicionar > 0) {
+              verificador = true;
+              ValeRefeicao.adicionaSaldoVR(i, valorParaAdicionar);
+              Double saldoFinal = ValeRefeicao.listaCartoesVR.get(i).saldoCartao;
+              Ferramentas.imprimeLinha();
+              System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
+              System.out.println("- Agora o saldo do Vale Combustível de                           -");
+              System.out.printf("%s é %.2f!%n", nome, saldoFinal);
+              Ferramentas.imprimeEspacador();
+            }
 
+            if (!verificador) {
+              Ferramentas.imprimeLinha();
+              System.out.println("- O beneficiário não existe ou o valor é negativo!               -");
+              Ferramentas.imprimeEspacador();
+            }
           }
-          //Retorna mensagem de erro caso não encontra o beneficiário
-          if(!verificador) {
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("- O beneficiário não existe ou o valor é negativo!              -");
-            System.out.println("- Deseja tentar digitar outro nome?                             -");
-            System.out.println("- Digite [s] para SIM e [n] para NÃO.                           -");
-            System.out.print("- Opção: ");
-            opcao = in.nextLine().trim().toLowerCase().charAt(0);
-            System.out.println("-                                                               -");
-          }
+          verificador = false;
         }
+        case "vc" -> {
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeCombustivel.listaCartoesVC.size(); i++) {
 
-        verificador = false;
-      } else if (vale.equals("vc")) {
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < ValeCombustivel.listaCartoesVC.size(); i++) {
+            if (ValeCombustivel.listaCartoesVC.get(i).getNomeBeneficiarioVC().equals(nome) && valorParaAdicionar > 0) {
+              verificador = true;
+              ValeCombustivel.adicionaSaldoVC(i, valorParaAdicionar);
+              Double saldoFinal = ValeCombustivel.listaCartoesVC.get(i).saldoCartao;
+              Ferramentas.imprimeLinha();
+              System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
+              System.out.println("- Agora o saldo do Vale Combustível de                           -");
+              System.out.printf("%s é %.2f!%n", nome, saldoFinal);
+              Ferramentas.imprimeEspacador();
+            }
 
-          //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (ValeCombustivel.listaCartoesVC.get(i).getNomeBeneficiarioVC().equals(nome) && valorParaAdicionar > 0) {
-            verificador = true;
-            ValeCombustivel.adicionaSaldoVC(i, valorParaAdicionar);
-            Double saldoFinal = ValeCombustivel.listaCartoesVC.get(i).saldoCartao;
-            System.out.println("-----------------------------------------------------------------");
-            System.out.printf("- Valor de %.2f adicionado com sucesso!%n", valorParaAdicionar);
-            System.out.println("- Agora o saldo do Vale Combustível de                           -");
-            System.out.printf("%s é %.2f!%n",nome, saldoFinal);
-            System.out.println("-                                                                -");
-
-            //Retorna mensagem de erro caso não encontra o beneficiário
+            if (!verificador) {
+              Ferramentas.imprimeLinha();
+              System.out.println("- O beneficiário não existe ou o valor é negativo!               -");
+              Ferramentas.imprimeEspacador();
+            }
           }
-
-          if (!verificador){
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("- O beneficiário não existe ou o valor é negativo!              -");
-            System.out.println("- Deseja tentar digitar outro nome?                             -");
-            System.out.println("- Digite [s] para SIM e [n] para NÃO.                           -");
-            System.out.print("- Opção: ");
-            opcao = in.nextLine().trim().toLowerCase().charAt(0);
-            System.out.println("-                                                               -");
-          }
+          verificador = false;
         }
-        verificador = false;
-      } else {
-        System.out.println("-----------------------------------------------------------------");
-        System.out.println("- Opção inválida! Digite uma opção dentre as disponíveis!      -");
+        default -> {
+          Ferramentas.imprimeLinha();
+          System.out.println("- Opção inválida! Digite uma opção dentre as disponíveis!      -");
+        }
       }
       System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
       System.out.print("- Opção: ");
       opcao = in.nextLine().trim().toLowerCase().charAt(0);
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
 
     } while (opcao == 's');
   }
@@ -441,9 +429,9 @@ public class Ferramentas {
     char opcao = 's';
 
     Scanner in = new Scanner(System.in);
-    System.out.println("==================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("= Menu -> Cadastrar: Transações de um Cartão                     =");
-    System.out.println("==================================================================");
+    Ferramentas.imprimeLinhaDupla();
     do {
       System.out.println("- Em qual cartão você gostaria de adicionar a transação?         -");
       System.out.println("- Digite o código do benefício:                                  -");
@@ -451,20 +439,19 @@ public class Ferramentas {
       System.out.println("- [vr] - Vale Refeição                                           -");
       System.out.println("- [vc] - Vale Combustível                                        -");
       String resposta = in.nextLine().trim();
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
 
-      if (resposta.equals("va")) {
-        va.adicionarTransacao();
-      } else if (resposta.equals("vr")) {
-        vr.adicionarTransacao();
-      } else if (resposta.equals("vc")) {
-        vc.adicionarTransacao();
-      } else {
-        System.out.println("------------------------------------------------------------------");
-        System.out.println("- Opção incorreta!                                               -");
-        System.out.println("- Deseja tentar novamente? [s] [n]                               -");
-        opcao = in.nextLine().trim().toLowerCase().charAt(0);
-        System.out.println("-                                                                -");
+      switch (resposta) {
+        case "va" -> ValeAlimentacao.adicionarTransacaoVA();
+        case "vr" -> ValeRefeicao.adicionarTransacaoVR();
+        case "vc" -> ValeCombustivel.adicionarTransacaoVC();
+        default -> {
+          Ferramentas.imprimeLinha();
+          System.out.println("- Opção incorreta!                                               -");
+          System.out.println("- Deseja tentar novamente? [s] [n]                               -");
+          opcao = in.nextLine().trim().toLowerCase().charAt(0);
+          Ferramentas.imprimeEspacador();
+        }
       }
     } while (opcao == 's');
   }
@@ -480,130 +467,131 @@ public class Ferramentas {
     Scanner in = new Scanner(System.in);
 
     do {
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("= Menu -> Expirar: Validade de um cartão                         =");
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("- Digite o código do benefício:                                  -");
       System.out.println("- [va] - Vale Alimentação                                        -");
       System.out.println("- [vr] - Vale Refeição                                           -");
       System.out.println("- [vc] - Vale Combustível                                        -");
       System.out.print("- Opção: ");
       vale = in.nextLine().trim();
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
       System.out.println("- Digite o nome do beneficiário:                                 -");
       nome = in.nextLine().trim();
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
 
       boolean verificador = false;
 
-      if (vale.equals("va")) {
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
+      switch (vale) {
+        case "va" -> {
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
 
-          //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome)) {
-            pegaData = ValeAlimentacao.listaCartoesVA.get(i).getDatadoCadastroVA();
-            pegaDataFinal = pegaData.minusDays(1);
-            ValeAlimentacao.listaCartoesVA.get(i).setValidadeCartaoVA(pegaDataFinal);
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("- A data de validade do cartão foi alterada!                     -");
-            System.out.println("- Data de validade expirada com sucesso!                         -");
-            System.out.println("-                                                                -");
-            verificador = true;
+            //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+            if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome)) {
+              pegaData = ValeAlimentacao.listaCartoesVA.get(i).getDatadoCadastroVA();
+              pegaDataFinal = pegaData.minusDays(1);
+              ValeAlimentacao.listaCartoesVA.get(i).setValidadeCartaoVA(pegaDataFinal);
+              Ferramentas.imprimeLinha();
+              System.out.println("- A data de validade do cartão foi alterada!                     -");
+              System.out.println("- Data de validade expirada com sucesso!                         -");
+              Ferramentas.imprimeEspacador();
+              verificador = true;
+            }
+          }
+          //Retorna mensagem de erro caso não encontra o beneficiário
+          if (!verificador) {
+            Ferramentas.imprimeLinha();
+            System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
+            System.out.println("- Deseja tentar digitar outro nome?                              -");
+            System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
+            System.out.print("- Opção: ");
+            option = in.nextLine().trim().toLowerCase().charAt(0);
+            Ferramentas.imprimeEspacador();
           }
         }
+        case "vr" -> {
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeRefeicao.listaCartoesVR.size(); i++) {
 
-        //Retorna mensagem de erro caso não encontra o beneficiário
-        if (!verificador) {
-          System.out.println("------------------------------------------------------------------");
-          System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
-          System.out.println("- Deseja tentar digitar outro nome?                              -");
-          System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-          System.out.print("- Opção: ");
-          option = in.nextLine().trim().toLowerCase().charAt(0);
-          System.out.println("-                                                                -");
-        }
-      } else if (vale.equals("vr")) {
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < ValeRefeicao.listaCartoesVR.size(); i++) {
-
-          //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().equals(nome)) {
-            pegaData = ValeRefeicao.listaCartoesVR.get(i).getDatadoCadastroVR();
-            pegaDataFinal = pegaData.minusDays(1);
-            ValeRefeicao.listaCartoesVR.get(i).setValidadeCartaoVR(pegaDataFinal);
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("A data de validade do cartão foi alterada!                       -");
-            System.out.println("Data de validade expirada com sucesso!                           -");
-            System.out.println("-                                                                -");
-            verificador = true;
+            //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
+            if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().equals(nome)) {
+              pegaData = ValeRefeicao.listaCartoesVR.get(i).getDatadoCadastroVR();
+              pegaDataFinal = pegaData.minusDays(1);
+              ValeRefeicao.listaCartoesVR.get(i).setValidadeCartaoVR(pegaDataFinal);
+              Ferramentas.imprimeLinha();
+              System.out.println("A data de validade do cartão foi alterada!                       -");
+              System.out.println("Data de validade expirada com sucesso!                           -");
+              Ferramentas.imprimeEspacador();
+              verificador = true;
+            }
+          }
+          //Retorna mensagem de erro caso não encontra o beneficiário
+          if (!verificador) {
+            Ferramentas.imprimeLinha();
+            System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
+            Ferramentas.imprimeLinha();
+            System.out.println("- Deseja tentar digitar outro nome?                              -");
+            System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
+            Ferramentas.imprimeLinha();
+            System.out.print("- Opção: ");
+            option = in.nextLine().trim().toLowerCase().charAt(0);
+            Ferramentas.imprimeEspacador();
           }
         }
-        //Retorna mensagem de erro caso não encontra o beneficiário
-        if (!verificador) {
-          System.out.println("------------------------------------------------------------------");
-          System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
-          System.out.println("------------------------------------------------------------------");
-          System.out.println("- Deseja tentar digitar outro nome?                              -");
-          System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-          System.out.println("------------------------------------------------------------------");
-          System.out.print("- Opção: ");
-          option = in.nextLine().trim().toLowerCase().charAt(0);
-          System.out.println("-                                                                -");
-        }
-      } else if (vale.equals("vc")) {
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < ValeCombustivel.listaCartoesVC.size(); i++) {
+        case "vc" -> {
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeCombustivel.listaCartoesVC.size(); i++) {
 
-          //Se encontra o beneficiário, armazena o identificador ao cartão ao beneficiário na lsita
-          if (ValeCombustivel.listaCartoesVC.get(i).getNomeBeneficiarioVC().equals(nome)) {
-            pegaData = ValeCombustivel.listaCartoesVC.get(i).getDatadoCadastroVC();
-            pegaDataFinal = pegaData.minusDays(1);
-            ValeCombustivel.listaCartoesVC.get(i).setValidadeCartaoVC(pegaDataFinal);
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("- A data de validade do cartão foi alterada!                    -");
-            System.out.println("- Data de validade expirada com sucesso!                        -");
-            verificador = true;
+
+            if (ValeCombustivel.listaCartoesVC.get(i).getNomeBeneficiarioVC().equals(nome)) {
+              pegaData = ValeCombustivel.listaCartoesVC.get(i).getDatadoCadastroVC();
+              pegaDataFinal = pegaData.minusDays(1);
+              ValeCombustivel.listaCartoesVC.get(i).setValidadeCartaoVC(pegaDataFinal);
+              Ferramentas.imprimeLinha();
+              System.out.println("- A data de validade do cartão foi alterada!                    -");
+              System.out.println("- Data de validade expirada com sucesso!                        -");
+              verificador = true;
+            }
+          }
+          //Retorna mensagem de erro caso não encontra o beneficiário
+          if (!verificador) {
+            Ferramentas.imprimeLinha();
+            System.out.println("- O beneficiário e/ou o cartão não existe!                      -");
+            Ferramentas.imprimeLinha();
+            System.out.println("- Deseja tentar digitar outro nome?                             -");
+            System.out.println("- Digite [s] para SIM e [n] para NÃO.                           -");
+            Ferramentas.imprimeLinha();
+            System.out.print("- Opção: ");
+            option = in.nextLine().trim().toLowerCase().charAt(0);
+            Ferramentas.imprimeEspacador();
           }
         }
-        //Retorna mensagem de erro caso não encontra o beneficiário
-        if (!verificador) {
-          System.out.println("-----------------------------------------------------------------");
-          System.out.println("- O beneficiário e/ou o cartão não existe!                      -");
-          System.out.println("-----------------------------------------------------------------");
-          System.out.println("- Deseja tentar digitar outro nome?                             -");
-          System.out.println("- Digite [s] para SIM e [n] para NÃO.                           -");
-          System.out.println("-----------------------------------------------------------------");
-          System.out.print("- Opção: ");
-          option = in.nextLine().trim().toLowerCase().charAt(0);
-          System.out.println("-                                                               -");
+        default -> {
+          Ferramentas.imprimeLinha();
+          System.out.println("Opção inválida! Digite uma opção dentre as disponíveis!");
+          Ferramentas.imprimeEspacador();
         }
-      } else {
-        System.out.println("------------------------------------------------------------------");
-        System.out.println("Opção inválida! Digite uma opção dentre as disponíveis!");
-        System.out.println("-                                                                -");
       }
     } while (option == 's');
   }
-
 
   //Método para gerenciar o submenu 6: alterar validade de um cartão
   public static void mostrarSaldos() {
 
     String nome;
-
     Scanner in = new Scanner(System.in);
-
     char opcao = 's';
 
     do {
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("= Menu -> Visualizar: Saldo dos cartões de benefício             =");
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("- Insira o nome do(a) beneficiário(a):                           -");
       System.out.print("- Nome: ");
       nome = in.nextLine().trim();
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
 
       boolean verificador = false;
 
@@ -616,33 +604,33 @@ public class Ferramentas {
           Double saldoAtualVA = ValeAlimentacao.listaCartoesVA.get(i).saldoCartao;
           Double saldoAtualVR = ValeRefeicao.listaCartoesVR.get(i).saldoCartao;
           Double saldoAtualVC = ValeCombustivel.listaCartoesVC.get(i).saldoCartao;
-          System.out.println("------------------------------------------------------------------");
+          Ferramentas.imprimeLinha();
           System.out.printf("- %s,%n", nome);
           System.out.println("- Aqui estão os saldos atuais dos seus benefícios:               -");
           ValeAlimentacao.mostrarSaldo(saldoAtualVA);
           ValeRefeicao.mostrarSaldo(saldoAtualVR);
           ValeCombustivel.mostrarSaldo(saldoAtualVC);
-          System.out.println("------------------------------------------------------------------");
+          Ferramentas.imprimeLinha();
           System.out.println("- Deseja cadastrar outro beneficiário?                           -");
           System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-          System.out.println("------------------------------------------------------------------");
+          Ferramentas.imprimeLinha();
           System.out.print("- Opção: ");
           opcao = in.nextLine().trim().toLowerCase().charAt(0);
-          System.out.println("-                                                                -");
+          Ferramentas.imprimeEspacador();
           verificador = true;
         }
       }
       //Retorna mensagem de erro caso não encontra o beneficiário
       if (!verificador) {
-        System.out.println("------------------------------------------------------------------");
+        Ferramentas.imprimeLinha();
         System.out.println("- Não foi possível realizar a consulta.                          -");
         System.out.printf("- Beneficiário %s não encontrado!                                 -", nome);
         System.out.println("- Deseja digitar o nome de outro beneficiário?                   -");
         System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-        System.out.println("------------------------------------------------------------------");
+        Ferramentas.imprimeLinha();
         System.out.print("Opção: ");
         opcao = in.nextLine().trim().toLowerCase().charAt(0);
-        System.out.println("-                                                                -");
+        Ferramentas.imprimeEspacador();
 
       }
     } while (opcao == 's');
@@ -658,159 +646,164 @@ public class Ferramentas {
     Scanner in = new Scanner(System.in);
 
     do {
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("= Menu -> Menu -> Emitir: Extrato de transações                  =");
-      System.out.println("==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("- Digite o código do benefício:                                  -");
       System.out.println("- [va] - Vale Alimentação                                        -");
       System.out.println("- [vr] - Vale Refeição                                           -");
       System.out.println("- [vc] - Vale Combustível                                        -");
       System.out.print("- Opção: ");
       vale = in.nextLine().trim();
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
       System.out.println("- Digite o nome do beneficiário:                                 -");
       System.out.print("- Nome: ");
       nome = in.nextLine().trim();
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
 
-      if (vale.equals("va")) {
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size() - 1; i++) {
+      switch (vale) {
+        case "va":
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size() - 1; i++) {
 
-          //Se encontra o beneficiário, imprime a lista
-          if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome)) {
+            //Se encontra o beneficiário, imprime a lista
+            if (ValeAlimentacao.listaCartoesVA.get(i).getNomeBeneficiarioVA().equals(nome)) {
 
-            System.out.println("==================================================================");
-            System.out.println("Vale Alimentação - Extrato de transações                         =");
-            System.out.println("==================================================================");
-            System.out.println("-                                                                -");
-            System.out.print("- Número da transação: ");
-            System.out.println(ValeAlimentacao.listaTransacoes.get(i).getIdentificadorDaTransacao());
-            System.out.print("- Número do cartão: ");
-            System.out.println(ValeAlimentacao.listaTransacoes.get(i).getIdentificadorDoCartao());
-            System.out.print("- Data e hora da transação: ");
-            LocalDateTime dataEHora = ValeAlimentacao.listaTransacoes.get(i).getDataHoraTransacao();
-            formatarDataHoraPadrao(dataEHora);
-            System.out.print("- Identificador do estabelecimento: ");
-            System.out.println(ValeAlimentacao.listaTransacoes.get(i).getIdenticadorDoEstabelecimento());
-            System.out.print("- Tipo do estabelecimento: ");
-            System.out.println(ValeAlimentacao.listaTransacoes.get(i).getTipoDoEstabelecimento());
-            System.out.print("- Localização do estabelecimento: ");
-            System.out.println(ValeAlimentacao.listaTransacoes.get(i).getLocalizacaoDoEstabelecimento());
-            System.out.print("- Valor da transação: ");
-            System.out.println(ValeAlimentacao.listaTransacoes.get(i).getValorDaTransacao());
-            System.out.println("-                                                                -");
+              Ferramentas.imprimeLinhaDupla();
+              System.out.println("Vale Alimentação - Extrato de transações                         =");
+              Ferramentas.imprimeLinhaDupla();
+              Ferramentas.imprimeEspacador();
+              System.out.print("- Número da transação: ");
+              System.out.println(ValeAlimentacao.listaTransacoes.get(i).getIdentificadorDaTransacao());
+              System.out.print("- Número do cartão: ");
+              System.out.println(ValeAlimentacao.listaTransacoes.get(i).getIdentificadorDoCartao());
+              System.out.print("- Data e hora da transação: ");
+              LocalDateTime dataEHora = ValeAlimentacao.listaTransacoes.get(i).getDataHoraTransacao();
+              formatarDataHoraPadrao(dataEHora);
+              System.out.print("- Identificador do estabelecimento: ");
+              System.out.println(ValeAlimentacao.listaTransacoes.get(i).getIdenticadorDoEstabelecimento());
+              System.out.print("- Tipo do estabelecimento: ");
+              System.out.println(ValeAlimentacao.listaTransacoes.get(i).getTipoDoEstabelecimento());
+              System.out.print("- Localização do estabelecimento: ");
+              System.out.println(ValeAlimentacao.listaTransacoes.get(i).getLocalizacaoDoEstabelecimento());
+              System.out.print("- Valor da transação: ");
+              System.out.println(ValeAlimentacao.listaTransacoes.get(i).getValorDaTransacao());
+              Ferramentas.imprimeEspacador();
 
-            //Retorna mensagem de erro caso não encontra o beneficiário
-          } else {
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
-            System.out.println("- Deseja tentar digitar outro nome?                              -");
-            System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-            System.out.println("------------------------------------------------------------------");
-            System.out.print("- Opção: ");
-            option = in.nextLine().trim().toLowerCase().charAt(0);
-            System.out.println("-                                                                -");
+              //Retorna mensagem de erro caso não encontra o beneficiário
+            } else {
+              Ferramentas.imprimeLinha();
+              System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
+              System.out.println("- Deseja tentar digitar outro nome?                              -");
+              System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
+              Ferramentas.imprimeLinha();
+              System.out.print("- Opção: ");
+              option = in.nextLine().trim().toLowerCase().charAt(0);
+              Ferramentas.imprimeEspacador();
+            }
           }
-        }
-      } else if (vale.equals("vr")) {
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < ValeRefeicao.listaCartoesVR.size() - 1; i++) {
+          break;
+        case "vr":
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeRefeicao.listaCartoesVR.size() - 1; i++) {
 
-          //Se encontra o beneficiário, imprime a lista
-          if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().equals(nome)) {
+            //Se encontra o beneficiário, imprime a lista
+            if (ValeRefeicao.listaCartoesVR.get(i).getNomeBeneficiarioVR().equals(nome)) {
 
-            System.out.println("==================================================================");
-            System.out.println("= Vale Refeição - Extrato de transações                          =");
-            System.out.println("==================================================================");
-            System.out.println("-                                                                -");
-            System.out.print("Número da transação: ");
-            System.out.println(ValeRefeicao.listaTransacoes.get(i).getIdentificadorDaTransacao());
-            System.out.print("Número do cartão: ");
-            System.out.println(ValeRefeicao.listaTransacoes.get(i).getIdentificadorDoCartao());
-            System.out.print("Data e hora da transação: ");
-            LocalDateTime dataEHora = ValeRefeicao.listaTransacoes.get(i).getDataHoraTransacao();
-            formatarDataHoraPadrao(dataEHora);
-            System.out.print("Identificador do estabelecimento: ");
-            System.out.println(ValeRefeicao.listaTransacoes.get(i).getIdenticadorDoEstabelecimento());
-            System.out.print("Tipo do estabelecimento: ");
-            System.out.println(ValeRefeicao.listaTransacoes.get(i).getTipoDoEstabelecimento());
-            System.out.print("Localização do estabelecimento: ");
-            System.out.println(ValeRefeicao.listaTransacoes.get(i).getLocalizacaoDoEstabelecimento());
-            System.out.print("Valor da transação: ");
-            System.out.println(ValeRefeicao.listaTransacoes.get(i).getValorDaTransacao());
-            System.out.println("-                                                                -");
+              Ferramentas.imprimeLinhaDupla();
+              System.out.println("= Vale Refeição - Extrato de transações                          =");
+              Ferramentas.imprimeLinhaDupla();
+              Ferramentas.imprimeEspacador();
+              System.out.print("Número da transação: ");
+              System.out.println(ValeRefeicao.listaTransacoes.get(i).getIdentificadorDaTransacao());
+              System.out.print("Número do cartão: ");
+              System.out.println(ValeRefeicao.listaTransacoes.get(i).getIdentificadorDoCartao());
+              System.out.print("Data e hora da transação: ");
+              LocalDateTime dataEHora = ValeRefeicao.listaTransacoes.get(i).getDataHoraTransacao();
+              formatarDataHoraPadrao(dataEHora);
+              System.out.print("Identificador do estabelecimento: ");
+              System.out.println(ValeRefeicao.listaTransacoes.get(i).getIdenticadorDoEstabelecimento());
+              System.out.print("Tipo do estabelecimento: ");
+              System.out.println(ValeRefeicao.listaTransacoes.get(i).getTipoDoEstabelecimento());
+              System.out.print("Localização do estabelecimento: ");
+              System.out.println(ValeRefeicao.listaTransacoes.get(i).getLocalizacaoDoEstabelecimento());
+              System.out.print("Valor da transação: ");
+              System.out.println(ValeRefeicao.listaTransacoes.get(i).getValorDaTransacao());
+              Ferramentas.imprimeEspacador();
 
-            //Retorna mensagem de erro caso não encontra o beneficiário
-          } else {
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
-            System.out.println("- Deseja tentar digitar outro nome?                              -");
-            System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-            System.out.println("------------------------------------------------------------------");
-            System.out.print("- Opção: ");
-            option = in.nextLine().trim().toLowerCase().charAt(0);
-            System.out.println("-                                                                -");
+              //Retorna mensagem de erro caso não encontra o beneficiário
+            } else {
+              Ferramentas.imprimeLinha();
+              System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
+              System.out.println("- Deseja tentar digitar outro nome?                              -");
+              System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
+              Ferramentas.imprimeLinha();
+              System.out.print("- Opção: ");
+              option = in.nextLine().trim().toLowerCase().charAt(0);
+              Ferramentas.imprimeEspacador();
+            }
           }
-        }
-      } else if (vale.equals("vc")) {
-        //Laço para percorrer a lista de beneficiários
-        for (int i = 0; i < ValeCombustivel.listaCartoesVC.size() - 1; i++) {
+          break;
+        case "vc":
+          //Laço para percorrer a lista de beneficiários
+          for (int i = 0; i < ValeCombustivel.listaCartoesVC.size() - 1; i++) {
 
-          //Se encontra o beneficiário, imprime a lista
-          if (ValeCombustivel.listaCartoesVC.get(i).getNomeBeneficiarioVC().equals(nome)) {
+            //Se encontra o beneficiário, imprime a lista
+            if (ValeCombustivel.listaCartoesVC.get(i).getNomeBeneficiarioVC().equals(nome)) {
 
-            System.out.println("==================================================================");
-            System.out.println("Vale Combustível - Extrato de transações                         =");
-            System.out.println("==================================================================");
-            System.out.println("-                                                                -");
-            System.out.print("- Número da transação: ");
-            System.out.println(ValeCombustivel.listaTransacoes.get(i).getIdentificadorDaTransacao());
-            System.out.print("- Número do cartão: ");
-            System.out.println(ValeCombustivel.listaTransacoes.get(i).getIdentificadorDoCartao());
-            System.out.print("- Data e hora da transação: ");
-            LocalDateTime dataEHora = ValeCombustivel.listaTransacoes.get(i).getDataHoraTransacao();
-            formatarDataHoraPadrao(dataEHora);
-            System.out.print("- Identificador do estabelecimento: ");
-            System.out.println(ValeCombustivel.listaTransacoes.get(i).getIdenticadorDoEstabelecimento());
-            System.out.print("- Tipo do estabelecimento: ");
-            System.out.println(ValeCombustivel.listaTransacoes.get(i).getTipoDoEstabelecimento());
-            System.out.print("- Localização do estabelecimento: ");
-            System.out.println(ValeCombustivel.listaTransacoes.get(i).getLocalizacaoDoEstabelecimento());
-            System.out.print("- Valor da transação: ");
-            System.out.println(ValeCombustivel.listaTransacoes.get(i).getValorDaTransacao());
-            System.out.println("-                                                                -");
+              Ferramentas.imprimeLinhaDupla();
+              System.out.println("Vale Combustível - Extrato de transações                         =");
+              Ferramentas.imprimeLinhaDupla();
+              Ferramentas.imprimeEspacador();
+              System.out.print("- Número da transação: ");
+              System.out.println(ValeCombustivel.listaTransacoes.get(i).getIdentificadorDaTransacao());
+              System.out.print("- Número do cartão: ");
+              System.out.println(ValeCombustivel.listaTransacoes.get(i).getIdentificadorDoCartao());
+              System.out.print("- Data e hora da transação: ");
+              LocalDateTime dataEHora = ValeCombustivel.listaTransacoes.get(i).getDataHoraTransacao();
+              formatarDataHoraPadrao(dataEHora);
+              System.out.print("- Identificador do estabelecimento: ");
+              System.out.println(ValeCombustivel.listaTransacoes.get(i).getIdenticadorDoEstabelecimento());
+              System.out.print("- Tipo do estabelecimento: ");
+              System.out.println(ValeCombustivel.listaTransacoes.get(i).getTipoDoEstabelecimento());
+              System.out.print("- Localização do estabelecimento: ");
+              System.out.println(ValeCombustivel.listaTransacoes.get(i).getLocalizacaoDoEstabelecimento());
+              System.out.print("- Valor da transação: ");
+              System.out.println(ValeCombustivel.listaTransacoes.get(i).getValorDaTransacao());
+              Ferramentas.imprimeEspacador();
 
-            //Retorna mensagem de erro caso não encontra o beneficiário
-          } else {
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
-            System.out.println("- Deseja tentar digitar outro nome?                              -");
-            System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
-            System.out.println("------------------------------------------------------------------");
-            System.out.print("- Opção: ");
-            option = in.nextLine().trim().toLowerCase().charAt(0);
-            System.out.println("-                                                                -");
+              //Retorna mensagem de erro caso não encontra o beneficiário
+            } else {
+              Ferramentas.imprimeLinha();
+              System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
+              System.out.println("- Deseja tentar digitar outro nome?                              -");
+              System.out.println("- Digite [s] para SIM e [n] para NÃO.                            -");
+              Ferramentas.imprimeLinha();
+              System.out.print("- Opção: ");
+              option = in.nextLine().trim().toLowerCase().charAt(0);
+              Ferramentas.imprimeEspacador();
+            }
           }
-        }
-      } else {
-        System.out.println("------------------------------------------------------------------");
-        System.out.println("-                                                                -");
-        System.out.println("- Opção inválida! Digite uma opção dentre as disponíveis!        -");
+          break;
+        default:
+          Ferramentas.imprimeLinha();
+          Ferramentas.imprimeEspacador();
+          System.out.println("- Opção inválida! Digite uma opção dentre as disponíveis!        -");
+          break;
       }
     } while (option == 's');
   }
 
   //Método para gerenciar o submenu 8: Sair do programa
   public static void sairPrograma() {
-    System.out.println("==================================================================");
+    Ferramentas.imprimeLinhaDupla();
     System.out.println("= Obrigado por usar nossos serviços.                             =");
-    System.out.println("==================================================================");
-    System.out.println("-                                                                -");
+    Ferramentas.imprimeLinhaDupla();
+    Ferramentas.imprimeEspacador();
     System.out.println("- A \"JavAlelo\" agradece a sua preferência!                       -");
     System.out.println("- Tenha um ótimo dia!                                            -");
-    System.out.println("-                                                                -");
-    System.out.println("------------------------------------------------------------------");
+    Ferramentas.imprimeEspacador();
+    Ferramentas.imprimeLinha();
     System.exit(0);
   }
 
@@ -827,10 +820,10 @@ public class Ferramentas {
     //para a função desejada
     do {
       escolhaValidaMenu = false;
-      System.out.println("\n==================================================================");
+      Ferramentas.imprimeLinhaDupla();
       System.out.println("= Menu -> Tela Principal                                         =");
-      System.out.println("==================================================================");
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeLinhaDupla();
+      Ferramentas.imprimeEspacador();
       System.out.println("- Digite uma das opções abaixo:");
       System.out.println("- 1 - Cadastrar beneficiários");
       System.out.println("- 2 - Cadastrar cartões de benefício");
@@ -842,7 +835,7 @@ public class Ferramentas {
       System.out.println("- 8 - Sair do programa");
       System.out.print("- Opção: ");
       int opcao1 = in.nextInt();
-      System.out.println("-                                                                -");
+      Ferramentas.imprimeEspacador();
 
       //Usa condicional para direcionar o usuário para a função escolhida do programa
       switch (opcao1) {
@@ -866,20 +859,20 @@ public class Ferramentas {
     Estabelecimento.inicializaEstabelecimentos();
 
     //Inicio do programa com retorno ao usuário
-    System.out.println("\n==================================================================");
+    Ferramentas.imprimeEspacador();
     System.out.println("= Olá! Bem-vindo(a) ao gerenciador de benefícios da \"JavAlelo\"   =!");
-    System.out.println("==================================================================");
-    System.out.println("-                                                                -");
+    Ferramentas.imprimeLinhaDupla();
+    Ferramentas.imprimeEspacador();
     System.out.println("-Para começar, você precisa cadastrar um beneficiário.           -");
     System.out.println("-Vamos lá!                                                       -");
-    System.out.println("-                                                                -");
+    Ferramentas.imprimeEspacador();
 
     //Invoca o método para cadastrar o primeiro beneficiário
     Beneficiario.cadastrarBeneficiarioPrimeiraVez();
 
     System.out.println("- Perfeito!                                                      -");
     System.out.println("- Agora precisamos cadastrar os 3 cartões desse beneficiário.    -");
-    System.out.println("------------------------------------------------------------------\n");
+    Ferramentas.imprimeLinha();
 
 
     //Invoca o método para realizar o cadastro de cartões do primeiro beneficiário
@@ -890,5 +883,17 @@ public class Ferramentas {
 
     //Invoca o método para iniciar o menu principal do programa
     Ferramentas.inicializaMenuPrincipal();
+  }
+
+  public static void imprimeLinha() {
+    Ferramentas.imprimeLinha();
+  }
+
+  public static void imprimeLinhaDupla() {
+    Ferramentas.imprimeLinhaDupla();
+  }
+
+  public static void imprimeEspacador() {
+    Ferramentas.imprimeLinha();
   }
 }

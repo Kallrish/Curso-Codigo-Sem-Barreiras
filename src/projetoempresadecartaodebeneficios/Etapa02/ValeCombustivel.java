@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCartaoDeBeneficio {
+public class ValeCombustivel extends CartaoDeBeneficio {
 
   //Cria variáveis necessárias para classe
   public static Integer incrementoIdentificadorVC = 1;
   public static Integer incrementoIdentificadorTransacoesVC = 1;
-  int index = 0;
 
   //Cria uma lista para armazenar as transações do VC
   public static List<ValeCombustivel> listaCartoesVC = new ArrayList<>();
@@ -27,8 +26,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
     this.identificadorCartao = identificadorCartao;
     this.saldoCartao = saldoCartao;
     this.senhaCartao = senhaCartao;
-    this.criaDataDeCadastro();
-    this.criaDataDeValidade();
     this.nomeBeneficiario = nomeBeneficiario;
   }
 
@@ -67,10 +64,8 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
 
             Double valorAleatorioSaldo = Ferramentas.valorAleatorioEntre200e1000();
             this.saldoCartao = valorAleatorioSaldo;
-            this.criaDataDeCadastro();
             data1 = LocalDate.now();
             data2 = LocalDate.now().plusYears(2);
-            this.criaDataDeValidade();
             listaCartoesVC.add(new ValeCombustivel(incrementoIdentificadorVC++, nome, senha,
                     valorAleatorioSaldo, data1, data2));
 
@@ -98,25 +93,7 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
       } while (opcao == 's');
   }
 
-
-  @Override
-  public void criaDataDeCadastro() {
-
-    //Cria a data de cadastro pegando a data atual do momento do cadastro
-    this.dataDoCadastro = LocalDate.now();
-
-  }
-
-  @Override
-  public void criaDataDeValidade() {
-
-    //Cria a validade do cartão, definindo 2 anos como padrão.
-    this.validadeCartao = dataDoCadastro.plusYears(2);
-
-  }
-
-  @Override
-  public void adicionarTransacao() {
+  public static void adicionarTransacaoVC() {
 
     Integer identificadorDoCartao = 0;
 
@@ -124,7 +101,6 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
 
       String nome, senha;
       char opcao = 's';
-      LocalDate data1, data2;
       index = listaTransacoes.size() - 1;
 
       do {
@@ -201,7 +177,7 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
                 System.out.println("-                                                               -");
 
                 //Verifica se saldo é suficiente para transação
-              } else if (valorDaTransacao > this.saldoCartao) {
+ //             } else if (valorDaTransacao > this.saldoCartao) {
                 System.out.println("-                                                               -");
                 System.out.println("- Você não tem saldo suficiente para realizar esta operação!    -");
                 System.out.println("-                                                               -");
@@ -234,14 +210,14 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
                         dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                         codigoEstabelecimento, valorDaTransacao));
 
-                this.saldoCartao -= valorDaTransacao;
+       //         this.saldoCartao -= valorDaTransacao;
                 //Regra específica 3 do VC: Desconta R$1 de taxa do saldo.
-                this.saldoCartao -= 1.00;
+       //         this.saldoCartao -= 1.00;
 
                 System.out.println("-----------------------------------------------------------------");
                 System.out.println("- Compra efetuada com sucesso!                                  -");
                 System.out.println("- Você pagou uma taxa de R$1,00 pelo abastecimento.             -");
-                System.out.printf("- Seu saldo atual: R$%.2f.", this.saldoCartao);
+        //        System.out.printf("- Seu saldo atual: R$%.2f.", this.saldoCartao);
                 System.out.println("-                                                               -");
               }
 

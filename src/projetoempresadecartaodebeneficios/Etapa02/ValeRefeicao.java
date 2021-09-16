@@ -136,11 +136,11 @@ public class ValeRefeicao extends CartaoDeBeneficio {
       Ferramentas.imprimeLinhaDupla();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o código do estabelecimento onde foi efetuada a compra: -");
-      System.out.println("- [1] - Posto Delta                                              -");
-      System.out.println("- [2] - Mercearia São José                                       -");
-      System.out.println("- [3] - Supermercado ABC                                         -");
-      System.out.println("- [4] - Padaria Sonhos                                           -");
-      System.out.println("- [5] - Restaurante La Marmita                                   -");
+      System.out.println("- [1] Posto Delta                                              -");
+      System.out.println("- [2] Mercearia São José                                       -");
+      System.out.println("- [3] Supermercado ABC                                         -");
+      System.out.println("- [4] Padaria Sonhos                                           -");
+      System.out.println("- [5] Restaurante La Marmita                                   -");
       System.out.print("- Código: ");
       escolhaEstabelecimento = in.nextInt();
 
@@ -212,7 +212,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
           dataDoCadastroTransacao = LocalDateTime.now();
           listaTransacoesVR.add(new Transacao(incrementoIdentificadorTransacoesVR++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
-                  codigoEstabelecimento, valorDaTransacao));
+                  tipoEstabelecimento, valorDaTransacao));
 
           ValeRefeicao.listaCartoesVR.get(iCerto).saldoCartao -= valorDaTransacao;
           ValeRefeicao.listaCartoesVR.get(iCerto).saldoCartao += valorDaTransacao * 0.015;
@@ -342,8 +342,8 @@ public class ValeRefeicao extends CartaoDeBeneficio {
 
           Ferramentas.imprimeLinha();
           System.out.println("- Compra efetuada com sucesso!                                   -");
-          System.out.printf("- Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.03);
-          System.out.printf("- Seu saldo atual: R$%.2f.", exibeSaldo);
+          System.out.printf("- Você recebeu R$%.2f de cashback.%n", valorDaTransacao * 0.03);
+          System.out.printf("- Seu saldo atual: R$%.2f.%n", exibeSaldo);
           Ferramentas.imprimeEspacador();
         }
       }
@@ -352,17 +352,15 @@ public class ValeRefeicao extends CartaoDeBeneficio {
       do {
         Ferramentas.imprimeLinha();
         System.out.println("- Escolha uma opção:                                             -");
-        System.out.println("- [1] Inserir nova transação no V. Combustível deste usuário     -");
-        System.out.println("- [2] Inserir nova transação no V. Combustível de outro usuário  -");
-        System.out.println("- [3] Retorna ao menu principal                                  -");
+        System.out.println("- [1] Inserir nova transação                                     -");
+        System.out.println("- [2] Retorna ao menu principal                                  -");
         Ferramentas.imprimeEspacador();
         System.out.print("- Opção: ");
         opcao2 = in.nextInt();
 
         switch (opcao2) {
-          case 1 -> Ferramentas.imprimeEspacador();
-          case 2 -> senhaOK = false;
-          case 3 -> {
+          case 1 -> opcao1 = 'n';
+          case 2 -> {
             opcao1 = 'n';
             ValeAlimentacao.voltaMenuPrincipalVA = true;
             ValeRefeicao.voltaMenuPrincipalVR = true;
@@ -380,7 +378,6 @@ public class ValeRefeicao extends CartaoDeBeneficio {
 
   //Método para mostrar o saldo de forma formatada ao usuário
   public static void mostrarSaldo(Double saldoAtual1) {
-    Ferramentas.imprimeEspacador();
     System.out.printf("- Vale Refeição: R$%.2f.%n", saldoAtual1);
     Ferramentas.imprimeEspacador();
   }

@@ -138,11 +138,11 @@ public class ValeCombustivel extends CartaoDeBeneficio {
       Ferramentas.imprimeLinhaDupla();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o código do estabelecimento onde foi efetuada a compra: -");
-      System.out.println("- [1] - Posto Delta                                              -");
-      System.out.println("- [2] - Mercearia São José                                       -");
-      System.out.println("- [3] - Supermercado ABC                                         -");
-      System.out.println("- [4] - Padaria Sonhos                                           -");
-      System.out.println("- [5] - Restaurante La Marmita                                   -");
+      System.out.println("- [1] Posto Delta                                              -");
+      System.out.println("- [2] Mercearia São José                                       -");
+      System.out.println("- [3] Supermercado ABC                                         -");
+      System.out.println("- [4] Padaria Sonhos                                           -");
+      System.out.println("- [5] Restaurante La Marmita                                   -");
       System.out.print("- Código: ");
       escolhaEstabelecimento = in.nextInt();
 
@@ -176,7 +176,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
         //Realiza verificações nos dados informados e roda o sistema anti-fraude
 
         //Regra específica 1 do VC: Verifica se é posto de combustível
-        if (identicadorDoEstabelecimento.equals("Posto Delta")) {
+        if (!codigoEstabelecimento.equals("PO01")) {
           Ferramentas.imprimeEspacador();
           System.out.println("- Não é possível usar este benefício neste estabelecimento!      -");
           Ferramentas.imprimeEspacador();
@@ -204,7 +204,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
           dataDoCadastroTransacao = LocalDateTime.now();
           listaTransacoesVC.add(new Transacao(incrementoIdentificadorTransacoesVC++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
-                  codigoEstabelecimento, valorDaTransacao));
+                  tipoEstabelecimento, valorDaTransacao));
 
           ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao -= valorDaTransacao;
           ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao += valorDaTransacao * 0.015;
@@ -349,7 +349,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
           Ferramentas.imprimeLinha();
           System.out.println("- Compra efetuada com sucesso!                                   -");
           System.out.println("- Foi adicionada uma taxa de R$1,00 ao abastecimento.");
-          System.out.printf("- Seu saldo atual: R$%.2f.", exibeSaldo);
+          System.out.printf("- Seu saldo atual: R$%.2f.%n", exibeSaldo);
           Ferramentas.imprimeEspacador();
         }
       }
@@ -358,17 +358,15 @@ public class ValeCombustivel extends CartaoDeBeneficio {
       do {
         Ferramentas.imprimeLinha();
         System.out.println("- Escolha uma opção:                                             -");
-        System.out.println("- [1] Inserir nova transação no V. Combustível deste usuário     -");
-        System.out.println("- [2] Inserir nova transação no V. Combustível de outro usuário  -");
-        System.out.println("- [3] Retorna ao menu principal                                  -");
+        System.out.println("- [1] Inserir nova transação                                     -");
+        System.out.println("- [2] Retorna ao menu principal                                  -");
         Ferramentas.imprimeEspacador();
         System.out.print("- Opção: ");
         opcao2 = in.nextInt();
 
         switch (opcao2) {
-          case 1 -> Ferramentas.imprimeEspacador();
-          case 2 -> senhaOK = false;
-          case 3 -> {
+          case 1 -> opcao1 = 'n';
+          case 2 -> {
             opcao1 = 'n';
             ValeAlimentacao.voltaMenuPrincipalVA = true;
             ValeRefeicao.voltaMenuPrincipalVR = true;
@@ -386,7 +384,6 @@ public class ValeCombustivel extends CartaoDeBeneficio {
 
   //Método para mostrar o saldo de forma formatada ao usuário
   public static void mostrarSaldo(Double saldoAtual1) {
-    Ferramentas.imprimeEspacador();
     System.out.printf("- Vale Combustível: R$%.2f.%n", saldoAtual1);
     Ferramentas.imprimeEspacador();
   }

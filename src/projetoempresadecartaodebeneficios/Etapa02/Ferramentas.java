@@ -300,7 +300,8 @@ public class Ferramentas {
   public static void adicionarSaldoBeneficio() {
 
     //Cria as variáveis necessárias
-    String vale, nome;
+    String nome;
+    Integer vale;
     Double valorParaAdicionar;
     char opcao = 's';
     boolean verificador = false;
@@ -311,11 +312,11 @@ public class Ferramentas {
     System.out.println("= Menu -> Adicionar: Saldo em um cartão de benefício             =");
     Ferramentas.imprimeLinhaDupla();
     System.out.println("- Digite o código do benefício:                                  -");
-    System.out.println("- [va] - Vale Alimentação                                        -");
-    System.out.println("- [vr] - Vale Refeição                                           -");
-    System.out.println("- [vc] - Vale Combustível                                        -");
+    System.out.println("- [1] Vale Alimentação                                        -");
+    System.out.println("- [2] Vale Refeição                                           -");
+    System.out.println("- [3] Vale Combustível                                        -");
     System.out.print("- Opção: ");
-    vale = in.nextLine().trim();
+    vale = in.nextInt();
     System.out.println("- Digite o nome do beneficiário:                                 -");
     System.out.print("- Nome: ");
     nome = in.nextLine().trim();
@@ -325,7 +326,7 @@ public class Ferramentas {
     Ferramentas.imprimeEspacador();
 
     switch (vale) {
-      case "va" -> {
+      case 1 -> {
         //Laço para percorrer a lista de beneficiários
         for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
 
@@ -349,7 +350,7 @@ public class Ferramentas {
         }
         verificador = false;
       }
-      case "vr" -> {
+      case 2 -> {
         //Laço para percorrer a lista de beneficiários
         for (int i = 0; i < ValeRefeicao.listaCartoesVR.size(); i++) {
 
@@ -372,7 +373,7 @@ public class Ferramentas {
         }
         verificador = false;
       }
-      case "vc" -> {
+      case 3 -> {
         //Laço para percorrer a lista de beneficiários
         for (int i = 0; i < ValeCombustivel.listaCartoesVC.size(); i++) {
 
@@ -420,17 +421,18 @@ public class Ferramentas {
       }
 
       System.out.println("- Em qual cartão você gostaria de adicionar a transação?         -");
-      System.out.println("- Digite o código do benefício:                                  -");
-      System.out.println("- [va] - Vale Alimentação                                        -");
-      System.out.println("- [vr] - Vale Refeição                                           -");
-      System.out.println("- [vc] - Vale Combustível                                        -");
-      String resposta = in.nextLine().trim();
+      System.out.println("- Digite o número referente ao  benefício:                       -");
+      System.out.println("- [1] Vale Alimentação                                         -");
+      System.out.println("- [2] Vale Refeição                                            -");
+      System.out.println("- [3] Vale Combustível                                         -");
+      System.out.print("- Opção: ");
+      Integer resposta = in.nextInt();
       Ferramentas.imprimeEspacador();
 
       switch (resposta) {
-        case "va" -> ValeAlimentacao.adicionarTransacaoVA();
-        case "vr" -> ValeRefeicao.adicionarTransacaoVR();
-        case "vc" -> ValeCombustivel.adicionarTransacaoVC();
+        case 1 -> ValeAlimentacao.adicionarTransacaoVA();
+        case 2 -> ValeRefeicao.adicionarTransacaoVR();
+        case 3 -> ValeCombustivel.adicionarTransacaoVC();
         default -> {
           Ferramentas.imprimeLinha();
           System.out.println("- Opção incorreta!                                               -");
@@ -446,7 +448,8 @@ public class Ferramentas {
   public static void alterarValidadeCartao() {
 
     //Cria as variáveis necessárias
-    String vale, nome;
+    String nome;
+    Integer vale;
     char option = 's';
     LocalDate pegaData, pegaDataFinal;
 
@@ -457,11 +460,11 @@ public class Ferramentas {
       System.out.println("= Menu -> Expirar: Validade de um cartão                         =");
       Ferramentas.imprimeLinhaDupla();
       System.out.println("- Digite o código do benefício:                                  -");
-      System.out.println("- [va] - Vale Alimentação                                        -");
-      System.out.println("- [vr] - Vale Refeição                                           -");
-      System.out.println("- [vc] - Vale Combustível                                        -");
+      System.out.println("- [1] Vale Alimentação                                        -");
+      System.out.println("- [2] Vale Refeição                                           -");
+      System.out.println("- [3] Vale Combustível                                        -");
       System.out.print("- Opção: ");
-      vale = in.nextLine().trim();
+      vale = in.nextInt();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o nome do beneficiário:                                 -");
       nome = in.nextLine().trim();
@@ -470,7 +473,7 @@ public class Ferramentas {
       boolean verificador = false;
 
       switch (vale) {
-        case "va" -> {
+        case 1 -> {
           //Laço para percorrer a lista de beneficiários
           for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
 
@@ -497,7 +500,7 @@ public class Ferramentas {
             Ferramentas.imprimeEspacador();
           }
         }
-        case "vr" -> {
+        case 2 -> {
           //Laço para percorrer a lista de beneficiários
           for (int i = 0; i < ValeRefeicao.listaCartoesVR.size(); i++) {
 
@@ -526,7 +529,7 @@ public class Ferramentas {
             Ferramentas.imprimeEspacador();
           }
         }
-        case "vc" -> {
+        case 3 -> {
           //Laço para percorrer a lista de beneficiários
           for (int i = 0; i < ValeCombustivel.listaCartoesVC.size(); i++) {
 
@@ -593,6 +596,7 @@ public class Ferramentas {
           Ferramentas.imprimeLinha();
           System.out.printf("- %s,%n", nome);
           System.out.println("- Aqui estão os saldos atuais dos seus benefícios:               -");
+          Ferramentas.imprimeLinha();
           ValeAlimentacao.mostrarSaldo(saldoAtualVA);
           ValeRefeicao.mostrarSaldo(saldoAtualVR);
           ValeCombustivel.mostrarSaldo(saldoAtualVC);
@@ -626,7 +630,8 @@ public class Ferramentas {
   public static void visualizarExtratoCartao() {
 
     //Cria as variáveis necessárias
-    String vale, nome;
+    String nome;
+    Integer vale;
     char option = 's';
 
     Scanner in = new Scanner(System.in);
@@ -636,11 +641,12 @@ public class Ferramentas {
       System.out.println("= Menu -> Menu -> Emitir: Extrato de transações                  =");
       Ferramentas.imprimeLinhaDupla();
       System.out.println("- Digite o código do benefício:                                  -");
-      System.out.println("- [va] - Vale Alimentação                                        -");
-      System.out.println("- [vr] - Vale Refeição                                           -");
-      System.out.println("- [vc] - Vale Combustível                                        -");
+      System.out.println("- [1] Vale Alimentação                                           -");
+      System.out.println("- [2] Vale Refeição                                              -");
+      System.out.println("- [3] Vale Combustível                                           -");
+      System.out.println("- [4] Voltar para o menu principal                               -");
       System.out.print("- Opção: ");
-      vale = in.nextLine().trim();
+      vale = in.nextInt();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o nome do beneficiário:                                 -");
       System.out.print("- Nome: ");
@@ -648,7 +654,7 @@ public class Ferramentas {
       Ferramentas.imprimeEspacador();
 
       switch (vale) {
-        case "va" -> {
+        case 1 -> {
           //Laço para percorrer a lista de beneficiários
           for (int i = 0; i < ValeAlimentacao.listaCartoesVA.size(); i++) {
 
@@ -694,7 +700,7 @@ public class Ferramentas {
             }
           }
         }
-        case "vr" -> {
+        case 2 -> {
           //Laço para percorrer a lista de beneficiários
           for (int i = 0; i < ValeRefeicao.listaCartoesVR.size(); i++) {
 
@@ -738,7 +744,7 @@ public class Ferramentas {
 
           }
         }
-          case "vc" -> {
+          case 3 -> {
             //Laço para percorrer a lista de beneficiários
             for (int i = 0; i < ValeCombustivel.listaCartoesVC.size(); i++) {
 
@@ -781,6 +787,9 @@ public class Ferramentas {
               }
             }
           }
+        case 4 -> {
+          option = 'n';
+        }
         default -> {
           Ferramentas.imprimeLinha();
           Ferramentas.imprimeEspacador();

@@ -133,11 +133,11 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
       Ferramentas.imprimeLinhaDupla();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o código do estabelecimento onde foi efetuada a compra: -");
-      System.out.println("- [1] - Posto Delta                                              -");
-      System.out.println("- [2] - Mercearia São José                                       -");
-      System.out.println("- [3] - Supermercado ABC                                         -");
-      System.out.println("- [4] - Padaria Sonhos                                           -");
-      System.out.println("- [5] - Restaurante La Marmita                                   -");
+      System.out.println("- [1] Posto Delta                                              -");
+      System.out.println("- [2] Mercearia São José                                       -");
+      System.out.println("- [3] Supermercado ABC                                         -");
+      System.out.println("- [4] Padaria Sonhos                                           -");
+      System.out.println("- [5] Restaurante La Marmita                                   -");
       System.out.print("- Código: ");
       escolhaEstabelecimento = in.nextInt();
 
@@ -183,7 +183,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
         //Realiza verificações nos dados informados e roda o sistema anti-fraude
 
         //Regra específica 1 do VA: Verifica se é posto de combustível
-        if (identicadorDoEstabelecimento.equals("Posto Delta")) {
+        if (codigoEstabelecimento.equals("PO01")) {
           Ferramentas.imprimeEspacador();
           System.out.println("- Não é possível usar este benefício neste estabelecimento!      -");
           Ferramentas.imprimeEspacador();
@@ -219,8 +219,8 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
 
           Ferramentas.imprimeLinha();
           System.out.println("- Compra efetuada com sucesso!                                   -");
-          System.out.printf("- Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.015);
-          System.out.printf("- Seu saldo atual: R$%.2f.", exibeSaldo);
+          System.out.printf("- Você recebeu R$%.2f de cashback.%n", valorDaTransacao * 0.015);
+          System.out.printf("- Seu saldo atual: R$%.2f.%n", exibeSaldo);
           Ferramentas.imprimeEspacador();
         }
 
@@ -339,7 +339,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
           dataDoCadastroTransacao = LocalDateTime.now();
           listaTransacoesVA.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
-                  codigoEstabelecimento, valorDaTransacao));
+                  tipoEstabelecimento, valorDaTransacao));
 
           ValeAlimentacao.listaCartoesVA.get(iCerto).saldoCartao -= valorDaTransacao;
           ValeAlimentacao.listaCartoesVA.get(iCerto).saldoCartao += valorDaTransacao * 0.015;
@@ -385,7 +385,6 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
 
   //Método para mostrar o saldo de forma formatada ao usuário
   public static void mostrarSaldo(Double saldoAtual1) {
-    Ferramentas.imprimeEspacador();
     System.out.printf("- Vale Alimentação: R$%.2f.%n", saldoAtual1);
     Ferramentas.imprimeEspacador();
   }

@@ -26,6 +26,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
   public static Integer incrementoIdentificadorVA = 1;
   public static Integer incrementoIdentificadorTransacoesVA = 1;
   public static Boolean voltaMenuPrincipalVA = false;
+  public static List<Transacao> listaTransacoesVA = new ArrayList<>();
 
   //Cria uma lista para armazenar as transações do VA
   public static List<ValeAlimentacao> listaCartoesVA = new ArrayList<>();
@@ -66,14 +67,14 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
     String localizacaoEstabelecimento;
     String tipoEstabelecimento;
     Integer escolhaEstabelecimento;
-    String nome = "", senha;
+    String nome, senha;
     String codigoEstabelecimento = "";
     Character opcao = 's';
     Character opcao1 = 's';
     Integer opcao2;
-    Integer index = ValeAlimentacao.listaTransacoes.size() - 1;
+    Integer index = ValeAlimentacao.listaTransacoesVA.size() - 1;
     Integer i;
-    Integer verificaSituacaoListaTransacoes;
+    Integer verificaSituacaolistaTransacoes;
     String identificadorUltimoEstabelecimento;
     Integer iCerto = 0;
     Boolean verificador = false;
@@ -173,10 +174,10 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
       Ferramentas.imprimeEspacador();
 
       //Variável pega o tamanho do array de transações para realizar verificação
-      verificaSituacaoListaTransacoes = ValeAlimentacao.listaTransacoes.size();
+      verificaSituacaolistaTransacoes = ValeAlimentacao.listaTransacoesVA.size();
 
       //Se o array de transações for nulo ou 1, realiza os processos necessários para o cadastro
-      if (verificaSituacaoListaTransacoes <= 1) {
+      if (verificaSituacaolistaTransacoes <= 1) {
         dataCadastroCartao = ValeAlimentacao.listaCartoesVA.get(iCerto).dataDoCadastro;
 
         //Realiza verificações nos dados informados e roda o sistema anti-fraude
@@ -208,7 +209,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
           //Se tudo está correto, finaliza o cadastro
         } else {
           dataDoCadastroTransacao = LocalDateTime.now();
-          listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
+          listaTransacoesVA.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                   tipoEstabelecimento, valorDaTransacao));
 
@@ -224,11 +225,11 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
         }
 
         //Se o array de transações for igual a 2, realiza os processos necessários para o cadastro
-      } else if (verificaSituacaoListaTransacoes == 2) {
+      } else if (verificaSituacaolistaTransacoes == 2) {
         dataCadastroCartao = ValeAlimentacao.listaCartoesVA.get(iCerto).dataDoCadastro;
-        identificadorUltimoEstabelecimento = ValeAlimentacao.listaTransacoes.get(index).identicadorDoEstabelecimento;
-        valorUltimaCompra = ValeAlimentacao.listaTransacoes.get(index).valorDaTransacao;
-        dataHoraUltimaCompra = ValeAlimentacao.listaTransacoes.get(index).dataHoraTransacao;
+        identificadorUltimoEstabelecimento = ValeAlimentacao.listaTransacoesVA.get(index).identicadorDoEstabelecimento;
+        valorUltimaCompra = ValeAlimentacao.listaTransacoesVA.get(index).valorDaTransacao;
+        dataHoraUltimaCompra = ValeAlimentacao.listaTransacoesVA.get(index).dataHoraTransacao;
         horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
 
         //Regra específica 1 do VA: Verifica se é posto de combustível
@@ -267,7 +268,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
           //Se tudo está correto, finaliza o cadastro
         } else {
           dataDoCadastroTransacao = LocalDateTime.now();
-          listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
+          listaTransacoesVA.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                   tipoEstabelecimento, valorDaTransacao));
 
@@ -286,11 +287,11 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
       } else {
 
         dataCadastroCartao = ValeAlimentacao.listaCartoesVA.get(iCerto).dataDoCadastro;
-        identificadorUltimoEstabelecimento = ValeAlimentacao.listaTransacoes.get(index).identicadorDoEstabelecimento;
-        valorUltimaCompra = ValeAlimentacao.listaTransacoes.get(index).valorDaTransacao;
-        dataHoraUltimaCompra = ValeAlimentacao.listaTransacoes.get(index).dataHoraTransacao;
+        identificadorUltimoEstabelecimento = ValeAlimentacao.listaTransacoesVA.get(index).identicadorDoEstabelecimento;
+        valorUltimaCompra = ValeAlimentacao.listaTransacoesVA.get(index).valorDaTransacao;
+        dataHoraUltimaCompra = ValeAlimentacao.listaTransacoesVA.get(index).dataHoraTransacao;
         horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
-        dataHoraPenultimaCompra = ValeAlimentacao.listaTransacoes.get(index - 1).dataHoraTransacao;
+        dataHoraPenultimaCompra = ValeAlimentacao.listaTransacoesVA.get(index - 1).dataHoraTransacao;
         horaPenultimaCompra = dataHoraPenultimaCompra.toLocalTime();
 
         //Regra específica 1 do VA: Verifica se é posto de combustível
@@ -336,7 +337,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
         } else {
           // Armazena os dados da transação no lista de transações
           dataDoCadastroTransacao = LocalDateTime.now();
-          listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
+          listaTransacoesVA.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                   codigoEstabelecimento, valorDaTransacao));
 

@@ -98,7 +98,7 @@ public class Ferramentas {
 
   public static Boolean verificaValorVA(Integer index4, Double valor1) {
 
-    Double valorComparacaoDouble = ValeAlimentacao.listaTransacoes.get(index4).getValorDaTransacao();
+    Double valorComparacaoDouble = ValeAlimentacao.listaTransacoesVA.get(index4).getValorDaTransacao();
     String valorComparacaoString1 = valorComparacaoDouble.toString();
     String valorComparacaoString2 = valor1.toString();
 
@@ -107,7 +107,7 @@ public class Ferramentas {
 
   public static Boolean verificaValorVR(Integer index4, Double valor1) {
 
-    Double valorComparacaoDouble = ValeRefeicao.listaTransacoes.get(index4).getValorDaTransacao();
+    Double valorComparacaoDouble = ValeRefeicao.listaTransacoesVR.get(index4).getValorDaTransacao();
     String valorComparacaoString1 = valorComparacaoDouble.toString();
     String valorComparacaoString2 = valor1.toString();
 
@@ -116,7 +116,7 @@ public class Ferramentas {
 
   public static Boolean verificaValorVC(Integer index4, Double valor1) {
 
-    Double valorComparacaoDouble = ValeCombustivel.listaTransacoes.get(index4).getValorDaTransacao();
+    Double valorComparacaoDouble = ValeCombustivel.listaTransacoesVC.get(index4).getValorDaTransacao();
     String valorComparacaoString1 = valorComparacaoDouble.toString();
     String valorComparacaoString2 = valor1.toString();
 
@@ -682,21 +682,19 @@ public class Ferramentas {
               Ferramentas.imprimeLinhaDupla();
               Ferramentas.imprimeEspacador();
               System.out.print("- Número da transação: ");
-              System.out.println(ValeAlimentacao.listaTransacoes.get(i).identificadorDaTransacao);
+              System.out.println(ValeAlimentacao.listaTransacoesVA.get(i).identificadorDaTransacao);
               System.out.print("- Número do cartão: ");
-              System.out.println(ValeAlimentacao.listaTransacoes.get(i).identificadorDoCartao);
+              System.out.println(ValeAlimentacao.listaTransacoesVA.get(i).identificadorDoCartao);
               System.out.print("- Data e hora da transação: ");
-              System.out.println(ValeAlimentacao.listaTransacoes.get(i).dataHoraTransacao);
+              System.out.println(ValeAlimentacao.listaTransacoesVA.get(i).dataHoraTransacao);
               System.out.print("- Identificador do estabelecimento: ");
-              System.out.println(ValeAlimentacao.listaTransacoes.get(i).identicadorDoEstabelecimento);
-
-
+              System.out.println(ValeAlimentacao.listaTransacoesVA.get(i).identicadorDoEstabelecimento);
               System.out.print("- Tipo do estabelecimento: ");
-              System.out.println(ValeAlimentacao.listaTransacoes.get(i).tipoDoEstabelecimento);
+              System.out.println(ValeAlimentacao.listaTransacoesVA.get(i).tipoDoEstabelecimento);
               System.out.print("- Localização do estabelecimento: ");
-              System.out.println(ValeAlimentacao.listaTransacoes.get(i).localizacaoDoEstabelecimento);
+              System.out.println(ValeAlimentacao.listaTransacoesVA.get(i).localizacaoDoEstabelecimento);
               System.out.print("- Valor da transação: ");
-              System.out.println(ValeAlimentacao.listaTransacoes.get(i).valorDaTransacao);
+              System.out.println(ValeAlimentacao.listaTransacoesVA.get(i).valorDaTransacao);
               Ferramentas.imprimeEspacador();
 
               //Retorna mensagem de erro caso não encontra o beneficiário
@@ -725,19 +723,19 @@ public class Ferramentas {
               Ferramentas.imprimeLinhaDupla();
               Ferramentas.imprimeEspacador();
               System.out.print("- Número da transação: ");
-              System.out.println(ValeRefeicao.listaTransacoes.get(i).identificadorDaTransacao);
+              System.out.println(ValeRefeicao.listaTransacoesVR.get(i).identificadorDaTransacao);
               System.out.print("- Número do cartão: ");
-              System.out.println(ValeRefeicao.listaTransacoes.get(i).identificadorDoCartao);
+              System.out.println(ValeRefeicao.listaTransacoesVR.get(i).identificadorDoCartao);
               System.out.print("- Data e hora da transação: ");
-              System.out.println(ValeRefeicao.listaTransacoes.get(i).dataHoraTransacao);
+              System.out.println(ValeRefeicao.listaTransacoesVR.get(i).dataHoraTransacao);
               System.out.print("- Identificador do estabelecimento: ");
-              System.out.println(ValeRefeicao.listaTransacoes.get(i).identicadorDoEstabelecimento);
+              System.out.println(ValeRefeicao.listaTransacoesVR.get(i).identicadorDoEstabelecimento);
               System.out.print("- Tipo do estabelecimento: ");
-              System.out.println(ValeRefeicao.listaTransacoes.get(i).tipoDoEstabelecimento);
+              System.out.println(ValeRefeicao.listaTransacoesVR.get(i).tipoDoEstabelecimento);
               System.out.print("- Localização do estabelecimento: ");
-              System.out.println(ValeRefeicao.listaTransacoes.get(i).localizacaoDoEstabelecimento);
+              System.out.println(ValeRefeicao.listaTransacoesVR.get(i).localizacaoDoEstabelecimento);
               System.out.print("- Valor da transação: ");
-              System.out.println(ValeRefeicao.listaTransacoes.get(i).valorDaTransacao);
+              System.out.println(ValeRefeicao.listaTransacoesVR.get(i).valorDaTransacao);
               Ferramentas.imprimeEspacador();
 
               //Retorna mensagem de erro caso não encontra o beneficiário
@@ -766,19 +764,19 @@ public class Ferramentas {
               Ferramentas.imprimeLinhaDupla();
               Ferramentas.imprimeEspacador();
               System.out.print("- Número da transação: ");
-              System.out.println(ValeCombustivel.listaTransacoes.get(i).identificadorDaTransacao);
+              System.out.println(ValeCombustivel.listaTransacoesVC.get(i).identificadorDaTransacao);
               System.out.print("- Número do cartão: ");
-              System.out.println(ValeCombustivel.listaTransacoes.get(i).identificadorDoCartao);
+              System.out.println(ValeCombustivel.listaTransacoesVC.get(i).identificadorDoCartao);
               System.out.print("- Data e hora: ");
-              System.out.println(ValeCombustivel.listaTransacoes.get(i).dataHoraTransacao);
+              System.out.println(ValeCombustivel.listaTransacoesVC.get(i).dataHoraTransacao);
               System.out.print("- Identificador do estabelecimento: ");
-              System.out.println(ValeCombustivel.listaTransacoes.get(i).identicadorDoEstabelecimento);
+              System.out.println(ValeCombustivel.listaTransacoesVC.get(i).identicadorDoEstabelecimento);
               System.out.print("- Tipo do estabelecimento: ");
-              System.out.println(ValeCombustivel.listaTransacoes.get(i).tipoDoEstabelecimento);
+              System.out.println(ValeCombustivel.listaTransacoesVC.get(i).tipoDoEstabelecimento);
               System.out.print("- Localização do estabelecimento: ");
-              System.out.println(ValeCombustivel.listaTransacoes.get(i).localizacaoDoEstabelecimento);
+              System.out.println(ValeCombustivel.listaTransacoesVC.get(i).localizacaoDoEstabelecimento);
               System.out.print("- Valor da transação: ");
-              System.out.println(ValeCombustivel.listaTransacoes.get(i).valorDaTransacao);
+              System.out.println(ValeCombustivel.listaTransacoesVC.get(i).valorDaTransacao);
               Ferramentas.imprimeEspacador();
 
               //Retorna mensagem de erro caso não encontra o beneficiário

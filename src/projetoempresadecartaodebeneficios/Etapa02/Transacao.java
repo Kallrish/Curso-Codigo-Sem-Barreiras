@@ -17,14 +17,15 @@ import java.time.LocalDateTime;
 
 public class Transacao {
 
-  protected Integer identificadorDaTransacao;
-  protected String beneficiario;
-  protected Integer identificadorDoCartao;
-  protected LocalDateTime dataHoraTransacao;
-  protected String identicadorDoEstabelecimento;
-  protected String localizacaoDoEstabelecimento;
-  protected String tipoDoEstabelecimento;
-  protected Double valorDaTransacao;
+  //
+  public Integer identificadorDaTransacao;
+  public String beneficiario;
+  public Integer identificadorDoCartao;
+  public LocalDateTime dataHoraTransacao;
+  public String identicadorDoEstabelecimento;
+  public String localizacaoDoEstabelecimento;
+  public String tipoDoEstabelecimento;
+  public Double valorDaTransacao;
 
   public Transacao() {
 

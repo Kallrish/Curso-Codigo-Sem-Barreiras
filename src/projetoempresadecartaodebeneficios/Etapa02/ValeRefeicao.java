@@ -29,6 +29,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
 
   //Cria uma lista para armazenar as transações do VR
   public static List<ValeRefeicao> listaCartoesVR = new ArrayList<>();
+  public static List<Transacao> listaTransacoesVR = new ArrayList<>();
 
   //Construtor padrão
   public ValeRefeicao() {}
@@ -71,7 +72,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
     Character opcao1 = 's';
     Integer opcao2;
     Boolean senhaOK = false;
-    Integer index = ValeRefeicao.listaTransacoes.size() - 1;
+    Integer index = ValeRefeicao.listaTransacoesVR.size() - 1;
     Integer i;
     Integer verificaSituacaoListaTransacoes;
     String identificadorUltimoEstabelecimento;
@@ -174,7 +175,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
       Ferramentas.imprimeEspacador();
 
       //Variável pega o tamanho do array de transações para realizar verificação
-      verificaSituacaoListaTransacoes = ValeRefeicao.listaTransacoes.size();
+      verificaSituacaoListaTransacoes = ValeRefeicao.listaTransacoesVR.size();
 
       //Se o array de transações for nulo ou 1, realiza os processos necessários para o cadastro
       if (verificaSituacaoListaTransacoes <= 1) {
@@ -209,7 +210,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
           //Se tudo está correto, finaliza o cadastro
         } else {
           dataDoCadastroTransacao = LocalDateTime.now();
-          listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVR++, nome, identificadorDoCartao,
+          listaTransacoesVR.add(new Transacao(incrementoIdentificadorTransacoesVR++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                   codigoEstabelecimento, valorDaTransacao));
 
@@ -227,9 +228,9 @@ public class ValeRefeicao extends CartaoDeBeneficio {
         //Se o array de transações for igual a 2, realiza os processos necessários para o cadastro
       } else if (verificaSituacaoListaTransacoes == 2) {
         dataCadastroCartao = ValeRefeicao.listaCartoesVR.get(iCerto).dataDoCadastro;
-        identificadorUltimoEstabelecimento = ValeRefeicao.listaTransacoes.get(index).identicadorDoEstabelecimento;
-        valorUltimaCompra = ValeRefeicao.listaTransacoes.get(index).valorDaTransacao;
-        dataHoraUltimaCompra = ValeRefeicao.listaTransacoes.get(index).dataHoraTransacao;
+        identificadorUltimoEstabelecimento = ValeRefeicao.listaTransacoesVR.get(index).identicadorDoEstabelecimento;
+        valorUltimaCompra = ValeRefeicao.listaTransacoesVR.get(index).valorDaTransacao;
+        dataHoraUltimaCompra = ValeRefeicao.listaTransacoesVR.get(index).dataHoraTransacao;
         horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
 
         //Regra específica 1 do VR: Verifica se é posto de combustível
@@ -268,7 +269,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
           //Se tudo está correto, finaliza o cadastro
         } else {
           dataDoCadastroTransacao = LocalDateTime.now();
-          listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVR++, nome, identificadorDoCartao,
+          listaTransacoesVR.add(new Transacao(incrementoIdentificadorTransacoesVR++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                   codigoEstabelecimento, valorDaTransacao));
 
@@ -287,11 +288,11 @@ public class ValeRefeicao extends CartaoDeBeneficio {
       } else {
 
         dataCadastroCartao = ValeRefeicao.listaCartoesVR.get(iCerto).dataDoCadastro;
-        identificadorUltimoEstabelecimento = ValeRefeicao.listaTransacoes.get(index).identicadorDoEstabelecimento;
-        valorUltimaCompra = ValeRefeicao.listaTransacoes.get(index).valorDaTransacao;
-        dataHoraUltimaCompra = ValeRefeicao.listaTransacoes.get(index).dataHoraTransacao;
+        identificadorUltimoEstabelecimento = ValeRefeicao.listaTransacoesVR.get(index).identicadorDoEstabelecimento;
+        valorUltimaCompra = ValeRefeicao.listaTransacoesVR.get(index).valorDaTransacao;
+        dataHoraUltimaCompra = ValeRefeicao.listaTransacoesVR.get(index).dataHoraTransacao;
         horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
-        dataHoraPenultimaCompra = ValeRefeicao.listaTransacoes.get(index - 1).dataHoraTransacao;
+        dataHoraPenultimaCompra = ValeRefeicao.listaTransacoesVR.get(index - 1).dataHoraTransacao;
         horaPenultimaCompra = dataHoraPenultimaCompra.toLocalTime();
 
         //Verifica valor negativo
@@ -331,7 +332,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
         } else {
           // Armazena os dados da transação no lista de transações
           dataDoCadastroTransacao = LocalDateTime.now();
-          listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVR++, nome, identificadorDoCartao,
+          listaTransacoesVR.add(new Transacao(incrementoIdentificadorTransacoesVR++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
                   tipoEstabelecimento, valorDaTransacao));
 

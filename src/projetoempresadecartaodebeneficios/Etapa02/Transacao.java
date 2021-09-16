@@ -1,19 +1,17 @@
 package projetoempresadecartaodebeneficios.Etapa02;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Transacao {
 
-  private Integer identificadorDaTransacao;
-  private String beneficiario;
-  private Integer identificadorDoCartao;
-  private LocalDateTime dataHoraTransacao;
-  private String identicadorDoEstabelecimento;
-  private String localizacaoDoEstabelecimento;
-  private String tipoDoEstabelecimento;
-  private Double valorDaTransacao;
+  protected Integer identificadorDaTransacao;
+  protected String beneficiario;
+  protected Integer identificadorDoCartao;
+  protected LocalDateTime dataHoraTransacao;
+  protected String identicadorDoEstabelecimento;
+  protected String localizacaoDoEstabelecimento;
+  protected String tipoDoEstabelecimento;
+  protected Double valorDaTransacao;
 
   public Transacao() {
 

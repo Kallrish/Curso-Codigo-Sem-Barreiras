@@ -391,43 +391,8 @@ public class ValeCombustivel extends CartaoDeBeneficio {
     Ferramentas.imprimeEspacador();
   }
 
-  public LocalDate getDatadoCadastroVC() {
-    return dataDoCadastro;
-  }
-
-  public void setValidadeCartaoVC(LocalDate validadeCartao) {
-    this.validadeCartao = validadeCartao;
-  }
-
-  public String getNomeBeneficiarioVC() {
-    return nomeBeneficiario;
-  }
-
   public static void adicionaSaldoVC(Integer index, Double valor) {
     Double pegaValorAtual = ValeCombustivel.listaCartoesVC.get(index).saldoCartao;
     ValeCombustivel.listaCartoesVC.get(index).saldoCartao = pegaValorAtual + valor;
   }
-
-//  @Override
-//  public boolean equals(Object obj) {
-//    if (obj == null)
-//      return false;
-//
-//    if (!(obj instanceof ValeCombustivel))
-//      return false;
-//
-//    if (obj == this)
-//      return true;
-//
-//    ValeCombustivel p = (ValeCombustivel) obj;
-//
-//    // Aqui você implementa como deve se feita a comparação.
-//    // Verifica se os nomes dos produtos são iguais, ids e etc.
-//
-//    if (p.nomeBeneficiario == this.nomeBeneficiario) {
-//      return true;
-//    } else {
-//      return false;
-//    }
-//  }
 }

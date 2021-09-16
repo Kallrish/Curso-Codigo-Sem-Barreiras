@@ -390,43 +390,8 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
     Ferramentas.imprimeEspacador();
   }
 
-  public LocalDate getDatadoCadastroVA() {
-    return dataDoCadastro;
-  }
-
-  public void setValidadeCartaoVA(LocalDate validadeCartao) {
-    this.validadeCartao = validadeCartao;
-  }
-
-  public String getNomeBeneficiarioVA() {
-    return nomeBeneficiario;
-  }
-
   public static void adicionaSaldoVA(Integer index, Double valor) {
     Double pegaValorAtual = ValeAlimentacao.listaCartoesVA.get(index).saldoCartao;
     ValeAlimentacao.listaCartoesVA.get(index).saldoCartao = pegaValorAtual + valor;
   }
-
-//  @Override
-//  public boolean equals(Object obj) {
-//    if (obj == null)
-//      return false;
-//
-//    if (!(obj instanceof ValeAlimentacao))
-//      return false;
-//
-//    if (obj == this)
-//      return true;
-//
-//    ValeAlimentacao p = (ValeAlimentacao) obj;
-//
-//    // Aqui você implementa como deve se feita a comparação.
-//    // Verifica se os nomes dos produtos são iguais, ids e etc.
-//
-//    if (p.nomeBeneficiario == this.nomeBeneficiario) {
-//      return true;
-//    } else {
-//      return false;
-//    }
-//  }
 }

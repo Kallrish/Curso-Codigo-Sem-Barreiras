@@ -27,5 +27,4 @@ public abstract class CartaoDeBeneficio {
   public LocalDate dataDoCadastro;
   public LocalDate validadeCartao;
   public static int index =0;
-
 }

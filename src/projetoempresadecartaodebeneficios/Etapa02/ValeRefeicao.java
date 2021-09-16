@@ -385,43 +385,8 @@ public class ValeRefeicao extends CartaoDeBeneficio {
     Ferramentas.imprimeEspacador();
   }
 
-  public LocalDate getDatadoCadastroVR() {
-    return dataDoCadastro;
-  }
-
-  public void setValidadeCartaoVR(LocalDate validadeCartao) {
-    this.validadeCartao = validadeCartao;
-  }
-
-  public String getNomeBeneficiarioVR() {
-    return nomeBeneficiario;
-  }
-
   public static void adicionaSaldoVR(Integer index, Double valor) {
     Double pegaValorAtual = ValeRefeicao.listaCartoesVR.get(index).saldoCartao;
     ValeRefeicao.listaCartoesVR.get(index).saldoCartao = pegaValorAtual + valor;
   }
-
-//  @Override
-//  public boolean equals(Object obj) {
-//    if (obj == null)
-//      return false;
-//
-//    if (!(obj instanceof ValeRefeicao))
-//      return false;
-//
-//    if (obj == this)
-//      return true;
-//
-//    ValeRefeicao p = (ValeRefeicao) obj;
-//
-//    // Aqui você implementa como deve se feita a comparação.
-//    // Verifica se os nomes dos produtos são iguais, ids e etc.
-//
-//    if (p.nomeBeneficiario == this.nomeBeneficiario) {
-//      return true;
-//    } else {
-//      return false;
-//    }
-//  }
 }

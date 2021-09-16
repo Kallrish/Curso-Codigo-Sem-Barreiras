@@ -91,43 +91,4 @@ public class Estabelecimento {
     Ferramentas.imprimeLinha();
     return "";
   }
-
-  public String getIdentificadorEstabelecimento() {
-    return identificadorEstabelecimento;
-  }
-
-  public String getNomeEstabelecimento() {
-    return nomeEstabelecimento;
-  }
-
-  public String getTipoEstabelecimento() {
-    return tipoEstabelecimento;
-  }
-
-  public String getLocalizacaoEstabelecimento() {
-    return localizacaoEstabelecimento;
-  }
-
-//  @Override
-//  public boolean equals(Object obj) {
-//    if (obj == null)
-//      return false;
-//
-//    if (!(obj instanceof Estabelecimento))
-//      return false;
-//
-//    if (obj == this)
-//      return true;
-//
-//    Estabelecimento p = (Estabelecimento) obj;
-//
-//    // Aqui você implementa como deve se feita a comparação.
-//    // Verifica se os nomes dos produtos são iguais, ids e etc.
-//
-//    if (p.identificadorEstabelecimento == this.identificadorEstabelecimento) {
-//      return true;
-//    } else {
-//      return false;
-//    }
-//  }
 }

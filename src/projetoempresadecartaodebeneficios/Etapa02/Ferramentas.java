@@ -724,7 +724,7 @@ public class Ferramentas {
                 Ferramentas.imprimeEspacador();
               }
               //Retorna mensagem de erro caso não encontra o beneficiário
-            } else{
+            } else {
               Ferramentas.imprimeLinha();
               System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
               Ferramentas.imprimeLinha();
@@ -736,37 +736,39 @@ public class Ferramentas {
               Ferramentas.imprimeEspacador();
             }
 
+          }
         }
-        case "vc" -> {
-          //Laço para percorrer a lista de beneficiários
-          for (int i = 0; i < ValeCombustivel.listaCartoesVC.size(); i++) {
+          case "vc" -> {
+            //Laço para percorrer a lista de beneficiários
+            for (int i = 0; i < ValeCombustivel.listaCartoesVC.size(); i++) {
 
-            //Se encontra o beneficiário, imprime a lista
-            if (ValeCombustivel.listaCartoesVC.get(i).nomeBeneficiario.equals(nome)) {
+              //Se encontra o beneficiário, imprime a lista
+              if (ValeCombustivel.listaCartoesVC.get(i).nomeBeneficiario.equals(nome)) {
 
-              Ferramentas.imprimeLinhaDupla();
-              System.out.println("Vale Combustível - Extrato de transações                         =");
-              Ferramentas.imprimeLinhaDupla();
-              Ferramentas.imprimeEspacador();
-              for (int r = 0; r < ValeCombustivel.listaTransacoesVC.size(); r++) {
-                System.out.print("- Número da transação: ");
-                System.out.println(ValeCombustivel.listaTransacoesVC.get(r).identificadorDaTransacao);
-                System.out.print("- Número do cartão: ");
-                System.out.println(ValeCombustivel.listaTransacoesVC.get(r).identificadorDoCartao);
-                System.out.print("- Data e hora: ");
-                System.out.println(ValeCombustivel.listaTransacoesVC.get(r).dataHoraTransacao);
-                System.out.print("- Identificador do estabelecimento: ");
-                System.out.println(ValeCombustivel.listaTransacoesVC.get(r).identicadorDoEstabelecimento);
-                System.out.print("- Tipo do estabelecimento: ");
-                System.out.println(ValeCombustivel.listaTransacoesVC.get(r).tipoDoEstabelecimento);
-                System.out.print("- Localização do estabelecimento: ");
-                System.out.println(ValeCombustivel.listaTransacoesVC.get(r).localizacaoDoEstabelecimento);
-                System.out.print("- Valor da transação: ");
-                System.out.println(ValeCombustivel.listaTransacoesVC.get(r).valorDaTransacao);
+                Ferramentas.imprimeLinhaDupla();
+                System.out.println("Vale Combustível - Extrato de transações                         =");
+                Ferramentas.imprimeLinhaDupla();
                 Ferramentas.imprimeEspacador();
 
+                for (int r = 0; r < ValeCombustivel.listaTransacoesVC.size(); r++) {
+                  System.out.print("- Número da transação: ");
+                  System.out.println(ValeCombustivel.listaTransacoesVC.get(r).identificadorDaTransacao);
+                  System.out.print("- Número do cartão: ");
+                  System.out.println(ValeCombustivel.listaTransacoesVC.get(r).identificadorDoCartao);
+                  System.out.print("- Data e hora: ");
+                  System.out.println(ValeCombustivel.listaTransacoesVC.get(r).dataHoraTransacao);
+                  System.out.print("- Identificador do estabelecimento: ");
+                  System.out.println(ValeCombustivel.listaTransacoesVC.get(r).identicadorDoEstabelecimento);
+                  System.out.print("- Tipo do estabelecimento: ");
+                  System.out.println(ValeCombustivel.listaTransacoesVC.get(r).tipoDoEstabelecimento);
+                  System.out.print("- Localização do estabelecimento: ");
+                  System.out.println(ValeCombustivel.listaTransacoesVC.get(r).localizacaoDoEstabelecimento);
+                  System.out.print("- Valor da transação: ");
+                  System.out.println(ValeCombustivel.listaTransacoesVC.get(r).valorDaTransacao);
+                  Ferramentas.imprimeEspacador();
+                }
                 //Retorna mensagem de erro caso não encontra o beneficiário
-              } else{
+              } else {
                 Ferramentas.imprimeLinha();
                 System.out.println("- O beneficiário e/ou o cartão não existe!                       -");
                 Ferramentas.imprimeLinha();
@@ -779,7 +781,6 @@ public class Ferramentas {
               }
             }
           }
-        }
         default -> {
           Ferramentas.imprimeLinha();
           Ferramentas.imprimeEspacador();

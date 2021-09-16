@@ -50,6 +50,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
     Double saldoAtual = 0.00;
     String identicadorDoEstabelecimento;
     String localizacaoEstabelecimento;
+    String tipoEstabelecimento;
     String nome = "", senha;
     Character opcao = 's';
     Character opcao1 = 's';
@@ -131,6 +132,8 @@ public class ValeRefeicao extends CartaoDeBeneficio {
       //Atribui dados da lista estabelecimento para cadastrar a transação na lista
       identicadorDoEstabelecimento = Estabelecimento.buscaEstabelecimento(codigoEstabelecimento);
       localizacaoEstabelecimento = Estabelecimento.buscaLocalizacaoEstabelecimento(codigoEstabelecimento);
+      tipoEstabelecimento = Estabelecimento.buscaTipoEstabelecimento(codigoEstabelecimento);
+
       Ferramentas.imprimeEspacador();
       System.out.println("- Qual o valor da transação?                                    -");
       valorDaTransacao = in.nextDouble();
@@ -296,7 +299,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
           dataDoCadastroTransacao = LocalDateTime.now();
           listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVR++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
-                  codigoEstabelecimento, valorDaTransacao));
+                  tipoEstabelecimento, valorDaTransacao));
 
           ValeRefeicao.listaCartoesVR.get(iCerto).saldoCartao -= valorDaTransacao;
           ValeRefeicao.listaCartoesVR.get(iCerto).saldoCartao += valorDaTransacao * 0.03;

@@ -51,6 +51,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
     Double saldoAtual = 0.00;
     String identicadorDoEstabelecimento;
     String localizacaoEstabelecimento;
+    String tipoEstabelecimento;
     String nome = "", senha;
     Character opcao = 's';
     Character opcao1 = 's';
@@ -132,6 +133,8 @@ public class ValeCombustivel extends CartaoDeBeneficio {
       //Atribui dados da lista estabelecimento para cadastrar a transação na lista
       identicadorDoEstabelecimento = Estabelecimento.buscaEstabelecimento(codigoEstabelecimento);
       localizacaoEstabelecimento = Estabelecimento.buscaLocalizacaoEstabelecimento(codigoEstabelecimento);
+      tipoEstabelecimento = Estabelecimento.buscaTipoEstabelecimento(codigoEstabelecimento);
+
       Ferramentas.imprimeEspacador();
       System.out.println("- Qual o valor da transação?                                    -");
       valorDaTransacao = in.nextDouble();
@@ -310,7 +313,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
           dataDoCadastroTransacao = LocalDateTime.now();
           listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVC++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
-                  codigoEstabelecimento, valorDaTransacao));
+                  tipoEstabelecimento, valorDaTransacao));
 
           ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao -= valorDaTransacao;
           //Regra específica 3 do VC: Desconta R$1 de taxa do saldo.
@@ -319,7 +322,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
 
           Ferramentas.imprimeLinha();
           System.out.println("- Compra efetuada com sucesso!                                   -");
-          System.out.printf("- Foi adicionada uma taxa de R$1,00 ao abastecimento.");
+          System.out.println("- Foi adicionada uma taxa de R$1,00 ao abastecimento.");
           System.out.printf("- Seu saldo atual: R$%.2f.", exibeSaldo);
           Ferramentas.imprimeEspacador();
         }

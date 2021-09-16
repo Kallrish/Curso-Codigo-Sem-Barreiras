@@ -131,6 +131,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
       identicadorDoEstabelecimento = Estabelecimento.buscaEstabelecimento(codigoEstabelecimento);
       localizacaoEstabelecimento = Estabelecimento.buscaLocalizacaoEstabelecimento(codigoEstabelecimento);
       tipoEstabelecimento = Estabelecimento.buscaTipoEstabelecimento(codigoEstabelecimento);
+
       Ferramentas.imprimeEspacador();
       System.out.println("- Qual o valor da transação?                                    -");
       valorDaTransacao = in.nextDouble();
@@ -233,7 +234,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
           dataDoCadastroTransacao = LocalDateTime.now();
           listaTransacoes.add(new Transacao(incrementoIdentificadorTransacoesVA++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
-                  codigoEstabelecimento, valorDaTransacao));
+                  tipoEstabelecimento, valorDaTransacao));
 
           ValeAlimentacao.listaCartoesVA.get(iCerto).saldoCartao -= valorDaTransacao;
           ValeAlimentacao.listaCartoesVA.get(iCerto).saldoCartao += valorDaTransacao * 0.015;

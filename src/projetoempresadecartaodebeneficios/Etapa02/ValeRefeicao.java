@@ -143,7 +143,7 @@ public class ValeRefeicao extends CartaoDeBeneficio {
       System.out.println("- [5] Restaurante La Marmita                                   -");
       System.out.print("- Código: ");
       escolhaEstabelecimento = in.nextInt();
-
+      in.nextLine();
 
       switch (escolhaEstabelecimento) {
         case 1 -> {
@@ -357,15 +357,11 @@ public class ValeRefeicao extends CartaoDeBeneficio {
         Ferramentas.imprimeEspacador();
         System.out.print("- Opção: ");
         opcao2 = in.nextInt();
+        in.nextLine();
 
         switch (opcao2) {
-          case 1 -> opcao1 = 'n';
-          case 2 -> {
-            opcao1 = 'n';
-            ValeAlimentacao.voltaMenuPrincipalVA = true;
-            ValeRefeicao.voltaMenuPrincipalVR = true;
-            ValeCombustivel.voltaMenuPrincipalVC = true;
-          }
+          case 1 -> opcao1 = 's';
+          case 2 -> opcao1 = 'n';
           default -> System.out.println("Escolha uma opção válida!                           -");
         }
         Ferramentas.imprimeEspacador();

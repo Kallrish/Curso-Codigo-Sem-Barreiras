@@ -317,6 +317,7 @@ public class Ferramentas {
     System.out.println("- [3] Vale Combustível                                           -");
     System.out.print("- Opção: ");
     vale = in.nextInt();
+    in.nextLine();
     System.out.println("- Digite o nome do beneficiário:                                 -");
     System.out.print("- Nome: ");
     nome = in.nextLine().trim();
@@ -422,6 +423,7 @@ public class Ferramentas {
       System.out.println("- [4] Voltar ao menu principal                                   -");
       System.out.print("- Opção: ");
       Integer resposta = in.nextInt();
+      in.nextLine();
       Ferramentas.imprimeEspacador();
 
       switch (resposta) {
@@ -462,6 +464,7 @@ public class Ferramentas {
       System.out.println("- [4] Voltar ao menu principal                                   -");
       System.out.print("- Opção: ");
       vale = in.nextInt();
+      in.nextLine();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o nome do beneficiário:                                 -");
       nome = in.nextLine().trim();
@@ -645,6 +648,7 @@ public class Ferramentas {
       System.out.println("- [4] Voltar para o menu principal                               -");
       System.out.print("- Opção: ");
       vale = in.nextInt();
+      in.nextLine();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o nome do beneficiário:                                 -");
       System.out.print("- Nome: ");
@@ -836,6 +840,7 @@ public class Ferramentas {
       System.out.println("- 8 Sair do programa                                             -");
       System.out.print("- Opção: ");
       int opcao1 = in.nextInt();
+      in.nextLine();
       Ferramentas.imprimeEspacador();
 
       //Usa condicional para direcionar o usuário para a função escolhida do programa

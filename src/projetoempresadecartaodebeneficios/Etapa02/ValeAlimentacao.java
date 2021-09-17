@@ -133,14 +133,15 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
       Ferramentas.imprimeLinhaDupla();
       Ferramentas.imprimeEspacador();
       System.out.println("- Digite o código do estabelecimento onde foi efetuada a compra: -");
-      System.out.println("- [1] Posto Delta                                              -");
-      System.out.println("- [2] Mercearia São José                                       -");
-      System.out.println("- [3] Supermercado ABC                                         -");
-      System.out.println("- [4] Padaria Sonhos                                           -");
-      System.out.println("- [5] Restaurante La Marmita                                   -");
+      System.out.println("- [1] Posto Delta                                                -");
+      System.out.println("- [2] Mercearia São José                                         -");
+      System.out.println("- [3] Supermercado ABC                                           -");
+      System.out.println("- [4] Padaria Sonhos                                             -");
+      System.out.println("- [5] Restaurante La Marmita                                     -");
+      System.out.println("- [6] Volta ao menu principal                                    -");
       System.out.print("- Código: ");
       escolhaEstabelecimento = in.nextInt();
-
+      in.nextLine();
 
       switch (escolhaEstabelecimento) {
         case 1 -> {
@@ -158,6 +159,8 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
         case 5 -> {
           codigoEstabelecimento = Estabelecimento.listaEstabelecimentos.get(4).identificadorEstabelecimento;
         }
+
+        case 6 -> opcao = 'n';
         default -> {System.out.println("- Código não existe!                                             -");}
       }
 
@@ -364,15 +367,11 @@ public class ValeAlimentacao extends CartaoDeBeneficio {
         Ferramentas.imprimeEspacador();
         System.out.print("- Opção: ");
         opcao2 = in.nextInt();
+        in.nextLine();
 
         switch (opcao2) {
-          case 1 -> opcao1 = 'n';
-          case 2 -> {
-            opcao1 = 'n';
-            ValeAlimentacao.voltaMenuPrincipalVA = true;
-            ValeRefeicao.voltaMenuPrincipalVR = true;
-            ValeCombustivel.voltaMenuPrincipalVC = true;
-          }
+          case 1 -> opcao1 = 's';
+          case 2 -> opcao1 = 'n';
           default -> System.out.println("Escolha uma opção válida!                           -");
         }
         Ferramentas.imprimeEspacador();

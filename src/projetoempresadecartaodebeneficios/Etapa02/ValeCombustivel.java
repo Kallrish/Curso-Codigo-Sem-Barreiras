@@ -166,6 +166,16 @@ public class ValeCombustivel extends CartaoDeBeneficio {
         default -> {System.out.println("- Código não existe!                                             -");}
       }
 
+      //Atribui dados da lista estabelecimento para cadastrar a transação na lista
+      identicadorDoEstabelecimento = Estabelecimento.buscaEstabelecimento(codigoEstabelecimento);
+      localizacaoEstabelecimento = Estabelecimento.buscaLocalizacaoEstabelecimento(codigoEstabelecimento);
+      tipoEstabelecimento = Estabelecimento.buscaTipoEstabelecimento(codigoEstabelecimento);
+
+      Ferramentas.imprimeEspacador();
+      System.out.println("- Qual o valor da transação?                                    -");
+      valorDaTransacao = in.nextDouble();
+      Ferramentas.imprimeEspacador();
+
       //Variável pega o tamanho do array de transações para realizar verificação
       verificaSituacaoListaTransacoes = ValeCombustivel.listaTransacoesVC.size();
 
@@ -176,7 +186,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
         //Realiza verificações nos dados informados e roda o sistema anti-fraude
 
         //Regra específica 1 do VC: Verifica se é posto de combustível
-        if (!codigoEstabelecimento.equals("PO01")) {
+        if (!identicadorDoEstabelecimento.equals("Posto Delta")) {
           Ferramentas.imprimeEspacador();
           System.out.println("- Não é possível usar este benefício neste estabelecimento!      -");
           Ferramentas.imprimeEspacador();
@@ -207,12 +217,10 @@ public class ValeCombustivel extends CartaoDeBeneficio {
                   tipoEstabelecimento, valorDaTransacao));
 
           ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao -= valorDaTransacao;
-          ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao += valorDaTransacao * 0.015;
           Double exibeSaldo = ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao;
 
           Ferramentas.imprimeLinha();
           System.out.println("- Compra efetuada com sucesso!                                   -");
-          System.out.printf("- Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.015);
           System.out.printf("- Seu saldo atual: R$%.2f.", exibeSaldo);
           Ferramentas.imprimeEspacador();
         }
@@ -226,7 +234,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
         horaUltimaCompra = dataHoraUltimaCompra.toLocalTime();
 
         //Regra específica 1 do VC: Verifica se é posto de combustível
-        if (identicadorDoEstabelecimento.equals("Posto Delta")) {
+        if (!identicadorDoEstabelecimento.equals("Posto Delta")) {
           Ferramentas.imprimeEspacador();
           System.out.println("- Não é possível usar este benefício neste estabelecimento!      -");
           Ferramentas.imprimeEspacador();
@@ -263,15 +271,13 @@ public class ValeCombustivel extends CartaoDeBeneficio {
           dataDoCadastroTransacao = LocalDateTime.now();
           listaTransacoesVC.add(new Transacao(incrementoIdentificadorTransacoesVC++, nome, identificadorDoCartao,
                   dataDoCadastroTransacao, identicadorDoEstabelecimento, localizacaoEstabelecimento,
-                  codigoEstabelecimento, valorDaTransacao));
+                  tipoEstabelecimento, valorDaTransacao));
 
           ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao -= valorDaTransacao;
-          ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao += valorDaTransacao * 0.015;
           Double exibeSaldo = ValeCombustivel.listaCartoesVC.get(iCerto).saldoCartao;
 
           Ferramentas.imprimeLinha();
           System.out.println("- Compra efetuada com sucesso!                                   -");
-          System.out.printf("- Você recebeu R$%.2f de cashback.", valorDaTransacao * 0.015);
           System.out.printf("- Seu saldo atual: R$%.2f.", exibeSaldo);
           Ferramentas.imprimeEspacador();
         }
@@ -288,7 +294,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
         horaPenultimaCompra = dataHoraPenultimaCompra.toLocalTime();
 
         //Regra específica 1 do VC: Verifica se é posto de combustível
-        if (identicadorDoEstabelecimento.equals("Posto Delta")) {
+        if (!identicadorDoEstabelecimento.equals("Posto Delta")) {
           Ferramentas.imprimeEspacador();
           System.out.println("- Só é possível usar este benefício em postos de combustível!      -");
           Ferramentas.imprimeEspacador();
@@ -384,6 +390,7 @@ public class ValeCombustivel extends CartaoDeBeneficio {
 
   //Método para mostrar o saldo de forma formatada ao usuário
   public static void mostrarSaldo(Double saldoAtual1) {
+    Ferramentas.imprimeEspacador();
     System.out.printf("- Vale Combustível: R$%.2f.%n", saldoAtual1);
     Ferramentas.imprimeEspacador();
   }

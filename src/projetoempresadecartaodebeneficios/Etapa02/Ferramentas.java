@@ -312,9 +312,9 @@ public class Ferramentas {
     System.out.println("= Menu -> Adicionar: Saldo em um cartão de benefício             =");
     Ferramentas.imprimeLinhaDupla();
     System.out.println("- Digite o código do benefício:                                  -");
-    System.out.println("- [1] Vale Alimentação                                        -");
-    System.out.println("- [2] Vale Refeição                                           -");
-    System.out.println("- [3] Vale Combustível                                        -");
+    System.out.println("- [1] Vale Alimentação                                           -");
+    System.out.println("- [2] Vale Refeição                                              -");
+    System.out.println("- [3] Vale Combustível                                           -");
     System.out.print("- Opção: ");
     vale = in.nextInt();
     System.out.println("- Digite o nome do beneficiário:                                 -");
@@ -413,18 +413,13 @@ public class Ferramentas {
     System.out.println("= Menu -> Cadastrar: Transações de um Cartão                     =");
     Ferramentas.imprimeLinhaDupla();
     do {
-      //Força retorno ao menu principal, quando voltando do método de adicionar transações
-      if (ValeAlimentacao.voltaMenuPrincipalVA || ValeRefeicao.voltaMenuPrincipalVR ||
-              ValeCombustivel.voltaMenuPrincipalVC) {
-        opcao = 'n';
-        continue;
-      }
 
       System.out.println("- Em qual cartão você gostaria de adicionar a transação?         -");
       System.out.println("- Digite o número referente ao  benefício:                       -");
-      System.out.println("- [1] Vale Alimentação                                         -");
-      System.out.println("- [2] Vale Refeição                                            -");
-      System.out.println("- [3] Vale Combustível                                         -");
+      System.out.println("- [1] Vale Alimentação                                           -");
+      System.out.println("- [2] Vale Refeição                                              -");
+      System.out.println("- [3] Vale Combustível                                           -");
+      System.out.println("- [4] Voltar ao menu principal                                   -");
       System.out.print("- Opção: ");
       Integer resposta = in.nextInt();
       Ferramentas.imprimeEspacador();
@@ -433,6 +428,7 @@ public class Ferramentas {
         case 1 -> ValeAlimentacao.adicionarTransacaoVA();
         case 2 -> ValeRefeicao.adicionarTransacaoVR();
         case 3 -> ValeCombustivel.adicionarTransacaoVC();
+        case 4 -> opcao = 'n';
         default -> {
           Ferramentas.imprimeLinha();
           System.out.println("- Opção incorreta!                                               -");
@@ -460,9 +456,10 @@ public class Ferramentas {
       System.out.println("= Menu -> Expirar: Validade de um cartão                         =");
       Ferramentas.imprimeLinhaDupla();
       System.out.println("- Digite o código do benefício:                                  -");
-      System.out.println("- [1] Vale Alimentação                                        -");
-      System.out.println("- [2] Vale Refeição                                           -");
-      System.out.println("- [3] Vale Combustível                                        -");
+      System.out.println("- [1] Vale Alimentação                                           -");
+      System.out.println("- [2] Vale Refeição                                              -");
+      System.out.println("- [3] Vale Combustível                                           -");
+      System.out.println("- [4] Voltar ao menu principal                                   -");
       System.out.print("- Opção: ");
       vale = in.nextInt();
       Ferramentas.imprimeEspacador();
@@ -557,6 +554,7 @@ public class Ferramentas {
             Ferramentas.imprimeEspacador();
           }
         }
+        case 4 -> option = 'n';
         default -> {
           Ferramentas.imprimeLinha();
           System.out.println("Opção inválida! Digite uma opção dentre as disponíveis!");
@@ -787,9 +785,7 @@ public class Ferramentas {
               }
             }
           }
-        case 4 -> {
-          option = 'n';
-        }
+        case 4 -> option = 'n';
         default -> {
           Ferramentas.imprimeLinha();
           Ferramentas.imprimeEspacador();
@@ -837,7 +833,7 @@ public class Ferramentas {
       System.out.println("- 5 Alterar data de validade de um cartão                        -");
       System.out.println("- 6 Visualizar saldo dos cartões de benefício                    -");
       System.out.println("- 7 Visualizar extrato de um cartão                              -");
-      System.out.println("- 8 -Sair do programa                                            -");
+      System.out.println("- 8 Sair do programa                                             -");
       System.out.print("- Opção: ");
       int opcao1 = in.nextInt();
       Ferramentas.imprimeEspacador();

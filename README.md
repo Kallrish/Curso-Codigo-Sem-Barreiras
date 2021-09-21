@@ -228,6 +228,9 @@ Abaixo deixo a lista com os enunciados de cada exercício para que seja possíve
   
      **O que é esperado do projeto?**
      É esperado que o projeto seja escrito em Java, usando recursos de OO. Olhando para o problema dado acima, escreva as classes necessárias e tente identificar pontos que não foram citados explicitamente, como por exemplo, algum atributo faltante, alguma classe que poderia ser criada para auxiliar no programa, etc. Codifique da melhor forma possível para resolver o problema proposto.
+     
+     **Desafio:**
+     Qual a principal receita da Alelo? Como podemos representá-la no Case? 😉  
   
   
 

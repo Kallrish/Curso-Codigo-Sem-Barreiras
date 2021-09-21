@@ -677,8 +677,6 @@ public class Ferramentas {
                 System.out.println(ValeAlimentacao.listaTransacoesVA.get(r).dataHoraTransacao);
                 System.out.print("- Identificador do estabelecimento: ");
                 System.out.println(ValeAlimentacao.listaTransacoesVA.get(r).identicadorDoEstabelecimento);
-
-
                 System.out.print("- Tipo do estabelecimento: ");
                 System.out.println(ValeAlimentacao.listaTransacoesVA.get(r).tipoDoEstabelecimento);
                 System.out.print("- Localização do estabelecimento: ");
